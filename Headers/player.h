@@ -1,16 +1,11 @@
 #ifndef __SNAKE_PLAYER_H__
 #define __SNAKE_PLAYER_H__
 
-#include"game.h"
-
 /* Helpers */
 
-typedef struct      snake_s
-{
-    axe_t           position;
-    int             size;
-    int             speed;
-    int             score;
-}                   snake_t;
+#include"structures/type.h"
+#include"structures/player.h"
+
+/* Usage functions */
 
 #endif //__SNAKE_PLAYER_H__

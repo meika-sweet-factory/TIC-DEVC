@@ -3,34 +3,13 @@
 
 /* Helpers */
 
-enum bonus
-{
-    GROW,
-    FASTER,
-};
-
-enum mallus
-{
-    DIVIDE,
-    DEATH
-};
-
-typedef struct  axe_s
-{
-    int         x;
-    int         y;
-}               axe_t;
-
-typedef struct      game_s
-{
-    char **         board;
-    axe_t           size;
-}                   game_t;
+#include"structures/type.h"
+#include"structures/game.h"
 
 /* Usage functions */
 
-int new_game    (game_t * g, char * x, char * y, int (*callback)(game_t * g));
-int load_game   (game_t * g, char * d, int (*callback)(game_t * g));
+int new_game    (game_t * g, char * x, char * y, int (* callback)(game_t * g));
+int load_game   (game_t * g, char * d, int (* callback)(game_t * g));
 int play_game   (game_t * g);
 
 #endif //__SNAKE_GAME_H__
