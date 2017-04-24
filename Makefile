@@ -5,15 +5,15 @@ WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
 
 CFLAGS ?= -std=gnu99 -g $(WARNINGS) -fpic
 
-OBJDIR := obj
-SRCDIR := src
+OBJDIR := Objects
+SRCDIR := Sources
 
 NAME := snake_$(shell uname -m)-$(shell uname -s)
 
 EXEC := $(NAME)
 
 ifeq ($(VERBOSE), 1)
-    SILENCER :=
+    SILENCER := 
 else
     SILENCER := @
 endif
@@ -24,12 +24,14 @@ endif
 
 SRCF := file.c \
 		game.c \
-		helper.c \
 		pile.c \
 		player.c \
+		type.c \
+		print.c \
+		string.c \
 		main.c
 
-SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))
+SRCS := $(wildcard %, $(SRCDIR)/%, $(SRCF))
 OBJS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=o))
 
 CFLAGS += -MMD -MP

@@ -1,10 +1,9 @@
 #include<stdlib.h>
-#include"Headers/common.h"
-#include"Headers/file.h"
+#include"../Headers/chain/file.h"
 
 /* Internal functions */
 
-file_element_t * list_extract(file_list_t * l);
+file_element_t * file_list_extract(file_list_t * l);
 
 /* Usage functions */
 
@@ -59,7 +58,7 @@ data_t                  file_unthread(file_list_t * l) {
     file_element_t *    e;
     data_t              d;
 
-    e = list_extract(l);
+    e = file_list_extract(l);
     d = e->data;
     free(e);
     return d;
@@ -73,7 +72,7 @@ data_t                  file_unthread(file_list_t * l) {
  */
 void file_free(file_list_t * l)
 {
-    while (!(l->size == 0)) free(list_extract(l));
+    while (!(l->size == 0)) free(file_list_extract(l));
     free(l);
 }
 
@@ -85,7 +84,7 @@ void file_free(file_list_t * l)
  * @param   file_list_t - l
  * @return  file_element_t
  */
-file_element_t *        list_extract(file_list_t * l)
+file_element_t *        file_list_extract(file_list_t * l)
 {
     file_element_t *    e;
 

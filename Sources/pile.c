@@ -1,10 +1,9 @@
 #include<stdlib.h>
-#include"Headers/common.h"
-#include"Headers/pile.h"
+#include"../Headers/chain/pile.h"
 
 /* Internal functions */
 
-pile_element_t * list_extract(pile_list_t * l);
+pile_element_t * pile_list_extract(pile_list_t * l);
 
 /* Usage functions */
 
@@ -60,7 +59,7 @@ data_t                  pile_unstack(pile_list_t * l)
     pile_element_t *    e;
     data_t              d;
 
-    e = list_extract(l);
+    e = pile_list_extract(l);
     d = e->data;
     free(e);
     return d;
@@ -74,7 +73,7 @@ data_t                  pile_unstack(pile_list_t * l)
  */
 void pile_free(pile_list_t * l)
 {
-    while (!(l->size == 0)) free(list_extract(l));
+    while (!(l->size == 0)) free(pile_list_extract(l));
     free(l);
 }
 
@@ -86,7 +85,7 @@ void pile_free(pile_list_t * l)
  * @param   pile_list_t - l
  * @return  pile_element_t
  */
-pile_element_t *        list_extract(pile_list_t * l)
+pile_element_t *        pile_list_extract(pile_list_t * l)
 {
     pile_element_t *    e;
 

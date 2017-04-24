@@ -15,6 +15,12 @@ enum mallus
     DEATH
 };
 
+typedef struct  axe_s
+{
+    int         x;
+    int         y;
+}               axe_t;
+
 typedef struct      game_s
 {
     axe_t           size;
@@ -22,8 +28,8 @@ typedef struct      game_s
 
 /* Usage functions */
 
-game_t *    new_game    (int x, int y);
-game_t *    load_game   (char * s);
-void        play_game   (game_t * g);
+int new_game    (game_t * g, char * x, char * y);
+int load_game   (game_t * g, char * s);
+int play_game   (game_t * g);
 
 #endif //SNAKE_GAME_H

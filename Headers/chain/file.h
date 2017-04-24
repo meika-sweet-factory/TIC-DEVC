@@ -1,5 +1,5 @@
-#ifndef FILE_H
-#define FILE_H
+#ifndef SNAKE_FILE_H
+#define SNAKE_FILE_H
 
 /* Helpers */
 
@@ -29,4 +29,4 @@ void            file_thread     (file_list_t * l, data_t p);
 data_t          file_unthread   (file_list_t * l);
 void            file_free       (file_list_t * l);
 
-#endif //FILE_H
+#endif //SNAKE_FILE_H

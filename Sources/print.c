@@ -1,21 +1,11 @@
-#include <unistd.h>
-#include"Headers/common.h"
-#include "Headers/helper.h"
+#include<unistd.h>
+#include"../Headers/helpers/print.h"
 
 /* Usable functions */
 
 void print_char(char c)
 {
-  write(1, &c, 1);
-}
-
-long int          str_lenght(const char * s)
-{
-    const char *  bfs;
-
-    bfs = s;
-    while (*bfs != '\0') ++bfs;
-    return bfs - s;
+    write(1, &c, 1);
 }
 
 void              print_str(const char * s)

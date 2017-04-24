@@ -1,5 +1,7 @@
-#ifndef SNAKE_MAIN_H
-#define SNAKE_MAIN_H
+#ifndef SNAKE_PLAYER_H
+#define SNAKE_PLAYER_H
+
+#include"game.h"
 
 /* Helpers */
 
@@ -11,4 +13,4 @@ typedef struct      snake_s
     int             score;
 }                   snake_t;
 
-#endif //SNAKE_MAIN_H
+#endif //SNAKE_PLAYER_H
