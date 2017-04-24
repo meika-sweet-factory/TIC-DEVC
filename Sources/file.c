@@ -17,7 +17,7 @@ file_list_t *       file_create()
 {
     file_list_t *   l;
 
-    l = malloc(sizeof(l));
+    l = (file_list_t)malloc(sizeof(l));
     l->first = NULL;
     l->last = NULL;
     l->size = 0;

@@ -17,7 +17,7 @@ pile_list_t *       pile_create()
 {
     pile_list_t *   l;
 
-    l = malloc(sizeof(l));
+    l = (pile_list_t)malloc(sizeof(l));
     l->first = NULL;
     l->last = NULL;
     l->size = 0;

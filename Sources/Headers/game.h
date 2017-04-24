@@ -11,12 +11,11 @@ typedef struct  axe_s
 
 typedef struct      game_s
 {
-    pile_t          
     axe_t           size;
 }                   game_t;
 
 /* Usage functions */
 
-
+game_t new_game(void);
 
 #endif //SNAKE_GAME_H
