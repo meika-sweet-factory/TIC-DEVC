@@ -1,7 +1,6 @@
 #include<regex.h>
-#include<stdlib.h>
-#include"../Headers/helpers/print.h"
-#include"../Headers/helpers/type.h"
+#include"../../Headers/helpers/print.h"
+#include"../../Headers/helpers/type.h"
 
 short int       is_digit(char * s)
 {
@@ -14,7 +13,7 @@ short int       is_digit(char * s)
         print_str("Could not compile regex\n");
         return 0;
     }
-    if (!(r = regexec(&x, s, 0, NULL, 0))) {
+    if (!(r = regexec(&x, s, 0, 0, 0))) {
         b = 0;
     } else if (r == REG_NOMATCH) {
         b = 1;
@@ -40,7 +39,7 @@ short int       is_alnum(char * s)
         print_str("Could not compile regex\n");
         return 0;
     }
-    if (!(r = regexec(&x, s, 0, NULL, 0))) {
+    if (!(r = regexec(&x, s, 0, 0, 0))) {
         b = 0;
     } else if (r == REG_NOMATCH) {
         b = 1;

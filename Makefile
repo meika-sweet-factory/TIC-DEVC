@@ -22,9 +22,9 @@ ifeq ($(DEBUG_BUILD), 1)
     CFLAGS +=-DDEBUG_BUILD
 endif
 
-SRCF := file.c \
+SRCF := chain/file.c \
+		chain/pile.c \
 		game.c \
-		pile.c \
 		player.c \
 		type.c \
 		print.c \
@@ -49,10 +49,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | createdir
 	$(SILENCER)$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	$(SILENCER)$(RM) -r $(OBJDIR)
+	$(SILENCER)$(RM) -f *~ $(NAME)
 
 fclean: clean
-	$(SILENCER)$(RM) -f *~ $(NAME) $(NAME).so $(NAME).a
+	$(SILENCER)$(RM) -f $(NAME)
 
 re: fclean $(LIBS) $(LIBD)
 
