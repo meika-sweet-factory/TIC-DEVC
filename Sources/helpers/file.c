@@ -5,7 +5,7 @@
 #include<unistd.h>
 #include"../../Headers/helpers/file.h"
 
-bool                read_file(game_t * g, char * d)
+int                 read_file(game_t * g, char * d)
 {
     int             f;
     short           j;
