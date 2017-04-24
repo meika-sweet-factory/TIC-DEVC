@@ -6,6 +6,4 @@
 #define ERROR 0;
 #define SUCCESS 1;
 
-enum bool { false, true };
-
 #endif //__SNAKE_STUCTURE_TYPE_H__
