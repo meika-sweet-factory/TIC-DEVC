@@ -3,11 +3,17 @@
 
 /* Helpers */
 
-typedef struct  axe_s
+enum bonus
 {
-  int           x;
-  int           y;
-}               axe_t
+    GROW,
+    FASTER,
+};
+
+enum mallus
+{
+    DIVIDE,
+    DEATH
+};
 
 typedef struct      game_s
 {
@@ -16,6 +22,8 @@ typedef struct      game_s
 
 /* Usage functions */
 
-game_t new_game(void);
+game_t *    new_game    (int x, int y);
+game_t *    load_game   (char * s);
+void        play_game   (game_t * g);
 
 #endif //SNAKE_GAME_H

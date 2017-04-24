@@ -1,5 +1,6 @@
 #include<stdlib.h>
-#include"file.h"
+#include"Headers/common.h"
+#include"Headers/file.h"
 
 /* Internal functions */
 
@@ -17,7 +18,7 @@ file_list_t *       file_create()
 {
     file_list_t *   l;
 
-    l = (file_list_t)malloc(sizeof(l));
+    l = (file_list_t *)malloc(sizeof(l));
     l->first = NULL;
     l->last = NULL;
     l->size = 0;
@@ -36,6 +37,7 @@ void                    file_thread(file_list_t * l, data_t p)
     file_element_t *    e;
 
     e = malloc(sizeof(e));
+    e->data = p;
     e->next = NULL;
     e->precedent = NULL;
     if (l->size == 0) l->first = e;

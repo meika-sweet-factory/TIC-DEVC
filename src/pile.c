@@ -1,5 +1,6 @@
 #include<stdlib.h>
-#include"pile.h"
+#include"Headers/common.h"
+#include"Headers/pile.h"
 
 /* Internal functions */
 
@@ -17,7 +18,7 @@ pile_list_t *       pile_create()
 {
     pile_list_t *   l;
 
-    l = (pile_list_t)malloc(sizeof(l));
+    l = (pile_list_t *)malloc(sizeof(l));
     l->first = NULL;
     l->last = NULL;
     l->size = 0;
@@ -36,6 +37,7 @@ void                    pile_stack(pile_list_t * l, data_t p)
     pile_element_t *    e;
 
     e = malloc(sizeof(e));
+    e->data = p;
     e->next = NULL;
     e->precedent = NULL;
     if (l->size == 0) l->last = e;

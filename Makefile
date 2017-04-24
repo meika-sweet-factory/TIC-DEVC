@@ -5,10 +5,10 @@ WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
 
 CFLAGS ?= -std=gnu99 -g $(WARNINGS) -fpic
 
-OBJDIR := Objects
-SRCDIR := Sources
+OBJDIR := obj
+SRCDIR := src
 
-NAME := libmy_printf_$(shell uname -m)-$(shell uname -s)
+NAME := snake_$(shell uname -m)-$(shell uname -s)
 
 EXEC := $(NAME)
 
@@ -22,7 +22,12 @@ ifeq ($(DEBUG_BUILD), 1)
     CFLAGS +=-DDEBUG_BUILD
 endif
 
-SRCF := main.c
+SRCF := file.c \
+		game.c \
+		helper.c \
+		pile.c \
+		player.c \
+		main.c
 
 SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))
 OBJS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=o))
