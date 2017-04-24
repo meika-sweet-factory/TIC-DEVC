@@ -49,7 +49,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | createdir
 	$(SILENCER)$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	$(SILENCER)$(RM) -f *~ $(NAME)
+	$(SILENCER)find . -name "*.o" -type f -delete
+	$(SILENCER)find . -name "*.d" -type f -delete
+	$(SILENCER)$(RM) -f $(NAME)
 
 fclean: clean
 	$(SILENCER)$(RM) -f $(NAME)
