@@ -1,16 +1,14 @@
 #include"../../Headers/helpers/string.h"
 
-int	    str_to_int(const char * s)
+unsigned short      str_to_int(const char * s)
 {
-    int	i;
-    int	v;
-    int	sn;
+    unsigned short	i;
+    unsigned short	v;
 
-    for(sn = 1, i = 0; s[i] == 45 || s[i] == 43; i++) {
-        if (s[i] == 45) sn *= -1;
-    }
-    for(v = 0; s[i] >= 48  && s[i] <= 57; i++) {
+    if (s[0] == '-') return 0;
+    for(v = 0; s[i] >= 48  && s[i] <= 57; ++i) {
         v = v * 10 + s[i] - 48;
+        if (v > 65534) return 0;
     }
-    return sn * v;
+    return v;
 }

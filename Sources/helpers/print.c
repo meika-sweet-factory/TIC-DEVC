@@ -19,7 +19,7 @@ void              print_str(const char * s)
     }
 }
 
-void              print_unint(unsigned int n)
+void                print_unint(unsigned int n)
 {
     unsigned int	b;
 

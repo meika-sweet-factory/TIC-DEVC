@@ -24,14 +24,14 @@ endif
 
 SRCF := chain/file.c \
 		chain/pile.c \
+		helpers/type.c \
+		helpers/print.c \
+		helpers/string.c \
 		game.c \
 		player.c \
-		type.c \
-		print.c \
-		string.c \
 		main.c
 
-SRCS := $(wildcard %, $(SRCDIR)/%, $(SRCF))
+SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))
 OBJS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=o))
 
 CFLAGS += -MMD -MP
