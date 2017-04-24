@@ -1,8 +1,8 @@
-#ifndef SNAKE_STRING_H
-#define SNAKE_STRING_H
+#ifndef __SNAKE_STRING_H__
+#define __SNAKE_STRING_H__
 
 /* Usage functions */
 
-unsigned short str_to_int(const char * s);
+int str_to_int(const char * s);
 
-#endif //SNAKE_STRING_H
+#endif //__SNAKE_STRING_H__

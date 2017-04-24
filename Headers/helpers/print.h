@@ -1,5 +1,5 @@
-#ifndef SNAKE_PRINT_H
-#define SNAKE_PRINT_H
+#ifndef __SNAKE_PRINT_H__
+#define __SNAKE_PRINT_H__
 
 /* Usage functions */
 
@@ -8,4 +8,4 @@ void        print_str   (const char * s);
 void        print_int   (int n);
 void        print_unint (unsigned int n);
 
-#endif //SNAKE_PRINT_H
+#endif //__SNAKE_PRINT_H__

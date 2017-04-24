@@ -1,5 +1,5 @@
-#ifndef SNAKE_PILE_H
-#define SNAKE_PILE_H
+#ifndef __SNAKE_PILE_H__
+#define __SNAKE_PILE_H__
 
 /* Helpers */
 
@@ -29,4 +29,4 @@ void          pile_stack    (pile_list_t * l, data_t p);
 data_t        pile_unstack  (pile_list_t * l);
 void          pile_free     (pile_list_t * l);
 
-#endif //SNAKE_PILE_H
+#endif //__SNAKE_PILE_H__

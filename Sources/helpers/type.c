@@ -4,9 +4,8 @@
 
 short int       is_digit(char * s)
 {
-    char        m[100];
-    short int   b;
     int         r;
+    short int   b;
     regex_t     x;
 
     if ((r = regcomp(&x, "^[:digit:]", 0))) return 0;
@@ -21,7 +20,6 @@ short int       is_alnum(char * s)
 {
     int         r;
     short int   b;
-    char        m[100];
     regex_t     x;
 
     if ((r = regcomp(&x, "^[:alnum:]", 0))) return 0;

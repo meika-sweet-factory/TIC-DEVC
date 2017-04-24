@@ -27,6 +27,7 @@ SRCF := chain/file.c \
 		helpers/type.c \
 		helpers/print.c \
 		helpers/string.c \
+		helpers/file.c \
 		game.c \
 		player.c \
 		main.c
@@ -56,7 +57,7 @@ clean:
 fclean: clean
 	$(SILENCER)$(RM) -f $(NAME)
 
-re: fclean $(LIBS) $(LIBD)
+re: fclean all
 
 .PHONY: re fclean clean all
 
