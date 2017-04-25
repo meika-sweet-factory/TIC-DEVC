@@ -5,7 +5,7 @@
 #include<unistd.h>
 #include"../../Headers/helpers/file.h"
 
-_Bool               read_file(game_t * g, char * d)
+_Bool               read_file(game_t * restrict g, char * restrict d)
 {
     int             f;
     short           j;
@@ -23,7 +23,7 @@ _Bool               read_file(game_t * g, char * d)
     return SUCCESS;
 }
 
-size_t      file_size(const char * f) {
+size_t      file_size(const char * restrict f) {
     struct  stat st;
 
     if (stat(f, &st) != 0) return ERROR;
