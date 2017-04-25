@@ -5,7 +5,7 @@
 
 #include"../structures/type.h"
 
-short int   is_digit    (char * s);
-short int   is_alnum    (char * s);
+_Bool   is_digit    (char * s);
+_Bool   is_alnum    (char * s);
 
 #endif //__SNAKE_TYPE_H__
