@@ -3,7 +3,7 @@
 
 /* Usable functions */
 
-void print_char(char c)
+inline void print_char(char c)
 {
     write(1, &c, 1);
 }
