@@ -26,7 +26,6 @@ _Bool               read_file(game_t * restrict g, char * restrict f)
                 g->board[i] = (char *) malloc((long unsigned int) g->size.x * sizeof(char *));
                 j = 0;
             } else g->board[i][j] = bf[k];
-            print_char(bf[k]);
         }
     }
     close(of);
@@ -52,6 +51,7 @@ inline _Bool        file_size(game_t * restrict g, char * restrict f)
                 if (j > tmp) tmp = j;
                 j = 0;
             }
+            if (tmp > 100 || i > 100) return ERROR;
         }
     }
     g->size.x = tmp;
