@@ -4,7 +4,7 @@
 #include "../../Headers/helpers/file.h"
 #include "../../Headers/helpers/print.h"
 
-_Bool file_size(game_t * g, char * f);
+_Bool file_size(game_t * restrict g, char * restrict f);
 
 _Bool               read_file(game_t * restrict g, char * restrict f)
 {
@@ -20,7 +20,7 @@ _Bool               read_file(game_t * restrict g, char * restrict f)
     if (!(g->board = (char **) malloc((long unsigned int) g->size.y * sizeof(char **)))) return ERROR;
     g->board[0] = (char *) malloc((long unsigned int) g->size.x * sizeof(char *));
     while (read(of, &bf, 4096) > 0) {
-        for (i = 0, k = 0; bf[k] != '\0' ; ++j, ++k) {
+        for (i = 0, k = 0; bf[k] != '\0'; ++j, ++k) {
             if (bf[k] == '\n') {
                 ++i;
                 g->board[i] = (char *) malloc((long unsigned int) g->size.x * sizeof(char *));

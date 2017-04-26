@@ -6,7 +6,7 @@
 
 /* Usable functions */
 
-inline int new_game(game_t * g, char * x, char * y, int (* callback)(game_t * g))
+inline int new_game(game_t * restrict g, char * restrict x, char * restrict y, int (* callback)(game_t * g))
 {
     if (!(g = (game_t *) malloc(sizeof(game_t)))) return EXIT_FAILURE;
     g->size.x = str_to_int(x);
@@ -16,7 +16,7 @@ inline int new_game(game_t * g, char * x, char * y, int (* callback)(game_t * g)
     return EXIT_SUCCESS;
 }
 
-inline int load_game(game_t * g, char * d, int (* callback)(game_t * g))
+inline int load_game(game_t * restrict g, char * restrict d, int (* callback)(game_t * g))
 {
     if (!(g = (game_t *) malloc(sizeof(game_t)))) return EXIT_FAILURE;
     if (!read_file(g, d)) return EXIT_FAILURE;
