@@ -1,6 +1,6 @@
-#include"../Headers/helpers/print.h"
-#include"../Headers/helpers/type.h"
-#include"../Headers/game.h"
+#include "../Headers/helpers/print.h"
+#include "../Headers/helpers/type.h"
+#include "../Headers/game.h"
 
 int             main(int argc, char * argv[])
 {

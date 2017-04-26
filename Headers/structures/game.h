@@ -1,7 +1,7 @@
 #ifndef _SNAKE_STUCTURE_GAME_H_
 #define _SNAKE_STUCTURE_GAME_H_
 
-#include"geometry.h"
+#include "geometry.h"
 
 enum bonus
 {

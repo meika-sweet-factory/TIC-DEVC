@@ -1,7 +1,7 @@
 #ifndef _SNAKE_STUCTURE_PLAYER_H_
 #define _SNAKE_STUCTURE_PLAYER_H_
 
-#include"geometry.h"
+#include "geometry.h"
 
 typedef struct      player_s
 {

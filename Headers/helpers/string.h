@@ -3,7 +3,7 @@
 
 /* Helpers */
 
-#include"../structures/type.h"
+#include "../structures/type.h"
 
 /* Usage functions */
 

@@ -3,10 +3,10 @@
 
 /* Helpers */
 
-#include"../structures/type.h"
+#include "../structures/type.h"
 
 /* Usage functions */
 
-_Bool is_digit(char * s);
+_Bool is_digit(const char * s);
 
 #endif //_SNAKE_TYPE_H_

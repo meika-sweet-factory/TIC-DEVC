@@ -2,11 +2,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "../../Headers/helpers/file.h"
-#include "../../Headers/helpers/print.h"
 
-_Bool file_size(game_t * restrict g, char * restrict f);
+_Bool file_size(game_t * g, const char * f);
 
-_Bool               read_file(game_t * restrict g, char * restrict f)
+_Bool               read_file(game_t * g, const char * f)
 {
     int             of;
     unsigned short  j;
@@ -32,7 +31,7 @@ _Bool               read_file(game_t * restrict g, char * restrict f)
     return SUCCESS;
 }
 
-inline _Bool        file_size(game_t * restrict g, char * restrict f)
+inline _Bool        file_size(game_t * g, const char * f)
 {
     int             of;
     unsigned short  j;

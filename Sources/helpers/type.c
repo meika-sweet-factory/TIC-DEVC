@@ -1,8 +1,8 @@
-#include<regex.h>
-#include"../../Headers/helpers/print.h"
-#include"../../Headers/helpers/type.h"
+#include <regex.h>
+#include "../../Headers/helpers/print.h"
+#include "../../Headers/helpers/type.h"
 
-_Bool       is_digit(char * s)
+_Bool       is_digit(const char * s)
 {
     int     r;
     _Bool   b;

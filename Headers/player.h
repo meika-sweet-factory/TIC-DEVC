@@ -3,8 +3,8 @@
 
 /* Helpers */
 
-#include"structures/type.h"
-#include"structures/player.h"
+#include "structures/type.h"
+#include "structures/player.h"
 
 /* Usage functions */
 
