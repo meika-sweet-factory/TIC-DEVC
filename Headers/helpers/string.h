@@ -1,5 +1,5 @@
-#ifndef __SNAKE_STRING_H__
-#define __SNAKE_STRING_H__
+#ifndef _SNAKE_STRING_H_
+#define _SNAKE_STRING_H_
 
 /* Helpers */
 
@@ -9,4 +9,4 @@
 
 int str_to_int(const char * s);
 
-#endif //__SNAKE_STRING_H__
+#endif //_SNAKE_STRING_H_

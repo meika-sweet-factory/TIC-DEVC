@@ -1,5 +1,5 @@
-#ifndef __SNAKE_STUCTURE_PLAYER_H__
-#define __SNAKE_STUCTURE_PLAYER_H__
+#ifndef _SNAKE_STUCTURE_PLAYER_H_
+#define _SNAKE_STUCTURE_PLAYER_H_
 
 #include"geometry.h"
 
@@ -11,4 +11,4 @@ typedef struct      player_s
     int             score;
 }                   player_t;
 
-#endif //__SNAKE_STUCTURE_PLAYER_H__
+#endif //_SNAKE_STUCTURE_PLAYER_H_

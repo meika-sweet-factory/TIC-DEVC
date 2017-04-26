@@ -1,5 +1,5 @@
-#ifndef __SNAKE_FILE_H__
-#define __SNAKE_FILE_H__
+#ifndef _SNAKE_FILE_H_
+#define _SNAKE_FILE_H_
 
 /* Helpers */
 
@@ -10,4 +10,4 @@
 
 _Bool read_file(game_t * restrict g, char * restrict f);
 
-#endif //__SNAKE_FILE_H__
+#endif //_SNAKE_FILE_H_

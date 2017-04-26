@@ -1,5 +1,5 @@
-#ifndef __SNAKE_PRINT_H__
-#define __SNAKE_PRINT_H__
+#ifndef _SNAKE_PRINT_H_
+#define _SNAKE_PRINT_H_
 
 /* Helpers */
 
@@ -12,4 +12,4 @@ void    print_str   (const char * s);
 void    print_int   (int n);
 void    print_unint (unsigned int n);
 
-#endif //__SNAKE_PRINT_H__
+#endif //_SNAKE_PRINT_H_

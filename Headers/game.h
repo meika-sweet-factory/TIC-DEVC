@@ -1,5 +1,5 @@
-#ifndef __SNAKE_GAME_H__
-#define __SNAKE_GAME_H__
+#ifndef _SNAKE_GAME_H_
+#define _SNAKE_GAME_H_
 
 /* Helpers */
 
@@ -8,8 +8,8 @@
 
 /* Usage functions */
 
-int new_game    (game_t * restrict g, char * restrict x, char * restrict y, int (*callback)(game_t * g));
+int new_game    (game_t * restrict g, char * restrict x, char * restrict y, int (* callback)(game_t * g));
 int load_game   (game_t * restrict g, char * restrict d, int (* callback)(game_t * g));
 int play_game   (game_t * g);
 
-#endif //__SNAKE_GAME_H__
+#endif //_SNAKE_GAME_H_

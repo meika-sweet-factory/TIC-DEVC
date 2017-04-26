@@ -1,5 +1,5 @@
-#ifndef __SNAKE_TYPE_H__
-#define __SNAKE_TYPE_H__
+#ifndef _SNAKE_TYPE_H_
+#define _SNAKE_TYPE_H_
 
 /* Helpers */
 
@@ -9,4 +9,4 @@
 
 _Bool is_digit(char * s);
 
-#endif //__SNAKE_TYPE_H__
+#endif //_SNAKE_TYPE_H_
