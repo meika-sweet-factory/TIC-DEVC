@@ -12,7 +12,7 @@ _Bool               read_file(game_t * restrict g, char * restrict f)
     unsigned short  j;
     unsigned short  i;
     unsigned short  k;
-    char            bf[4096]; // Optimized systems block size
+    char            bf[4096];
 
     if (!(file_size(g, f))) return ERROR;
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;

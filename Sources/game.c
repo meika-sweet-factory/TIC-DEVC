@@ -1,12 +1,13 @@
-#include<stdlib.h>
-#include"../Headers/helpers/string.h"
-#include"../Headers/helpers/print.h"
-#include"../Headers/helpers/file.h"
-#include"../Headers/game.h"
+#include <stdlib.h>
+#include "../Headers/helpers/string.h"
+#include "../Headers/helpers/print.h"
+#include "../Headers/helpers/file.h"
+#include "../Headers/loader.h"
+#include "../Headers/game.h"
 
 /* Usable functions */
 
-inline int new_game(game_t * g, char * x, char * y, int (*callback)(game_t * g))
+inline int new_game(game_t * g, char * x, char * y, int (* callback)(game_t * g))
 {
     if (!(g = (game_t *) malloc(sizeof(game_t)))) return EXIT_FAILURE;
     g->size.x = str_to_int(x);
