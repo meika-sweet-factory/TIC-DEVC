@@ -35,7 +35,7 @@ void                    file_thread(file_list_t * l, data_t p)
 {
     file_element_t *    e;
 
-    e = malloc(sizeof(e));
+    e = malloc(sizeof(file_element_t));
     e->data = p;
     e->next = NULL;
     e->precedent = NULL;
