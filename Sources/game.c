@@ -5,7 +5,7 @@
 
 /* Usable functions */
 
-inline int new_game(game_t * g, const char * x, const char * y, _Bool (* callback)(game_t * g))
+inline int new_game(t_game * g, const char * x, const char * y, _Bool (* callback)(t_game * g))
 {
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!generate_map(g, x, y)) return EXIT_FAILURE;
@@ -14,7 +14,7 @@ inline int new_game(game_t * g, const char * x, const char * y, _Bool (* callbac
     return EXIT_SUCCESS;
 }
 
-inline int load_game(game_t * g, const char * f, _Bool (* callback)(game_t * g))
+inline int load_game(t_game * g, const char * f, _Bool (* callback)(t_game * g))
 {
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!load_file(g, f, callback)) return EXIT_FAILURE;
@@ -22,7 +22,7 @@ inline int load_game(game_t * g, const char * f, _Bool (* callback)(game_t * g))
     return EXIT_SUCCESS;
 }
 
-_Bool play_game(game_t * g)
+_Bool play_game(t_game * g)
 {
     (void) g;
     return 1;

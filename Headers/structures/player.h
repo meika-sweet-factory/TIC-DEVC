@@ -3,12 +3,12 @@
 
 #include "geometry.h"
 
-typedef struct      player_s
+typedef struct      s_player
 {
-    axe_t           position;
+    t_axe           position;
     int             size;
     int             speed;
     int             score;
-}                   player_t;
+}                   t_player;
 
 #endif //_SNAKE_STUCTURE_PLAYER_H_

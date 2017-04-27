@@ -4,7 +4,7 @@
 
 int             main(int argc, char * argv[])
 {
-    game_t *    game;
+    t_game *    game;
 
     game = 0;
     if (argc == 3 && is_digit(argv[1]) && is_digit(argv[2]))

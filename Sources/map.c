@@ -3,7 +3,7 @@
 #include "../Headers/memory.h"
 #include "../Headers/map.h"
 
-_Bool               generate_map(game_t * g, const char * x, const char * y)
+_Bool               generate_map(t_game * g, const char * x, const char * y)
 {
     unsigned short  i;
     unsigned short  j;

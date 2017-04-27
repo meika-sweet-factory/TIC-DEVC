@@ -8,8 +8,8 @@
 
 /* Usage functions */
 
-int     new_game    (game_t * g, const char * x, const char * y, _Bool (* callback)(game_t * g));
-int     load_game   (game_t * g, const char * f, _Bool (* callback)(game_t * g));
-_Bool   play_game   (game_t * g);
+int     new_game    (t_game * g, const char * x, const char * y, _Bool (* callback)(t_game * g));
+int     load_game   (t_game * g, const char * f, _Bool (* callback)(t_game * g));
+_Bool   play_game   (t_game * g);
 
 #endif //_SNAKE_GAME_H_

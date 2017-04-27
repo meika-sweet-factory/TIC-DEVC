@@ -15,16 +15,10 @@ enum mallus
     DEATH
 };
 
-typedef struct      map_size_s
-{
-    unsigned short  x;
-    unsigned short  y;
-}                   map_size_t;
-
-typedef struct  game_s
+typedef struct  s_game
 {
     char **     map;
-    map_size_t  size;
-}               game_t;
+    t_axe       size;
+}               t_game;
 
 #endif //_SNAKE_STUCTURE_GAME_H_
