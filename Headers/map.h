@@ -4,6 +4,6 @@
 #include"../structures/type.h"
 #include"../structures/game.h"
 
-_Bool create_file(game_t * g);
+_Bool init_map(game_t * g);
 
 #endif //_SNAKE_MAP_H_

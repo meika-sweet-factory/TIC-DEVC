@@ -2,7 +2,7 @@
 #include "../../Headers/helpers/new_map.h"
 #include "../../Headers/helpers/print.h"
 
-_Bool               create_file(game_t * g)
+_Bool               init_map(game_t * g)
 {
     unsigned int    i;
     unsigned int    j;

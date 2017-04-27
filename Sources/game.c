@@ -11,6 +11,7 @@ inline int new_game(game_t * g, const char * x, const char * y, _Bool (* callbac
     if (!(g = init_game())) return EXIT_FAILURE;
     g->size.x = str_to_int(x);
     g->size.y = str_to_int(y);
+    init_map(g);
     if (!callback(g)) return EXIT_FAILURE;
     free_game(g);
     return EXIT_SUCCESS;
