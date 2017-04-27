@@ -1,7 +1,7 @@
-WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
-		-Wwrite-strings -Wmissing-prototypes -Wmissing-declarations \
-		-Wredundant-decls -Wnested-externs -Winline -Wno-long-long \
-		-Wuninitialized -Wconversion -Wstrict-prototypes
+WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align	\
+			-Wwrite-strings -Wmissing-prototypes -Wmissing-declarations		\
+			-Wredundant-decls -Wnested-externs -Winline -Wno-long-long		\
+			-Wuninitialized -Wconversion -Wstrict-prototypes
 
 CFLAGS ?= -std=gnu99 -g $(WARNINGS) -fpic
 
@@ -21,17 +21,16 @@ ifeq ($(DEBUG_BUILD), 1)
     CFLAGS +=-DDEBUG_BUILD
 endif
 
-SRCF := chain/file.c 			\
-		chain/pile.c 		\
+SRCF := chain/pile.c 		\
 		helpers/type.c 		\
 		helpers/print.c 	\
 		helpers/string.c 	\
 		helpers/random.c	\
-		file.c 			\
-		map.c 			\
-		memory.c 		\
-		game.c 			\
-		player.c 		\
+		file.c 				\
+		map.c 				\
+		memory.c 			\
+		game.c 				\
+		player.c 			\
 		main.c
 
 SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))
