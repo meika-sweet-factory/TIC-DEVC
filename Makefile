@@ -22,16 +22,17 @@ ifeq ($(DEBUG_BUILD), 1)
     CFLAGS +=-DDEBUG_BUILD
 endif
 
-SRCF := chain/file.c \
-		chain/pile.c \
-		helpers/type.c \
-		helpers/print.c \
-		helpers/string.c \
-		file.c \
-		map.c \
-		memory.c \
-		game.c \
-		player.c \
+SRCF := chain/file.c 			\
+		chain/pile.c 		\
+		helpers/type.c 		\
+		helpers/print.c 	\
+		helpers/string.c 	\
+		helpers/random.c	\
+		file.c 			\
+		map.c 			\
+		memory.c 		\
+		game.c 			\
+		player.c 		\
 		main.c
 
 SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))
