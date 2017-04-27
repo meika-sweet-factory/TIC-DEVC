@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "../Headers/memory.h"
-#include "../Headers/helpers/print.h"
 
 inline t_game * init_game(void)
 {

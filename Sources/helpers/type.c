@@ -1,5 +1,4 @@
 #include <regex.h>
-#include "../../Headers/helpers/print.h"
 #include "../../Headers/helpers/type.h"
 
 _Bool       is_digit(const char * s)
