@@ -15,10 +15,10 @@ enum mallus
     DEATH
 };
 
-typedef struct      game_s
+typedef struct  s_game
 {
-    char **         board;
-    axe_t           size;
-}                   game_t;
+    char **     map;
+    t_axe       size;
+}               t_game;
 
 #endif //_SNAKE_STUCTURE_GAME_H_

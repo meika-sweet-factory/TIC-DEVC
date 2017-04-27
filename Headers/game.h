@@ -1,15 +1,13 @@
 #ifndef _SNAKE_GAME_H_
 #define _SNAKE_GAME_H_
 
-/* Helpers */
-
 #include "structures/type.h"
 #include "structures/game.h"
 
 /* Usage functions */
 
-int     new_game    (game_t * g, const char * x, const char * y, _Bool (* callback)(game_t * g));
-int     load_game   (game_t * g, const char * f, _Bool (* callback)(game_t * g));
-_Bool   play_game   (game_t * g);
+_Bool   new_game    (t_game * restrict g, const char * restrict x, const char * restrict y, _Bool (* callback)(t_game * g));
+_Bool   load_game   (t_game * restrict g, const char * restrict f, _Bool (* callback)(t_game * g));
+_Bool   play_game   (t_game * g);
 
 #endif //_SNAKE_GAME_H_

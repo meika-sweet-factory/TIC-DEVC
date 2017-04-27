@@ -5,38 +5,28 @@
 #include "../Headers/memory.h"
 #include "../Headers/helpers/print.h"
 
-_Bool file_size(game_t * g, const char * f);
+_Bool file_size(t_game * restrict g, const char * restrict f);
+t_game  *get_data(t_game * g, int of);
 
-_Bool               load_file(game_t * g, const char * f, _Bool (* callback)(game_t * g))
+_Bool               load_file(t_game * restrict g,
+                              const char * restrict f,
+                              _Bool (* callback)(t_game * g))
 {
     int             of;
-    unsigned short  j;
-    unsigned short  i;
-    unsigned short  k;
-    unsigned short  r;
-    char            bf[4096];
 
     if (!(file_size(g, f))) return ERROR;
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
-    j = 0;
-    if (!(g->board = init_board(g->size.x, g->size.y))) return ERROR;
-    while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
-        for (i = 0, k = 0; k < r; ++k) {
-            if (bf[k] == '\n') {
-                g->board[i][j + 1] = '\0';
-                if (!(g->board[++i] = init_board_cell(g->size.x + 1))) return ERROR;
-                j = 0;
-            } else g->board[i][j++] = bf[k];
-        }
+    g = get_data(g, of);
     close(of);
     if (!callback(g)) return ERROR;
-    free_board(g);
+    free_map(g);
     return SUCCESS;
 }
 
-inline _Bool        file_size(game_t * g, const char * f)
+inline _Bool        file_size(t_game * restrict g,
+                                const char * restrict f)
 {
-    int             of;
+   int             of;
     unsigned short  j;
     unsigned short  i;
     unsigned short  k;
@@ -56,7 +46,28 @@ inline _Bool        file_size(game_t * g, const char * f)
             if (tmp > 100 || i > 100) return ERROR;
         }
     g->size.x = tmp;
-    g->size.y = i + 1;
+    g->size.y = ++i;
     close(of);
     return SUCCESS;
+}
+
+t_game        * get_data(t_game * g, int of)
+{
+    unsigned short  j;
+    unsigned short  i;
+    unsigned short  k;
+    unsigned short  r;
+    char            bf[4096];
+
+    j = 0;
+    if (!(g->map = init_map(g->size.x, g->size.y))) return ERROR;
+    while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
+        for (i = 0, k = 0; k < r; ++k) {
+            if (bf[k] == '\n') {
+                g->map[i][j + 1] = '\0';
+                if (!(g->map[++i] = init_map_cell(g->size.x + 1))) return ERROR;
+                j = 0;
+            } else g->map[i][j++] = bf[k];
+        }
+    return g;
 }
