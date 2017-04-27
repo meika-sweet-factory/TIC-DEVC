@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "../Headers/file.h"
 #include "../Headers/memory.h"
+#include "../Headers/helpers/print.h"
 
 _Bool file_size(game_t * g, const char * f);
 
@@ -12,19 +13,20 @@ _Bool               load_file(game_t * g, const char * f, _Bool (* callback)(gam
     unsigned short  j;
     unsigned short  i;
     unsigned short  k;
+    unsigned short  r;
     char            bf[4096];
 
     if (!(file_size(g, f))) return ERROR;
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
     j = 0;
     if (!(g->board = init_board(g->size.x, g->size.y))) return ERROR;
-    while (read(of, &bf, 4096) > 0)
-        for (i = 0, k = 0; bf[k] != '\0'; ++j, ++k) {
+    while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
+        for (i = 0, k = 0; k < r; ++k) {
             if (bf[k] == '\n') {
-                ++i;
-                g->board[i] = init_board_cell(g->size.x);
+                g->board[i][j + 1] = '\0';
+                g->board[++i] = init_board_cell(g->size.x + 1);
                 j = 0;
-            } else g->board[i][j] = bf[k];
+            } else g->board[i][j++] = bf[k];
         }
     close(of);
     if (!callback(g)) return ERROR;
@@ -44,7 +46,7 @@ inline _Bool        file_size(game_t * g, const char * f)
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
     j = 0;
     tmp = 0;
-    while (read(of, &bf, 4096) > 0)
+    while (read(of, &bf, sizeof(bf)) > 0)
         for (i = 0, k = 0; bf[k] != '\0'; ++j, ++k) {
             if (bf[k] == '\n') {
                 ++i;
@@ -54,7 +56,7 @@ inline _Bool        file_size(game_t * g, const char * f)
             if (tmp > 100 || i > 100) return ERROR;
         }
     g->size.x = tmp;
-    g->size.y = i;
+    g->size.y = i + 1;
     close(of);
     return SUCCESS;
 }

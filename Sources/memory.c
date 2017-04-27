@@ -12,13 +12,13 @@ inline char **  init_board(int x, int y)
     char **     b;
 
     b = (char **) malloc((long unsigned int) y * sizeof(char **));
-    b[0] = (char *) malloc((long unsigned int) x * sizeof(char *));
+    b[0] = init_board_cell(x);
     return b;
 }
 
 inline char * init_board_cell(int x)
 {
-    return (char *) malloc((long unsigned int) x * sizeof(char *));
+    return (char *) malloc((long unsigned int) (x + 1) * sizeof(char *));
 }
 
 inline void free_game(game_t * g)
