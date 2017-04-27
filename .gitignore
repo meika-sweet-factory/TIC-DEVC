@@ -1,5 +1,8 @@
-# Idea
+# Idea folder
 .idea/
+
+# Idea compilator list
+CMakeLists.txt
 
 # CMake
 cmake-build-debug/
