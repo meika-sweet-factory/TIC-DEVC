@@ -29,6 +29,6 @@ inline void free_map(t_game * g)
 {
     int i;
 
-    free(g->map);
-    for (i = 0; g->map[i] != '\0'; ++i) free(g->map[i]);
+    free(g->map.board);
+    for (i = 0; g->map.board[i] != '\0'; ++i) free(g->map.board[i]);
 }

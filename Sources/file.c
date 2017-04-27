@@ -45,8 +45,8 @@ inline _Bool        file_size(t_game * restrict g,
             }
             if (tmp > 100 || i > 100) return ERROR;
         }
-    g->size.x = tmp;
-    g->size.y = ++i;
+    g->map.size.x = tmp;
+    g->map.size.y = ++i;
     close(of);
     return SUCCESS;
 }
@@ -60,14 +60,14 @@ t_game        * get_data(t_game * g, int of)
     char            bf[4096];
 
     j = 0;
-    if (!(g->map = init_map(g->size.x, g->size.y))) return ERROR;
+    if (!(g->map.board = init_map(g->map.size.x, g->map.size.y))) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
         for (i = 0, k = 0; k < r; ++k) {
             if (bf[k] == '\n') {
-                g->map[i][j + 1] = '\0';
-                if (!(g->map[++i] = init_map_cell(g->size.x + 1))) return ERROR;
+                g->map.board[i][j + 1] = '\0';
+                if (!(g->map.board[++i] = init_map_cell(g->map.size.x + 1))) return ERROR;
                 j = 0;
-            } else g->map[i][j++] = bf[k];
+            } else g->map.board[i][j++] = bf[k];
         }
     return g;
 }
