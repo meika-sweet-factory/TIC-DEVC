@@ -2,7 +2,6 @@
 #include "../Headers/map.h"
 #include "../Headers/memory.h"
 #include "../Headers/game.h"
-#include "../Headers/helpers/print.h"
 
 /* Usable functions */
 
@@ -15,10 +14,6 @@ inline _Bool new_game(t_game * g,
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!generate_map(g, x, y)) return EXIT_FAILURE;
     if (!callback(g)) return EXIT_FAILURE;
-    for (i = 0; i < g->size.y; ++i) {
-        print_str(g->map[i]);
-        print_char('\n');
-    }
     free_game(g);
     return EXIT_SUCCESS;
 }
