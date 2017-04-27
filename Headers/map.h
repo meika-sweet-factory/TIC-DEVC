@@ -1,9 +1,9 @@
 #ifndef _SNAKE_MAP_H_
 #define _SNAKE_MAP_H_
 
-#include"../structures/type.h"
-#include"../structures/game.h"
+#include"structures/type.h"
+#include"structures/game.h"
 
-_Bool init_map(game_t * g);
+_Bool init_map(game_t * g, const char * x, const char * y);
 
 #endif //_SNAKE_MAP_H_

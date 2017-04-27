@@ -1,17 +1,14 @@
-#include "../Headers/helpers/string.h"
-#include "../Headers/helpers/print.h"
 #include "../Headers/file.h"
-#include "../Headers/game.h"
+#include "../Headers/map.h"
 #include "../Headers/memory.h"
+#include "../Headers/game.h"
 
 /* Usable functions */
 
 inline int new_game(game_t * g, const char * x, const char * y, _Bool (* callback)(game_t * g))
 {
     if (!(g = init_game())) return EXIT_FAILURE;
-    g->size.x = str_to_int(x);
-    g->size.y = str_to_int(y);
-    init_map(g);
+    if (!init_map(g, x, y)) return EXIT_FAILURE;
     if (!callback(g)) return EXIT_FAILURE;
     free_game(g);
     return EXIT_SUCCESS;
