@@ -63,6 +63,7 @@ t_game        * get_data(t_game * g, int of)
     if (!(g->map.board = init_map(g->map.size.x, g->map.size.y))) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
         for (i = 0, k = 0; k < r; ++k) {
+            if (bf[k] == 'b' || bk[f] == 'm') set_spawns(g, bf[k], i, j);
             if (bf[k] == '\n') {
                 g->map.board[i][j + 1] = '\0';
                 if (!(g->map.board[++i] = init_map_cell(g->map.size.x + 1))) return ERROR;
@@ -70,4 +71,18 @@ t_game        * get_data(t_game * g, int of)
             } else g->map.board[i][j++] = bf[k];
         }
     return g;
+}
+
+void        set_spawns(t_game *g, char c, int i, int j)
+{
+    if (c == 'b')
+    {
+        g->map.spawns.bonus.x = j;
+        g->map.spawns.bonus.y = i;
+    } else
+    {
+        g->map.spawns.malus.x = j;
+        g->map.spawns.malus.y = i;
+    }
+
 }
