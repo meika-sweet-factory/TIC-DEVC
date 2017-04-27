@@ -10,7 +10,6 @@ inline _Bool new_game(t_game * g,
                       const char * restrict y,
                       _Bool (* callback)(t_game * g))
 {
-    int i;
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!generate_map(g, x, y)) return EXIT_FAILURE;
     if (!callback(g)) return EXIT_FAILURE;
@@ -31,5 +30,5 @@ inline _Bool load_game(t_game * g,
 _Bool play_game(t_game * g)
 {
     (void) g;
-    return 1;
+    return SUCCESS;
 }
