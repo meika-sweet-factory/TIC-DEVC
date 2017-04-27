@@ -8,9 +8,11 @@ unsigned short      rand_pos(unsigned short max)
 {
     int  b_m;
 
-    srand((unsigned short)time(NULL));
+    srand((unsigned short) (time(NULL) +(rand() % 15)));
     b_m = (rand() % (max)) + 1;
-    while (b_m == max || b_m == max -1 || b_m == 0) {
+    while (b_m == max || b_m == max - 1 ||
+            b_m == 0 || b_m == max/2 ||
+            b_m == (max+1)/2) {
         b_m = (rand() % (max)) + 1;
     }
     return (unsigned short) b_m;
