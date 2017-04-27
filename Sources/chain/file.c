@@ -3,7 +3,7 @@
 
 /* Internal functions */
 
-file_element_t * file_list_extract(file_list_t * l);
+t_file_element * file_list_extract(t_file_list * l);
 
 /* Usage functions */
 
@@ -11,13 +11,13 @@ file_element_t * file_list_extract(file_list_t * l);
  * create a list
  *
  * @param   void
- * @return  file_list_t
+ * @return  t_file_list
  */
-file_list_t *       file_create()
+t_file_list *       file_create()
 {
-    file_list_t *   l;
+    t_file_list *   l;
 
-    l = (file_list_t *)malloc(sizeof(l));
+    l = (t_file_list *) malloc(sizeof(l));
     l->first = NULL;
     l->last = NULL;
     l->size = 0;
@@ -27,15 +27,15 @@ file_list_t *       file_create()
 /**
  * stack a data
  *
- * @param   file_list_t - l
- *          data_t - p
+ * @param   t_file_list - l
+ *          t_pile_data - p
  * @return: void
  */
-void                    file_thread(file_list_t * l, data_t p)
+void                    file_thread(t_file_list * l, t_pile_data p)
 {
-    file_element_t *    e;
+    t_file_element *    e;
 
-    e = malloc(sizeof(file_element_t));
+    e = malloc(sizeof(t_file_element));
     e->data = p;
     e->next = NULL;
     e->precedent = NULL;
@@ -51,12 +51,12 @@ void                    file_thread(file_list_t * l, data_t p)
 /**
  * unstack last data
  *
- * @param   file_list_t - l
- * @return  data_t
+ * @param   t_file_list - l
+ * @return  t_pile_data
  */
-data_t                  file_unthread(file_list_t * l) {
-    file_element_t *    e;
-    data_t              d;
+t_pile_data             file_unthread(t_file_list * l) {
+    t_file_element *    e;
+    t_pile_data         d;
 
     e = file_list_extract(l);
     d = e->data;
@@ -67,10 +67,10 @@ data_t                  file_unthread(file_list_t * l) {
 /**
  * destruct list
  *
- * @param   file_list_t - l
+ * @param   t_file_list - l
  * @return  void
  */
-void file_free(file_list_t * l)
+void file_free(t_file_list * l)
 {
     while (!(l->size == 0)) free(file_list_extract(l));
     free(l);
@@ -81,12 +81,12 @@ void file_free(file_list_t * l)
 /**
  * extract an element
  *
- * @param   file_list_t - l
- * @return  file_element_t
+ * @param   t_file_list - l
+ * @return  t_file_element
  */
-file_element_t *        file_list_extract(file_list_t * l)
+t_file_element *        file_list_extract(t_file_list * l)
 {
-    file_element_t *    e;
+    t_file_element *    e;
 
     e = NULL;
     if (!(l->size == 0)) {

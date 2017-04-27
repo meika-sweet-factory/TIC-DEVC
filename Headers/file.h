@@ -1,8 +1,6 @@
 #ifndef _SNAKE_FILE_H_
 #define _SNAKE_FILE_H_
 
-/* Helpers */
-
 #include "structures/type.h"
 #include "structures/game.h"
 
