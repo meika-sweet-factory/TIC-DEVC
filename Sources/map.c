@@ -41,12 +41,10 @@ void        generate_spawn(t_game * g)
     t_axe   malus;
 
     bonus = generate_rand_pos(g);
-    g->map.board[bonus.x][bonus.y] = 'B';
     g->map.spawns.bonus.x = bonus.x;
     g->map.spawns.bonus.y = bonus.y;
     malus = generate_rand_pos(g);
     while ((malus.y == bonus.y) && (malus.x == bonus.x)) malus = generate_rand_pos(g);
-    g->map.board[malus.x][malus.y] = 'M';
     g->map.spawns.malus.x = malus.x;
     g->map.spawns.malus.y = malus.y;
 }
