@@ -1,32 +1,32 @@
 #ifndef _SNAKE_PILE_H_
 #define _SNAKE_PILE_H_
 
-/* Helpers */
+#include "../structures/geometry.h"
 
-typedef struct  data_s
+typedef struct  s_pile_data
 {
-  int           foo;
-}               data_t;
+    t_axe       position;
+}               t_pile_data;
 
 typedef struct              pile_element_s
 {
-  data_t                    data;
-  struct pile_element_s *   next;
-  struct pile_element_s *   precedent;
+    t_pile_data             data;
+    struct pile_element_s * next;
+    struct pile_element_s * precedent;
 }                           pile_element_t;
 
-typedef struct      pile_list_s
+typedef struct        s_pile_list
 {
-  pile_element_t *  first;
-  pile_element_t *  last;
-  int               size;
-}                   pile_list_t;
+    pile_element_t *  first;
+    pile_element_t *  last;
+    int               size;
+}                     t_pile_list;
 
 /* Usage functions */
 
-pile_list_t * pile_create   (void);
-void          pile_stack    (pile_list_t * l, data_t p);
-data_t        pile_unstack  (pile_list_t * l);
-void          pile_free     (pile_list_t * l);
+t_pile_list *   pile_create   (void);
+void            pile_stack    (t_pile_list * l, t_pile_data p);
+t_pile_data     pile_unstack  (t_pile_list * l);
+void            pile_free     (t_pile_list * l);
 
 #endif //_SNAKE_PILE_H_

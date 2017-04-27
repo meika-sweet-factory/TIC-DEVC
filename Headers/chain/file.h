@@ -1,32 +1,32 @@
 #ifndef _SNAKE_FILE_H_
 #define _SNAKE_FILE_H_
 
-/* Helpers */
+#include "../structures/geometry.h"
 
-typedef struct  data_s
+typedef struct  s_pile_data
 {
-  int           foo;
-}               data_t;
+    int         foo;
+}               t_pile_data;
 
-typedef struct              file_element_s
+typedef struct              s_file_element
 {
-  data_t                    data;
-  struct file_element_s *   next;
-  struct file_element_s *   precedent;
-}                           file_element_t;
+    t_pile_data             data;
+    struct s_file_element * next;
+    struct s_file_element * precedent;
+}                           t_file_element;
 
-typedef struct      file_list_s
+typedef struct        s_file_list
 {
-  file_element_t *  first;
-  file_element_t *  last;
-  int               size;
-}                   file_list_t;
+    t_file_element *  first;
+    t_file_element *  last;
+    int               size;
+}                     t_file_list;
 
 /* Usage functions */
 
-file_list_t *   file_create     (void);
-void            file_thread     (file_list_t * l, data_t p);
-data_t          file_unthread   (file_list_t * l);
-void            file_free       (file_list_t * l);
+t_file_list *   file_create     (void);
+void            file_thread     (t_file_list * l, t_pile_data p);
+t_pile_data     file_unthread   (t_file_list * l);
+void            file_free       (t_file_list * l);
 
 #endif //_SNAKE_FILE_H_

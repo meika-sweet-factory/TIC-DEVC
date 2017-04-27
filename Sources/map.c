@@ -42,8 +42,7 @@ void        generate_bonus_malus(t_game * g)
     bonus = generate_rand_pos(g);
     g->map[bonus.x][bonus.y] = 'B';
     malus = generate_rand_pos(g);
-    while ((malus.y == bonus.y) && (malus.x == malus.x))
-        malus = generate_rand_pos(g);
+    while ((malus.y == bonus.y) && (malus.x == malus.x)) malus = generate_rand_pos(g);
     g->map[malus.x][malus.y] = 'M';
 }
 

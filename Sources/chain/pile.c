@@ -3,7 +3,7 @@
 
 /* Internal functions */
 
-pile_element_t * pile_list_extract(pile_list_t * l);
+pile_element_t * pile_list_extract(t_pile_list * l);
 
 /* Usage functions */
 
@@ -11,13 +11,13 @@ pile_element_t * pile_list_extract(pile_list_t * l);
  * create a list
  *
  * @param   void
- * @return  pile_list_t
+ * @return  t_pile_list
  */
-pile_list_t *       pile_create()
+t_pile_list *       pile_create()
 {
-    pile_list_t *   l;
+    t_pile_list *   l;
 
-    l = (pile_list_t *)malloc(sizeof(pile_list_t));
+    l = (t_pile_list *) malloc(sizeof(t_pile_list));
     l->first = NULL;
     l->last = NULL;
     l->size = 0;
@@ -27,11 +27,11 @@ pile_list_t *       pile_create()
 /**
  * stack a data
  *
- * @param   pile_list_t - l
- *          data_t - p
+ * @param   t_pile_list - l
+ *          t_pile_data - p
  * @return: void
  */
-void                    pile_stack(pile_list_t * l, data_t p)
+void                    pile_stack(t_pile_list * l, t_pile_data p)
 {
     pile_element_t *    e;
 
@@ -51,13 +51,13 @@ void                    pile_stack(pile_list_t * l, data_t p)
 /**
  * unstack last data
  *
- * @param   pile_list_t - l
- * @return  data_t
+ * @param   t_pile_list - l
+ * @return  t_pile_data
  */
-data_t                  pile_unstack(pile_list_t * l)
+t_pile_data             pile_unstack(t_pile_list * l)
 {
     pile_element_t *    e;
-    data_t              d;
+    t_pile_data         d;
 
     e = pile_list_extract(l);
     d = e->data;
@@ -68,10 +68,10 @@ data_t                  pile_unstack(pile_list_t * l)
 /**
  * destruct list
  *
- * @param   pile_list_t - l
+ * @param   t_pile_list - l
  * @return  void
  */
-void pile_free(pile_list_t * l)
+void pile_free(t_pile_list * l)
 {
     while (!(l->size == 0)) free(pile_list_extract(l));
     free(l);
@@ -82,10 +82,10 @@ void pile_free(pile_list_t * l)
 /**
  * extract an element
  *
- * @param   pile_list_t - l
+ * @param   t_pile_list - l
  * @return  pile_element_t
  */
-pile_element_t *        pile_list_extract(pile_list_t * l)
+pile_element_t *        pile_list_extract(t_pile_list * l)
 {
     pile_element_t *    e;
 
