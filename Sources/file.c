@@ -24,7 +24,7 @@ _Bool               load_file(game_t * g, const char * f, _Bool (* callback)(gam
         for (i = 0, k = 0; k < r; ++k) {
             if (bf[k] == '\n') {
                 g->board[i][j + 1] = '\0';
-                g->board[++i] = init_board_cell(g->size.x + 1);
+                if (!(g->board[++i] = init_board_cell(g->size.x + 1))) return ERROR;
                 j = 0;
             } else g->board[i][j++] = bf[k];
         }
