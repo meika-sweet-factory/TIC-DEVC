@@ -3,11 +3,7 @@
 
 #include "geometry.h"
 
-typedef struct  s_stat
-{
-    int         size;
-    int         speed;
-}               t_stat;
+/* Pile */
 
 typedef struct  s_pile_data
 {
@@ -27,6 +23,14 @@ typedef struct        s_pile_list
     t_pile_element *  last;
     int               size;
 }                     t_pile_list;
+
+/* Player */
+
+typedef struct  s_stat
+{
+    int         size;
+    int         speed;
+}               t_stat;
 
 typedef struct      s_player
 {

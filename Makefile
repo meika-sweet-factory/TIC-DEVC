@@ -39,7 +39,10 @@ OBJS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=o))
 CFLAGS += -MMD -MP
 DEPS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=d))
 
-all: $(NAME)
+all: clearprompt $(NAME)
+
+clearprompt:
+	clear
 
 objectdir:
 	$(SILENCER)mkdir -p $(OBJDIR)
@@ -53,7 +56,7 @@ $(NAME): $(OBJS) | outputdir
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | objectdir
 	$(SILENCER)$(CC) $(CFLAGS) -c -o $@ $<
 
-clean:
+clean: clearprompt
 	$(SILENCER)find . -name "*.o" -type f -delete
 	$(SILENCER)find . -name "*.d" -type f -delete
 
