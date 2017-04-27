@@ -3,7 +3,7 @@
 
 /* Internal functions */
 
-pile_element_t * pile_list_extract(t_pile_list * l);
+t_pile_element * pile_list_extract(t_pile_list * l);
 
 /* Usage functions */
 
@@ -33,9 +33,9 @@ t_pile_list *       pile_create()
  */
 void                    pile_stack(t_pile_list * l, t_pile_data p)
 {
-    pile_element_t *    e;
+    t_pile_element *    e;
 
-    e = malloc(sizeof(pile_element_t));
+    e = malloc(sizeof(t_pile_element));
     e->data = p;
     e->next = NULL;
     e->precedent = NULL;
@@ -56,7 +56,7 @@ void                    pile_stack(t_pile_list * l, t_pile_data p)
  */
 t_pile_data             pile_unstack(t_pile_list * l)
 {
-    pile_element_t *    e;
+    t_pile_element *    e;
     t_pile_data         d;
 
     e = pile_list_extract(l);
@@ -83,11 +83,11 @@ void pile_free(t_pile_list * l)
  * extract an element
  *
  * @param   t_pile_list - l
- * @return  pile_element_t
+ * @return  t_pile_element
  */
-pile_element_t *        pile_list_extract(t_pile_list * l)
+t_pile_element *        pile_list_extract(t_pile_list * l)
 {
-    pile_element_t *    e;
+    t_pile_element *    e;
 
     e = NULL;
     if (!(l->size == 0)) {

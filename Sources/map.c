@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "../Headers/chain/pile.h"
 #include "../Headers/helpers/print.h"
 #include "../Headers/helpers/string.h"
 #include "../Headers/helpers/random.h"
@@ -28,8 +29,9 @@ _Bool              generate_map(t_game * g, const char * x, const char * y)
     return SUCCESS;
 }
 
-void generate_snake(t_game *g)
+void generate_snake(t_game * g)
 {
+    g->player.body = pile_create();
     g->map.board[g->map.size.y/2][(g->map.size.x/2) - 1] = 's';
     g->map.board[g->map.size.y/2][g->map.size.x/2] = 's';
 }

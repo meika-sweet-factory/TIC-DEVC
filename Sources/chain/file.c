@@ -28,10 +28,10 @@ t_file_list *       file_create()
  * stack a data
  *
  * @param   t_file_list - l
- *          t_pile_data - p
+ *          t_file_list - p
  * @return: void
  */
-void                    file_thread(t_file_list * l, t_pile_data p)
+void                    file_thread(t_file_list * l, t_file_data p)
 {
     t_file_element *    e;
 
@@ -52,11 +52,11 @@ void                    file_thread(t_file_list * l, t_pile_data p)
  * unstack last data
  *
  * @param   t_file_list - l
- * @return  t_pile_data
+ * @return  t_file_data
  */
-t_pile_data             file_unthread(t_file_list * l) {
+t_file_data             file_unthread(t_file_list * l) {
     t_file_element *    e;
-    t_pile_data         d;
+    t_file_data         d;
 
     e = file_list_extract(l);
     d = e->data;
