@@ -4,15 +4,15 @@
 #include "geometry.h"
 #include "../chain/pile.h"
 
-typedef struct  s_pstat
+typedef struct  s_stat
 {
     int         size;
     int         speed;
-}               t_pstat;
+}               t_stat;
 
 typedef struct  s_player
 {
-    t_pstat     stat;
+    t_stat      stat;
     t_pile_list body;
     int         score;
 }               t_player;

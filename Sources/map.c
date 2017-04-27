@@ -23,7 +23,7 @@ _Bool              generate_map(t_game * g, const char * x, const char * y)
         g->map.board[i][j] = '\0';
         j = 0;
     }
-    generate_bonus_malus(g);
+    generate_spawn(g);
     generate_snake(g);
     return SUCCESS;
 }
@@ -34,16 +34,20 @@ void generate_snake(t_game *g)
     g->map.board[g->map.size.y/2][g->map.size.x/2] = 's';
 }
 
-void        generate_bonus_malus(t_game * g)
+void        generate_spawn(t_game * g)
 {
     t_axe   bonus;
     t_axe   malus;
 
     bonus = generate_rand_pos(g);
     g->map.board[bonus.x][bonus.y] = 'B';
+    g->map.spawns.bonus.x = bonus.x;
+    g->map.spawns.bonus.y = bonus.y;
     malus = generate_rand_pos(g);
-    while ((malus.y == bonus.y) && (malus.x == malus.x)) malus = generate_rand_pos(g);
+    while ((malus.y == bonus.y) && (malus.x == bonus.x)) malus = generate_rand_pos(g);
     g->map.board[malus.x][malus.y] = 'M';
+    g->map.spawns.malus.x = malus.x;
+    g->map.spawns.malus.y = malus.y;
 }
 
 t_axe       generate_rand_pos(t_game * g)
