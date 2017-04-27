@@ -34,7 +34,8 @@ _Bool              generate_map(t_game * g, const char * x, const char * y)
 
 void                generate_snake(t_game *g)
 {
-    g->map[g->size.x/2][g->size.y/2] = 'S';
+    g->map[g->size.y/2][(g->size.x/2) - 1] = 'S';
+    g->map[g->size.y/2][g->size.x/2] = 'S';
 }
 
 void                generate_bonus_malus(t_game *g)
