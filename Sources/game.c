@@ -5,7 +5,10 @@
 
 /* Usable functions */
 
-inline _Bool new_game(t_game * g, const char * x, const char * y, _Bool (* callback)(t_game * g))
+inline _Bool new_game(t_game * g,
+                      const char * restrict x,
+                      const char * restrict y,
+                      _Bool (* callback)(t_game * g))
 {
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!generate_map(g, x, y)) return EXIT_FAILURE;
@@ -14,7 +17,9 @@ inline _Bool new_game(t_game * g, const char * x, const char * y, _Bool (* callb
     return EXIT_SUCCESS;
 }
 
-inline _Bool load_game(t_game * g, const char * f, _Bool (* callback)(t_game * g))
+inline _Bool load_game(t_game * g,
+                       const char * f,
+                       _Bool (* callback)(t_game * g))
 {
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!load_file(g, f, callback)) return EXIT_FAILURE;

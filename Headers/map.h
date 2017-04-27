@@ -4,6 +4,6 @@
 #include"structures/type.h"
 #include"structures/game.h"
 
-_Bool generate_map(t_game * g, const char * x, const char * y);
+_Bool generate_map(t_game * restrict g, const char * restrict x, const char * restrict y);
 
 #endif //_SNAKE_MAP_H_

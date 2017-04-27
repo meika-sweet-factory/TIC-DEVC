@@ -26,7 +26,7 @@ inline void free_game(t_game * g)
     free(g);
 }
 
-inline  void free_map(t_game * g)
+inline void free_map(t_game * g)
 {
     int i;
 

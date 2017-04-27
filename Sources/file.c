@@ -5,9 +5,11 @@
 #include "../Headers/memory.h"
 #include "../Headers/helpers/print.h"
 
-_Bool file_size(t_game * g, const char * f);
+_Bool file_size(t_game * restrict g, const char * restrict f);
 
-_Bool               load_file(t_game * g, const char * f, _Bool (* callback)(t_game * g))
+_Bool               load_file(t_game * restrict g,
+                              const char * restrict f,
+                              _Bool (* callback)(t_game * g))
 {
     int             of;
     unsigned short  j;
@@ -34,7 +36,8 @@ _Bool               load_file(t_game * g, const char * f, _Bool (* callback)(t_g
     return SUCCESS;
 }
 
-inline _Bool        file_size(t_game * g, const char * f)
+inline _Bool        file_size(t_game * restrict g,
+                              const char * restrict f)
 {
     int             of;
     unsigned short  j;
