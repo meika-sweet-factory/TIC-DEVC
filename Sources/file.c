@@ -19,18 +19,18 @@ _Bool               load_file(game_t * g, const char * f, _Bool (* callback)(gam
     if (!(file_size(g, f))) return ERROR;
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
     j = 0;
-    if (!(g->board = init_board(g->size.x, g->size.y))) return ERROR;
+    if (!(g->map = init_map(g->size.x, g->size.y))) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
         for (i = 0, k = 0; k < r; ++k) {
             if (bf[k] == '\n') {
-                g->board[i][j + 1] = '\0';
-                if (!(g->board[++i] = init_board_cell(g->size.x + 1))) return ERROR;
+                g->map[i][j + 1] = '\0';
+                if (!(g->map[++i] = init_map_cell(g->size.x + 1))) return ERROR;
                 j = 0;
-            } else g->board[i][j++] = bf[k];
+            } else g->map[i][j++] = bf[k];
         }
     close(of);
     if (!callback(g)) return ERROR;
-    free_board(g);
+    free_map(g);
     return SUCCESS;
 }
 
@@ -56,7 +56,7 @@ inline _Bool        file_size(game_t * g, const char * f)
             if (tmp > 100 || i > 100) return ERROR;
         }
     g->size.x = tmp;
-    g->size.y = i + 1;
+    g->size.y = ++i;
     close(of);
     return SUCCESS;
 }

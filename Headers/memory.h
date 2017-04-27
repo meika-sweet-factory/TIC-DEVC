@@ -9,9 +9,9 @@
 /* Usage functions */
 
 game_t *    init_game       (void);
-char **     init_board      (int x, int y);
-char *      init_board_cell (int x);
+char **     init_map      (int x, int y);
+char *      init_map_cell (int x);
 void        free_game       (game_t * g);
-void        free_board      (game_t * g);
+void        free_map      (game_t * g);
 
 #endif //_SNAKE_MEMORY_H_
