@@ -5,10 +5,6 @@
 #include "../Headers/memory.h"
 #include "../Headers/map.h"
 
-void               generate_snake(t_game *g);
-void               generate_bonus_malus(t_game *g);
-t_axe              generate_rand_pos(t_game *g);
-
 _Bool              generate_map(t_game * g, const char * x, const char * y)
 {
     unsigned short i;
@@ -32,16 +28,16 @@ _Bool              generate_map(t_game * g, const char * x, const char * y)
     return SUCCESS;
 }
 
-void                generate_snake(t_game *g)
+void generate_snake(t_game *g)
 {
     g->map[g->size.y/2][(g->size.x/2) - 1] = 'S';
     g->map[g->size.y/2][g->size.x/2] = 'S';
 }
 
-void                generate_bonus_malus(t_game *g)
+void        generate_bonus_malus(t_game * g)
 {
-    t_axe           bonus;
-    t_axe           malus;
+    t_axe   bonus;
+    t_axe   malus;
 
     bonus = generate_rand_pos(g);
     g->map[bonus.x][bonus.y] = 'B';
@@ -51,10 +47,9 @@ void                generate_bonus_malus(t_game *g)
     g->map[malus.x][malus.y] = 'M';
 }
 
-
-t_axe              generate_rand_pos(t_game *g)
+t_axe       generate_rand_pos(t_game * g)
 {
-    t_axe          item;
+    t_axe   item;
 
     item.x = rand_pos(g->size.x);
     item.y = rand_pos(g->size.y);
