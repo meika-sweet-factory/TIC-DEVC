@@ -1,7 +1,7 @@
-#ifndef __SNAKE_STUCTURE_GAME_H__
-#define __SNAKE_STUCTURE_GAME_H__
+#ifndef _SNAKE_STUCTURE_GAME_H_
+#define _SNAKE_STUCTURE_GAME_H_
 
-#include"geometry.h"
+#include "geometry.h"
 
 enum bonus
 {
@@ -21,4 +21,4 @@ typedef struct      game_s
     axe_t           size;
 }                   game_t;
 
-#endif //__SNAKE_STUCTURE_GAME_H__
+#endif //_SNAKE_STUCTURE_GAME_H_

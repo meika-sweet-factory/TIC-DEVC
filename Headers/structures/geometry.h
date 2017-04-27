@@ -1,5 +1,5 @@
-#ifndef __SNAKE_STUCTURE_GEOMETRY_H__
-#define __SNAKE_STUCTURE_GEOMETRY_H__
+#ifndef _SNAKE_STUCTURE_GEOMETRY_H_
+#define _SNAKE_STUCTURE_GEOMETRY_H_
 
 typedef struct  axe_s
 {
@@ -7,4 +7,4 @@ typedef struct  axe_s
     int         y;
 }               axe_t;
 
-#endif //__SNAKE_STUCTURE_GEOMETRY_H__
+#endif //_SNAKE_STUCTURE_GEOMETRY_H_

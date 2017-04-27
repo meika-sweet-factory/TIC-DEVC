@@ -27,7 +27,9 @@ SRCF := chain/file.c \
 		helpers/type.c \
 		helpers/print.c \
 		helpers/string.c \
-		helpers/file.c \
+		file.c \
+		map.c \
+		memory.c \
 		game.c \
 		player.c \
 		main.c

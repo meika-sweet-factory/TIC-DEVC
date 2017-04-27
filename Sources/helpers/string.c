@@ -1,4 +1,4 @@
-#include"../../Headers/helpers/string.h"
+#include "../../Headers/helpers/string.h"
 
 int     str_to_int(const char * s)
 {
@@ -6,7 +6,7 @@ int     str_to_int(const char * s)
     int v;
 
     if (s[0] == '-') return 0;
-    for(v = 0; s[i] >= 48  && s[i] <= 57; ++i) {
+    for(i = 0, v = 0; s[i] >= 48 && s[i] <= 57 && s[i] != '\0'; ++i) {
         v = v * 10 + s[i] - 48;
         if (v > 65534) return 0;
     }

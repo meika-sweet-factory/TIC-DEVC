@@ -1,11 +1,11 @@
-#ifndef __SNAKE_PLAYER_H__
-#define __SNAKE_PLAYER_H__
+#ifndef _SNAKE_PLAYER_H_
+#define _SNAKE_PLAYER_H_
 
 /* Helpers */
 
-#include"structures/type.h"
-#include"structures/player.h"
+#include "structures/type.h"
+#include "structures/player.h"
 
 /* Usage functions */
 
-#endif //__SNAKE_PLAYER_H__
+#endif //_SNAKE_PLAYER_H_
