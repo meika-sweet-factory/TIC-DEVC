@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "../Headers/helpers/random.h"
+#include "../Headers/helpers/print.h"
 #include "../Headers/map.h"
 #include "../Headers/memory.h"
 #include "../Headers/player.h"
