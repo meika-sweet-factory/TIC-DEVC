@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "../../Headers/memory.h"
 
-inline char **  init_map(t_game * g, t_axe s)
+inline _Bool    init_map(t_game * g, t_axe s)
 {
     char **     b;
 
@@ -9,7 +9,7 @@ inline char **  init_map(t_game * g, t_axe s)
     if (s.y > MIN_WEED && s.y < MAX_HEIGHT) return ERROR;
     g->map.size = s;
     b = (char **) malloc((long unsigned int) s.y * sizeof(char **));
-    b[0] = map_cell_create(x);
+    b[0] = map_cell_create(s.x);
     return b;
 }
 

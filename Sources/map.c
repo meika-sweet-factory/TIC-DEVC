@@ -9,7 +9,7 @@ _Bool       generate_map(t_game * g, t_axe s)
 {
     t_axe   a;
 
-    if (!(g->map.board = init_map(s.x, s.y))) return ERROR;
+    if (!init_map(g, s)) return ERROR;
     for (a.y = 0; a.y < s.y; ++a.y) {
         if (!(g->map.board[a.y] = map_cell_create(s.x))) return ERROR;
         for (a.x = 0; a.x < s.x; ++a.x) {
@@ -21,7 +21,7 @@ _Bool       generate_map(t_game * g, t_axe s)
         a.x = 0;
     }
     generate_spawn(g);
-    if (!init_player(g)) return ERROR;
+    if (!init_player(g, s)) return ERROR;
     return SUCCESS;
 }
 

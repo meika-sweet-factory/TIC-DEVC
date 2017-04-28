@@ -59,7 +59,7 @@ t_game *            get_data(t_game * g, int of)
 
     g->player.body = 0;
     a.x = 0;
-    if (!(g->map.board = init_map(g->map.size.x, g->map.size.y))) return ERROR;
+    if (!init_map(g, g->map.size)) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
         for (a.y = 0, k = 0; k < r; ++k) {
             if (bf[k] == 'b' || bf[k] == 'm') {
