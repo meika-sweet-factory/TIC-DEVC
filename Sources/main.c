@@ -6,7 +6,7 @@ int             main(int argc, char * argv[])
 {
     t_game *    game;
 
-    game = 0;
+    game = NULL;
     if (argc == 3 && is_digit(argv[1]) && is_digit(argv[2]))
         return new_game(game, argv[1], argv[2], play_game);
     else if (argc == 2)

@@ -1,5 +1,6 @@
 #include "../Headers/helpers/conversion.h"
 #include "../Headers/file.h"
+#include "../Headers/interface.h"
 #include "../Headers/map.h"
 #include "../Headers/memory.h"
 #include "../Headers/game.h"
@@ -31,6 +32,6 @@ inline _Bool load_game(t_game * g,
 
 _Bool play_game(t_game * g)
 {
-    (void) g;
+    sdl_engine(g);
     return SUCCESS;
 }

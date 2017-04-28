@@ -5,9 +5,19 @@
 #define EXIT_SUCCESS 0
 #define ERROR 0
 #define SUCCESS 1
-#define MAX_WEED 1080
-#define MIN_WEED 5
-#define MAX_HEIGHT 1920
-#define MIN_HEIGHT 5
+
+/* Data */
+
+static const unsigned MAX_WEED = 1080;
+static const unsigned MIN_WEED = 5;
+static const unsigned MAX_HEIGHT = 1920;
+static const unsigned MIN_HEIGHT = 5;
+
+/* Window */
+
+static const unsigned WINDOW_WIDTH = 800;
+static const unsigned WINDOW_HEIGHT = 600;
+static const unsigned BOX_WIDTH = 256;
+static const unsigned BOX_HEIGHT = 256;
 
 #endif //_SNAKE_STUCTURE_TYPE_H_

@@ -26,10 +26,13 @@ SRCF := chain/pile.c 			\
 		helpers/print.c 		\
 		helpers/conversion.c 	\
 		helpers/random.c		\
-		window.c				\
+		memory/game.c			\
+		memory/map.c			\
+		memory/player.c			\
+		memory/sdl.c			\
+		interface.c				\
 		file.c 					\
 		map.c 					\
-		memory.c 				\
 		game.c 					\
 		player.c 				\
 		main.c
