@@ -70,7 +70,7 @@ t_game *            get_data(t_game * g, int of)
                 g->map.board[a.y][a.x++] = ' ';
             } else if (bf[k] == '\n') {
                 g->map.board[a.y][a.x + 1] = '\0';
-                if (!(g->map.board[++a.y] = init_map_cell(g->map.size.x + 1))) return ERROR;
+                if (!(g->map.board[++a.y] = map_cell_create(g->map.size.x + 1))) return ERROR;
                 a.x = 0;
             } else g->map.board[a.y][a.x++] = bf[k];
         }

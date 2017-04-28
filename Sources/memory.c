@@ -12,11 +12,11 @@ inline char **  init_map(int x, int y)
     char **     b;
 
     b = (char **) malloc((long unsigned int) y * sizeof(char **));
-    b[0] = init_map_cell(x);
+    b[0] = map_cell_create(x);
     return b;
 }
 
-inline char * init_map_cell(int x)
+inline char * map_cell_create(int x)
 {
     return (char *) malloc((long unsigned int) (x + 1) * sizeof(char *));
 }
