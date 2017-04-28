@@ -56,8 +56,9 @@ t_game *            get_data(t_game * g, int of)
     unsigned short  r;
     char            bf[4096];
     t_axe           a;
+    t_pile_list     * l;
 
-    g->player.body = 0;
+    l = 0;
     a.x = 0;
     if (!init_map(g, g->map.size)) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
@@ -66,7 +67,7 @@ t_game *            get_data(t_game * g, int of)
                 set_spawns(g, a, bf[k]);
                 g->map.board[a.y][a.x++] = ' ';
             } else if (bf[k] == 's') {
-                g->player.body = init_snake(a, g->player.body);
+                l = init_snake(a, l);
                 g->map.board[a.y][a.x++] = ' ';
             } else if (bf[k] == '\n') {
                 g->map.board[a.y][a.x + 1] = '\0';
