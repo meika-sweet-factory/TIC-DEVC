@@ -3,11 +3,14 @@
 #include <unistd.h>
 #include "../Headers/file.h"
 #include "../Headers/memory.h"
+#include "../Headers/chain/pile.h"
 #include "../Headers/helpers/print.h"
+#include "../Headers/helpers/conversion.h"
 
-_Bool       file_size   (t_game * restrict g, const char * restrict f);
-t_game *    get_data    (t_game * g, int of);
-void        set_spawns  (t_game * g, t_axe a, char c);
+t_pile_list *   init_snake  (t_axe a, t_pile_list * l);
+_Bool           file_size   (t_game * restrict g, const char * restrict f);
+t_game *        get_data    (t_game * g, int of);
+void            set_spawns  (t_game * g, t_axe a, char c);
 
 _Bool   load_file(t_game * restrict g, const char * restrict f)
 {
@@ -39,8 +42,8 @@ inline _Bool        file_size(t_game * restrict g, const char * restrict f)
                 a.x = 0;
             }
         }
-    if (a.x > MIN_WEED && a.x< MAX_WEED) return ERROR;
-    if (a.y > MIN_WEED && a.y < MAX_HEIGHT) return ERROR;
+    if (a.x < MIN_WEED && a.x > MAX_WEED) return ERROR;
+    if (a.y < MIN_WEED && a.y > MAX_HEIGHT) return ERROR;
     g->map.size.x = tmp;
     g->map.size.y = ++a.y;
     close(of);
@@ -53,7 +56,9 @@ t_game *            get_data(t_game * g, int of)
     unsigned short  r;
     char            bf[4096];
     t_axe           a;
+    t_pile_list     * l;
 
+    l = 0;
     a.x = 0;
     if (!(g->map.board = init_map(g->map.size.x, g->map.size.y))) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
@@ -61,8 +66,10 @@ t_game *            get_data(t_game * g, int of)
             if (bf[k] == 'b' || bf[k] == 'm') {
                 set_spawns(g, a, bf[k]);
                 g->map.board[a.y][a.x++] = ' ';
-            }
-            else if (bf[k] == '\n') {
+            } else if (bf[k] == 's') {
+                l = init_snake(a, l);
+                g->map.board[a.y][a.x++] = ' ';
+            } else if (bf[k] == '\n') {
                 g->map.board[a.y][a.x + 1] = '\0';
                 if (!(g->map.board[++a.y] = init_map_cell(g->map.size.x + 1))) return ERROR;
                 a.x = 0;
@@ -80,4 +87,16 @@ void set_spawns(t_game * g, t_axe a, char c)
         g->map.spawns.malus.x = a.x;
         g->map.spawns.malus.y = a.y;
     }
+}
+
+t_pile_list         * init_snake(t_axe a, t_pile_list * l)
+{
+    t_pile_data     snake;
+
+    snake.coordonate = a;
+    if (l == 0) {
+        l = pile_create();
+    }
+    pile_stack(l, snake);
+    return l;
 }
