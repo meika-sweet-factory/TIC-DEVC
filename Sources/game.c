@@ -14,7 +14,7 @@ inline _Bool    new_game(t_game * g,
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!generate_map(g, str_to_axe(x, y))) return EXIT_FAILURE;
     if (!callback(g)) return EXIT_FAILURE;
-    free_game(g);
+//    free_game(g);
     return EXIT_SUCCESS;
 }
 
@@ -25,7 +25,7 @@ inline _Bool load_game(t_game * g,
     if (!(g = init_game())) return EXIT_FAILURE;
     if (!load_file(g, f)) return EXIT_FAILURE;
     if (!callback(g)) return EXIT_FAILURE;
-    free_game(g);
+//    free_game(g);
     return EXIT_SUCCESS;
 }
 

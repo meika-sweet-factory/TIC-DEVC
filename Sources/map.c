@@ -4,6 +4,7 @@
 #include "../Headers/memory.h"
 #include "../Headers/player.h"
 #include "../Headers/map.h"
+#include "../Headers/helpers/conversion.h"
 
 _Bool       generate_map(t_game * g, t_axe s)
 {
@@ -42,20 +43,11 @@ void        generate_spawn(t_game * g)
     t_axe   bonus;
     t_axe   malus;
 
-    bonus = generate_rand_pos(g);
+    bonus = generate_rand_pos(g, 0);
     g->map.spawns.bonus.x = bonus.x;
     g->map.spawns.bonus.y = bonus.y;
-    malus = generate_rand_pos(g);
-    while (malus.y == bonus.y && malus.x == bonus.x) malus = generate_rand_pos(g);
+    malus = generate_rand_pos(g, 0);
+    while (malus.y == bonus.y && malus.x == bonus.x) malus = generate_rand_pos(g, 0);
     g->map.spawns.malus.x = malus.x;
     g->map.spawns.malus.y = malus.y;
-}
-
-t_axe       generate_rand_pos(t_game * g)
-{
-    t_axe   item;
-
-    item.x = rand_pos(g->map.size.x);
-    item.y = rand_pos(g->map.size.y);
-    return item;
 }

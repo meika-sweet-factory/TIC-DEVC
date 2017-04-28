@@ -24,7 +24,7 @@ inline char * init_map_cell(int x)
 inline void free_game(t_game * g)
 {
     free_map(g);
-    // free_player(g);
+//    free_player(g);
     free(g);
 }
 
