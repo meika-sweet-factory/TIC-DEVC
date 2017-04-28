@@ -41,7 +41,7 @@ inline _Bool        file_size(t_game * restrict g, const char * restrict f)
             if (tmp > 100 || a.y > 100) return ERROR;
         }
     g->map.size.x = tmp;
-    g->map.size.y = ++i;
+    g->map.size.y = ++a.y;
     close(of);
     return SUCCESS;
 }

@@ -1,3 +1,4 @@
+#include "../Headers/helpers/conversion.h"
 #include "../Headers/file.h"
 #include "../Headers/map.h"
 #include "../Headers/memory.h"
