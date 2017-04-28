@@ -12,17 +12,17 @@ _Bool       generate_map(t_game * g, t_axe s)
     g->map.size.y = s.y;
     if (!(g->map.board = init_map(s.x, s.y))) return ERROR;
     for (a.y = 0; a.y < s.y; ++a.y) {
-        if (!(g->map.board[i] = init_map_cell(s.x))) return ERROR;
+        if (!(g->map.board[a.y] = init_map_cell(s.x))) return ERROR;
         for (a.x = 0; a.x < s.x; ++a.x) {
-            if ((j == 0)||(j == s.x - 1)) g->map.board[a.y][a.x] = '1';
-            else if (((i == 0) || (i == s.y -1)) && j != s.x -1) g->map.board[a.y][a.x] = '1';
+            if ((a.x == 0)||(a.x == s.x - 1)) g->map.board[a.y][a.x] = '1';
+            else if (((a.y == 0) || (a.y == s.y -1)) && a.x != s.x -1) g->map.board[a.y][a.x] = '1';
             else if (a.x != s.x) g->map.board[a.y][a.x] = ' ';
         }
         g->map.board[a.y][a.x] = '\0';
-        j = 0;
+        a.x = 0;
     }
     generate_spawn(g);
-    generate_snake(g);
+    if (!generate_snake(g)) return ERROR;
     return SUCCESS;
 }
 
