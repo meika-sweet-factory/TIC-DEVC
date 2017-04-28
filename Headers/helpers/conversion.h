@@ -3,7 +3,7 @@
 
 /* Helpers */
 
-#include "../structures/type.h"
+#include "../common.h"
 #include "../structures/geometry.h"
 
 /* Usage functions */

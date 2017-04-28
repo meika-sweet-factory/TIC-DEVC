@@ -3,7 +3,11 @@
 
 #define EXIT_FAILURE 1
 #define EXIT_SUCCESS 0
-#define ERROR 0;
-#define SUCCESS 1;
+#define ERROR 0
+#define SUCCESS 1
+#define MAX_WEED 1080
+#define MIN_WEED 5
+#define MAX_HEIGHT 1920
+#define MIN_HEIGHT 5
 
 #endif //_SNAKE_STUCTURE_TYPE_H_

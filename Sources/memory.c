@@ -23,17 +23,17 @@ inline char * init_map_cell(int x)
 
 inline void free_game(t_game * g)
 {
-    free(g);
     free_map(g);
-    free_player(g);
+    // free_player(g);
+    free(g);
 }
 
 inline void free_map(t_game * g)
 {
     int i;
 
+    for (i = 0; i != g->map.size.y; ++i) free(g->map.board[i]);
     free(g->map.board);
-    for (i = 0; g->map.board[i] != '\0'; ++i) free(g->map.board[i]);
 }
 
 inline void free_player(t_game * g)

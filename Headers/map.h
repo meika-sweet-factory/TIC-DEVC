@@ -1,7 +1,7 @@
 #ifndef _SNAKE_MAP_H_
 #define _SNAKE_MAP_H_
 
-#include "structures/type.h"
+#include "common.h"
 #include "structures/game.h"
 #include "structures/geometry.h"
 

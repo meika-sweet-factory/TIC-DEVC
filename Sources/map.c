@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "../Headers/helpers/print.h"
 #include "../Headers/helpers/random.h"
 #include "../Headers/memory.h"
 #include "../Headers/player.h"
@@ -8,6 +9,8 @@ _Bool       generate_map(t_game * g, t_axe s)
 {
     t_axe   a;
 
+    if (s.x > MIN_WEED && s.x< MAX_WEED) return ERROR;
+    if (s.y > MIN_WEED && s.y < MAX_HEIGHT) return ERROR;
     g->map.size.x = s.x;
     g->map.size.y = s.y;
     if (!(g->map.board = init_map(s.x, s.y))) return ERROR;
@@ -43,7 +46,7 @@ void        generate_spawn(t_game * g)
     g->map.spawns.bonus.x = bonus.x;
     g->map.spawns.bonus.y = bonus.y;
     malus = generate_rand_pos(g);
-    while ((malus.y == bonus.y) && (malus.x == bonus.x)) malus = generate_rand_pos(g);
+    while (malus.y == bonus.y && malus.x == bonus.x) malus = generate_rand_pos(g);
     g->map.spawns.malus.x = malus.x;
     g->map.spawns.malus.y = malus.y;
 }

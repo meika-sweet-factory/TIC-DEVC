@@ -38,8 +38,9 @@ inline _Bool        file_size(t_game * restrict g, const char * restrict f)
                 if (a.x > tmp) tmp = a.x;
                 a.x = 0;
             }
-            if (tmp > 100 || a.y > 100) return ERROR;
         }
+    if (a.x > MIN_WEED && a.x< MAX_WEED) return ERROR;
+    if (a.y > MIN_WEED && a.y < MAX_HEIGHT) return ERROR;
     g->map.size.x = tmp;
     g->map.size.y = ++a.y;
     close(of);

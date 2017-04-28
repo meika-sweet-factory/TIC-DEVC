@@ -1,7 +1,7 @@
 #ifndef _SNAKE_PLAYER_H_
 #define _SNAKE_PLAYER_H_
 
-#include "structures/type.h"
+#include "common.h"
 #include "chain/pile.h"
 
 /* Usage functions */
