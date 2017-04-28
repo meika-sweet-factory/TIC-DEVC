@@ -1,9 +1,9 @@
 #ifndef _SNAKE_MEMORY_H_
 #define _SNAKE_MEMORY_H_
 
-#include "common.h"
-#include "structures/game.h"
-#include "structures/interface.h"
+#include "common.h" 
+#include "structures/game.h" 
+#include "structures/interface.h" 
 
 /* Usage functions */
 
