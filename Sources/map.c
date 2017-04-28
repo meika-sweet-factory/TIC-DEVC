@@ -1,10 +1,9 @@
 #include <stdlib.h>
-#include "../Headers/helpers/print.h"
-#include "../Headers/helpers/random.h"
+#include "../Headers/map.h"
 #include "../Headers/memory.h"
 #include "../Headers/player.h"
-#include "../Headers/map.h"
-#include "../Headers/helpers/conversion.h"
+#include "../Headers/helpers/print.h"
+#include "../Headers/helpers/random.h"
 
 _Bool       generate_map(t_game * g, t_axe s)
 {
@@ -32,9 +31,17 @@ _Bool       generate_map(t_game * g, t_axe s)
 
 _Bool generate_snake(t_game * g)
 {
+    t_axe       middle;
+    t_pile_data pos;
+
     if (!(g->player.body = pile_create())) return ERROR;
-    g->map.board[g->map.size.y/2][(g->map.size.x/2) - 1] = 's';
-    g->map.board[g->map.size.y/2][g->map.size.x/2] = 's';
+    middle.x = g->map.size.x/2;
+    middle.y = g->map.size.y/2;
+    pos.coordonate = middle;
+    pile_stack(g->player.body, pos);
+    middle.x = (short unsigned)((g->map.size.x/2) - 1);
+    pos.coordonate = middle;
+    pile_stack(g->player.body, pos);
     return SUCCESS;
 }
 
