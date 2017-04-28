@@ -9,11 +9,11 @@ inline _Bool    init_map(t_game * g, t_axe s)
     if (s.y > MIN_WEED && s.y < MAX_HEIGHT) return ERROR;
     g->map.size = s;
     b = (char **) malloc((long unsigned int) s.y * sizeof(char **));
-    b[0] = map_cell_create(s.x);
+    b[0] = create_map_cell(s.x);
     return b;
 }
 
-inline char * map_cell_create(int x)
+inline char * create_map_cell(int x)
 {
     return (char *) malloc((long unsigned int) (x + 1) * sizeof(char *));
 }

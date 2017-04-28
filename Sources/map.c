@@ -11,7 +11,7 @@ _Bool       generate_map(t_game * g, t_axe s)
 
     if (!init_map(g, s)) return ERROR;
     for (a.y = 0; a.y < s.y; ++a.y) {
-        if (!(g->map.board[a.y] = map_cell_create(s.x))) return ERROR;
+        if (!(g->map.board[a.y] = create_map_cell(s.x))) return ERROR;
         for (a.x = 0; a.x < s.x; ++a.x) {
             if ((a.x == 0)||(a.x == s.x - 1)) g->map.board[a.y][a.x] = '1';
             else if (((a.y == 0) || (a.y == s.y -1)) && a.x != s.x -1) g->map.board[a.y][a.x] = '1';

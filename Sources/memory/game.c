@@ -1,9 +1,10 @@
 #include <stdlib.h>
 #include "../../Headers/memory.h"
 
-inline t_game * init_game(void)
+inline _Bool init_game(t_game * g)
 {
-    return (t_game *) malloc(sizeof(t_game));
+    if (!(g = (t_game *) malloc(sizeof(t_game)))) return ERROR;
+    return SUCCESS;
 }
 
 inline void free_game(t_game * g)
