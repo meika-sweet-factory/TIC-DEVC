@@ -5,34 +5,34 @@
 #include "../Headers/player.h"
 #include "../Headers/map.h"
 
-_Bool              generate_map(t_game * g, const char * x, const char * y)
+_Bool       generate_map(t_game * g)
 {
-    unsigned short i;
-    unsigned short j;
+    t_axe   a;
 
-    g->map.size.x = str_to_unshort(x);
-    g->map.size.y = str_to_unshort(y);
     if (!(g->map.board = init_map(g->map.size.x, g->map.size.y))) return ERROR;
-    for (i = 0; i < g->map.size.y; ++i) {
-        if (!(g->map.board[i] = init_map_cell(g->map.size.x))) return ERROR;
-        for (j = 0; j < g->map.size.x; ++j) {
-            if ((j == 0)||(j == g->map.size.x - 1)) g->map.board[i][j] = '1';
-            else if (((i == 0) || (i == g->map.size.y -1)) && j != g->map.size.x -1) g->map.board[i][j] = '1';
-            else if (j != g->map.size.x) g->map.board[i][j] = ' ';
-        }
-        g->map.board[i][j] = '\0';
-        j = 0;
+    for (a.i = 0; a.i < g->map.size.y; ++a.i) {
+        if (!(g->map.board[a.i] = init_map_cell(g->map.size.x))) return ERROR;
+        for (a.j = 0; a.j < g->map.size.x; ++a.j)
+            if ((a.j == 0)||(a.j == g->map.size.x - 1))
+                g->map.board[a.i][a.j] = '1';
+            else if (((a.i == 0) || (a.i == g->map.size.y -1)) && a.j != g->map.size.x -1) 
+                g->map.board[a.i][a.j] = '1';
+            else if (a.j != g->map.size.x)
+                g->map.board[a.i][a.j] = ' ';
+        g->map.board[a.i][a.j] = '\0';
+        a.j = 0;
     }
-    generate_spawn(g);
+    if (!generate_spawn(g)) return ERROR;
     generate_snake(g);
     return SUCCESS;
 }
 
-void generate_snake(t_game * g)
+_Bool generate_snake(t_game * g)
 {
-    g->player.body = pile_create();
+    if (!(g->player.body = pile_create())) return ERROR;
     g->map.board[g->map.size.y/2][(g->map.size.x/2) - 1] = 's';
     g->map.board[g->map.size.y/2][g->map.size.x/2] = 's';
+    return SUCCESS;
 }
 
 void        generate_spawn(t_game * g)

@@ -10,8 +10,10 @@ inline _Bool new_game(t_game * g,
                       const char * restrict y,
                       _Bool (* callback)(t_game * g))
 {
+    g->map.size.x = str_to_unshort(x);
+    g->map.size.y = str_to_unshort(y);
     if (!(g = init_game())) return EXIT_FAILURE;
-    if (!generate_map(g, x, y)) return EXIT_FAILURE;
+    if (!generate_map(g)) return EXIT_FAILURE;
     if (!callback(g)) return EXIT_FAILURE;
     free_game(g);
     return EXIT_SUCCESS;
