@@ -13,7 +13,7 @@ unsigned short  str_to_unshort(const char * s)
     return (unsigned short) v;
 }
 
-t_axe       str_to_axe(unsigned short x, unsigned short y)
+t_axe       str_to_axe(const char * restrict x, const char * restrict y)
 {
     t_axe   a;
 
