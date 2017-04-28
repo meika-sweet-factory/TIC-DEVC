@@ -6,8 +6,6 @@
 
 _Bool       generate_map(t_game * g, t_axe a)
 {
-    t_axe   a;
-
     g->map.size.x = a.x;
     g->map.size.y = a.y;
     if (!(g->map.board = init_map(a.x, a.y))) return ERROR;

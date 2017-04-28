@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "../Headers/chain/pile.h"
 #include "../Headers/memory.h"
 
 inline t_game * init_game(void)
@@ -37,5 +38,5 @@ inline void free_map(t_game * g)
 
 inline void free_player(t_game * g)
 {
-    pile_free(g->player->body);
+    pile_free(g->player.body);
 }
