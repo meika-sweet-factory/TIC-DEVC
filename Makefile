@@ -26,6 +26,7 @@ SRCF := chain/pile.c 		\
 		helpers/print.c 	\
 		helpers/string.c 	\
 		helpers/random.c	\
+		window.c			\
 		file.c 				\
 		map.c 				\
 		memory.c 			\
