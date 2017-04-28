@@ -23,7 +23,7 @@ _Bool   load_file(t_game * restrict g, const char * restrict f)
     return SUCCESS;
 }
 
-inline _Bool        file_size(t_game * restrict g, const char * restrict f)
+inline _Bool        file_size(t_game * g, const char * restrict f)
 {
     int             of;
     unsigned short  k;
