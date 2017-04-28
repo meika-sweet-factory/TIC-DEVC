@@ -5,11 +5,11 @@
 _Bool               sdl_engine(t_game * g)
 {
     (void) g;
-    t_interface *   window;
+    t_interface *   interface;
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) < 0) return ERROR;
-    if (!(window = create_interface())) return ERROR;
-    free_interface(i);
+    if (!create_interface(interface)) return ERROR;
+    free_interface(interface);
     SDL_Quit();
     return SUCCESS;
 }
