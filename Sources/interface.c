@@ -1,4 +1,4 @@
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include "../Headers/interface.h"
 #include "../Headers/memory.h"
 
