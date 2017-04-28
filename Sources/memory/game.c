@@ -9,6 +9,6 @@ inline t_game * create_game(void)
 inline void free_game(t_game * g)
 {
     free_map(g);
-//    free_player(g);
+    free_player(g);
     free(g);
 }

@@ -3,7 +3,6 @@
 
 #include "common.h" 
 #include "structures/game.h" 
-#include "structures/interface.h" 
 
 /* Usage functions */
 
@@ -14,6 +13,5 @@ char *      create_map_cell     (int x);
 void        free_game           (t_game * g);
 void        free_map            (t_game * g);
 void        free_player         (t_game * g);
-void        free_interface      (t_interface * i);
 
 #endif //_SNAKE_MEMORY_H_
