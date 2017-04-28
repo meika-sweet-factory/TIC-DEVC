@@ -4,15 +4,14 @@
 #include "../Headers/file.h"
 #include "../Headers/memory.h"
 #include "../Headers/chain/pile.h"
-#include "../Headers/helpers/print.h"
 #include "../Headers/helpers/conversion.h"
 
 t_pile_list *   init_snake  (t_axe a, t_pile_list * l);
-_Bool           file_size   (t_game * restrict g, const char * restrict f);
+_Bool           file_size   (t_game * g, const char * f);
 t_game *        get_data    (t_game * g, int of);
 void            set_spawns  (t_game * g, t_axe a, char c);
 
-_Bool   load_file(t_game * restrict g, const char * restrict f)
+_Bool   load_file(t_game * g, const char * f)
 {
     int of;
 
@@ -23,7 +22,7 @@ _Bool   load_file(t_game * restrict g, const char * restrict f)
     return SUCCESS;
 }
 
-inline _Bool        file_size(t_game * restrict g, const char * restrict f)
+inline _Bool        file_size(t_game * g, const char * f)
 {
     int             of;
     unsigned short  k;

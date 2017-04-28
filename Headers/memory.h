@@ -8,9 +8,9 @@
 /* Usage functions */
 
 _Bool       create_interface    (t_interface * i);
-_Bool       init_game           (t_game * g);
 _Bool       init_map            (t_game * g, t_axe s);
 _Bool       init_player         (t_game * g, t_axe s);
+t_game *    create_game         (void);
 char *      create_map_cell     (int x);
 void        free_game           (t_game * g);
 void        free_map            (t_game * g);

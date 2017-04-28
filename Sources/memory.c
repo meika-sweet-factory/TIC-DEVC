@@ -2,7 +2,7 @@
 #include "../Headers/chain/pile.h"
 #include "../Headers/memory.h"
 
-inline t_game * init_game(void)
+inline t_game * create_game(void)
 {
     return (t_game *) malloc(sizeof(t_game));
 }

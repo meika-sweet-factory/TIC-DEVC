@@ -6,6 +6,6 @@
 
 /* Usage functions */
 
-_Bool load_file(t_game * restrict g, const char * restrict f);
+_Bool load_file(t_game * g, const char * f);
 
 #endif //_SNAKE_FILE_H_
