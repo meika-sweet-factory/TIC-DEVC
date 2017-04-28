@@ -1,7 +1,7 @@
 WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align	\
 			-Wwrite-strings -Wmissing-prototypes -Wmissing-declarations		\
 			-Wredundant-decls -Wnested-externs -Winline -Wno-long-long		\
-			-Wuninitialized -Wconversion -Wstrict-prototypes
+			-Wuninitialized -Wstrict-prototypes
 
 CFLAGS ?= -std=gnu99 -g $(WARNINGS) -fpic
 
