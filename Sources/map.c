@@ -5,25 +5,27 @@
 #include "../Headers/player.h"
 #include "../Headers/map.h"
 
-_Bool       generate_map(t_game * g)
+_Bool       generate_map(t_game * g, t_axe a)
 {
     t_axe   a;
 
-    if (!(g->map.board = init_map(g->map.size.x, g->map.size.y))) return ERROR;
-    for (a.i = 0; a.i < g->map.size.y; ++a.i) {
-        if (!(g->map.board[a.i] = init_map_cell(g->map.size.x))) return ERROR;
-        for (a.j = 0; a.j < g->map.size.x; ++a.j)
-            if ((a.j == 0)||(a.j == g->map.size.x - 1))
+    g->map.size.x = a.x;
+    g->map.size.y = a.y;
+    if (!(g->map.board = init_map(a.x, a.y))) return ERROR;
+    for (a.i = 0; a.i < a.y; ++a.i) {
+        if (!(g->map.board[a.i] = init_map_cell(a.x))) return ERROR;
+        for (a.j = 0; a.j < a.x; ++a.j)
+            if ((a.j == 0)||(a.j == a.x - 1))
                 g->map.board[a.i][a.j] = '1';
-            else if (((a.i == 0) || (a.i == g->map.size.y -1)) && a.j != g->map.size.x -1) 
+            else if (((a.i == 0) || (a.i == a.y -1)) && a.j != a.x -1) 
                 g->map.board[a.i][a.j] = '1';
-            else if (a.j != g->map.size.x)
+            else if (a.j != a.x)
                 g->map.board[a.i][a.j] = ' ';
         g->map.board[a.i][a.j] = '\0';
         a.j = 0;
     }
-    if (!generate_spawn(g)) return ERROR;
-    generate_snake(g);
+    generate_spawn(g);
+    if (!generate_snake(g)) return ERROR;
     return SUCCESS;
 }
 

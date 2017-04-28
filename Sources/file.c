@@ -9,9 +9,7 @@ _Bool       file_size   (t_game * restrict g, const char * restrict f);
 t_game *    get_data    (t_game * g, int of);
 void        set_spawns  (t_game * g, t_axe a, char c);
 
-_Bool   load_file(t_game * restrict g,
-                    const char * restrict f,
-                    _Bool (* callback)(t_game * g))
+_Bool   load_file(t_game * restrict g, const char * restrict f)
 {
     int of;
 
@@ -19,13 +17,10 @@ _Bool   load_file(t_game * restrict g,
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
     g = get_data(g, of);
     close(of);
-    if (!callback(g)) return ERROR;
-    free_map(g);
     return SUCCESS;
 }
 
-inline _Bool        file_size(t_game * restrict g,
-                                const char * restrict f)
+inline _Bool        file_size(t_game * restrict g, const char * restrict f)
 {
     int             of;
     unsigned short  k;

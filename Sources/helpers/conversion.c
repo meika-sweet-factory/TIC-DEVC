@@ -1,4 +1,4 @@
-#include "../../Headers/helpers/string.h"
+#include "../../Headers/helpers/conversion.h"
 
 unsigned short  str_to_unshort(const char * s)
 {
@@ -11,4 +11,13 @@ unsigned short  str_to_unshort(const char * s)
         if (v > 65534) return 0;
     }
     return (unsigned short) v;
+}
+
+t_axe       str_to_axe(unsigned short x, unsigned short y)
+{
+    t_axe   a;
+
+    a.x = str_to_unshort(x);
+    a.y = str_to_unshort(y);
+    return a;
 }
