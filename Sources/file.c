@@ -35,9 +35,9 @@ inline _Bool        file_size(t_game * g, const char * f)
     tmp = 0;
     while (read(of, &bf, sizeof(bf)) > 0)
         for (a.y = 0, k = 0; bf[k] != '\0'; ++a.x, ++k) {
-            if (bf[k] == '\n') {
+            if (bf[k] == '\n' || bf[k] == '\0') {
                 ++a.y;
-                if (a.x > tmp) tmp = a.x;
+                if (a.x - 1 > tmp) tmp = a.x;
                 a.x = 0;
             }
         }
