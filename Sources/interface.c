@@ -16,8 +16,10 @@
 #include "../Headers/interface.h"
 #include "../Headers/player.h"
 
-void this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render);
-void draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render);
+void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render);
+SDL_Renderer *    draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render);
+SDL_Renderer *    draw_snake(SDL_Renderer * render, t_player * p, SDL_Rect rect);
+
 
 _Bool               sdl_engine(t_game * g)
 {
@@ -30,14 +32,14 @@ _Bool               sdl_engine(t_game * g)
     render = init_sdl(g, window, render);
     rect.w = 10;
     rect.h = 10;
-    draw_walls(g, rect, render);
+    render = draw_walls(g, rect, render);
 //  Ici la boucle;
     this_game(g, rect, render);
     free_sdl(window, render);
     return SUCCESS;
 }
 
-void        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
+SDL_Renderer *        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 {
     t_axe   m;
     t_axe   map;
@@ -64,6 +66,7 @@ void        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
         }
     }
     SDL_RenderPresent(render);
+    return render;
 }
 
 void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
@@ -90,9 +93,31 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 //      Function wichch will update the snake
         go_forward(g);
 //      Need a function to set delay associated with bonus (fast)
+//        render = draw_snake(render, g->player, rect);
         SDL_Delay(500);
 //      Fucntion wich will draw the snake
 //      SDL_UpdateWindowSurface(window);
 //      SDL_RenderPresent(render);
     }
+}
+
+SDL_Renderer *            draw_snake(SDL_Renderer * render, t_player * p, SDL_Rect rect)
+{
+    t_pile_element *    e;
+    int     cr;
+    int     cv;
+    int     cb;
+
+    for (e = p->body->first; e != 0; e = e->next) {
+        rect.x = e->data.coordonate.x;
+        rect.y = e->data.coordonate.y;
+        cr = 255;
+        cv = 255;
+        cb = 255;
+        SDL_SetRenderDrawColor(render,cr,cv,cb,100);
+        SDL_RenderFillRect(render, &rect);SDL_SetRenderDrawColor(render,cr,cv,cb,100);
+        SDL_RenderFillRect(render, &rect);
+    }
+    SDL_RenderPresent(render);
+    return render;
 }
