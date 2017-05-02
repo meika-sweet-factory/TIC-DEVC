@@ -11,20 +11,7 @@ _Bool               sdl_engine(t_game * g)
     SDL_Window *    window;
     SDL_Renderer *  render;
 
-    window = 0;
-    render = 0;
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) < 0) return ERROR;
-    if (!(window = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
-                                                    SDL_WINDOWPOS_UNDEFINED,
-                                                    g->map.size.x * 10, g->map.size.y * 10,
-                                                    SDL_WINDOW_SHOWN))) return ERROR;
-    if (!(render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
-                                                        SDL_RENDERER_PRESENTVSYNC))) return ERROR;
-    SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
-    SDL_RenderClear(render);
-    SDL_RenderPresent(render);
-    rect.w = 10;
-    rect.h = 10;
+    init_sdl(window, render);
     draw_walls(g, rect, render);
     SDL_Delay(3000);
     free_sdl(window, render);

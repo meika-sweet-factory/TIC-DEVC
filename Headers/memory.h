@@ -6,6 +6,7 @@
 
 /* Usage functions */
 
+_Bool       init_sdl            (SDL_Window * window, SDL_Renderer * render);
 _Bool       init_map            (t_game * g, t_axe s);
 _Bool       init_player         (t_game * g, t_axe s);
 t_game *    create_game         (void);
