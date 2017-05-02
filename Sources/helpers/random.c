@@ -1,3 +1,13 @@
+/*
+** random.c for Snake in /home/asuramaru/Projects/snake/Sources/helpers
+**
+**        Made by BAILLIF Killian
+**        Login   <bailli_k@etna-alternance.net>
+**
+** Started on  Tue May  2 15:32:14 2017 BAILLIF Killian
+** Last update Tue May  2 15:32:24 2017 BAILLIF Killian
+*/
+
 #include <time.h>
 #include <stdlib.h>
 #include "../../Headers/helpers/random.h"
@@ -7,11 +17,11 @@ t_axe       generate_rand_pos(t_game * g, int type)
     t_axe   item;
 
     if (type == 0) {
-        item.x = initial_rand_pos(g->map.size.x);
-        item.y = initial_rand_pos(g->map.size.y);
+        item.x = initial_rand_pos(g->map->size.x);
+        item.y = initial_rand_pos(g->map->size.y);
     } else {
-        item.x = rand_pos(g->map.size.x);
-        item.y = rand_pos(g->map.size.y);
+        item.x = rand_pos(g->map->size.x);
+        item.y = rand_pos(g->map->size.y);
     }
     return item;
 }

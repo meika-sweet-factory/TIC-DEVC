@@ -1,3 +1,13 @@
+/*
+** pile.h for Snake in /home/asuramaru/Projects/snake/Headers/chain
+**
+**        Made by PHETSINORATH William
+**        Login   <phetsi_w@etna-alternance.net>
+**
+** Started on  Tue May  2 15:32:14 2017 PHETSINORATH William
+** Last update Tue May  2 15:32:24 2017 PHETSINORATH William
+*/
+
 #ifndef _SNAKE_PILE_H_
 #define _SNAKE_PILE_H_
 

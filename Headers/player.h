@@ -1,3 +1,13 @@
+/*
+** player.h for Snake in /home/asuramaru/Projects/snake/Headers
+**
+**        Made by PHETSINORATH William
+**        Login   <phetsi_w@etna-alternance.net>
+**
+** Started on  Tue May  2 15:32:14 2017 PHETSINORATH William
+** Last update Tue May  2 15:32:24 2017 PHETSINORATH William
+*/
+
 #ifndef _SNAKE_PLAYER_H_
 #define _SNAKE_PLAYER_H_
 
@@ -7,9 +17,9 @@
 
 /* Usage functions */
 
-_Bool   move        (t_game * g, t_axe d);
+_Bool   move        (t_player * p, t_axe d);
 _Bool   add_meat    (t_player * p, t_axe d);
-void    go_forward  (t_game * g);
+void    go_forward  (t_player * p);
 
 
 #endif //_SNAKE_PLAYER_H_
