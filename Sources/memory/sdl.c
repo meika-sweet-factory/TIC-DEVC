@@ -11,6 +11,7 @@ SDL_Renderer *        init_sdl(t_game * g, SDL_Window * window, SDL_Renderer * r
                                     SDL_WINDOW_SHOWN))) return ERROR;
     if (!(render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED |
                                                   SDL_RENDERER_PRESENTVSYNC))) return ERROR;
+    g->player.direction = 2;
     SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
     SDL_RenderClear(render);
     SDL_RenderPresent(render);

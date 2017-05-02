@@ -71,7 +71,6 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
             if (e.type == SDL_QUIT)
                 run = false;
             else if (e.type == SDL_KEYDOWN){
-//              keys which will change direction
                 if (e.key.keysym.sym == SDLK_UP) g->player.direction = 0;
                 else if (e.key.keysym.sym == SDLK_DOWN) g->player.direction = 1;
                 else if (e.key.keysym.sym == SDLK_RIGHT) g->player.direction = 2;
@@ -80,6 +79,8 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
         }
 //      Function wichch will update the snake
         go_forward(g);
+//      Need a function to set delay associated with bonus (fast)
+        SDL_Delay(500);
 //      Fucntion wich will draw the snake
 //      SDL_UpdateWindowSurface(window);
 //      SDL_RenderPresent(render);
