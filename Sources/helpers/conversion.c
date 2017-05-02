@@ -1,13 +1,3 @@
-/*
-** conversion.c for Snake in /home/asuramaru/Projects/snake/Sources/helpers
-**
-**        Made by PHETSINORATH William
-**        Login   <phetsi_w@etna-alternance.net>
-**
-** Started on  Tue May  2 15:32:14 2017 PHETSINORATH William
-** Last update Tue May  2 15:32:24 2017 PHETSINORATH William
-*/
-
 #include "../../Headers/helpers/conversion.h"
 
 unsigned short  str_to_unshort(const char * s)

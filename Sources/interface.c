@@ -1,13 +1,3 @@
-/*
-** interface.c for Snake in /home/asuramaru/Projects/snake/Sources
-**
-**        Made by BAILLIF Killian
-**        Login   <bailli_k@etna-alternance.net>
-**
-** Started on  Tue May  2 15:32:14 2017 BAILLIF Killian
-** Last update Tue May  2 15:32:24 2017 BAILLIF Killian
-*/
-
 #include <SDL2/SDL.h>
 #include <time.h>
 #include <stdbool.h>
@@ -48,11 +38,11 @@ SDL_Renderer *        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * rende
     int     cb;
 
     SDL_SetRenderDrawBlendMode(render, SDL_BLENDMODE_BLEND);
-    for (m.y = 0, map.y = 0; m.y < g->map->size.y * 10; m.y += 10, ++map.y) {
-        for (m.x = 0, map.x = 0; m.x < g->map->size.x * 10; m.x += 10, ++map.x) {
+    for (m.y = 0, map.y = 0; m.y < g->map.size.y * 10; m.y += 10, ++map.y) {
+        for (m.x = 0, map.x = 0; m.x < g->map.size.x * 10; m.x += 10, ++map.x) {
             rect.x = m.x;
             rect.y = m.y;
-            if (g->map->board[map.y][map.x] == '1') {
+            if (g->map.board[map.y][map.x] == '1') {
                 cr = 255;
                 cv = 255;
                 cb = 255;
@@ -84,10 +74,10 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
             if (e.type == SDL_QUIT)
                 run = false;
             else if (e.type == SDL_KEYDOWN){
-                if (e.key.keysym.sym == SDLK_UP) g->player->direction = 0;
-                else if (e.key.keysym.sym == SDLK_DOWN) g->player->direction = 1;
-                else if (e.key.keysym.sym == SDLK_RIGHT) g->player->direction = 2;
-                else if (e.key.keysym.sym == SDLK_LEFT) g->player->direction = 3;
+                if (e.key.keysym.sym == SDLK_UP) g->player.direction = 0;
+                else if (e.key.keysym.sym == SDLK_DOWN) g->player.direction = 1;
+                else if (e.key.keysym.sym == SDLK_RIGHT) g->player.direction = 2;
+                else if (e.key.keysym.sym == SDLK_LEFT) g->player.direction = 3;
             }
         }
 //      Function wichch will update the snake

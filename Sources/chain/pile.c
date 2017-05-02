@@ -1,17 +1,7 @@
-/*
-** pile.c for Snake in /home/asuramaru/Projects/snake/Sources/chain
-**
-**        Made by PHETSINORATH William
-**        Login   <phetsi_w@etna-alternance.net>
-**
-** Started on  Tue May  2 15:32:14 2017 PHETSINORATH William
-** Last update Tue May  2 15:32:24 2017 PHETSINORATH William
-*/
-
 #include <stdlib.h>
 #include "../../Headers/chain/pile.h"
 
-/* Internal functions prototype */
+/* Internal functions */
 
 t_pile_element * pile_list_extract(t_pile_list * l);
 

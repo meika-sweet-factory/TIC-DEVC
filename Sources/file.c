@@ -1,13 +1,3 @@
-/*
-** file.c for Snake in /home/asuramaru/Projects/snake/Sources
-**
-**        Made by BAILLIF Killian
-**        Login   <bailli_k@etna-alternance.net>
-**
-** Started on  Tue May  2 15:32:14 2017 BAILLIF Killian
-** Last update Tue May  2 15:32:24 2017 BAILLIF Killian
-*/
-
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -54,9 +44,8 @@ inline _Bool        file_size(t_game * g, const char * f)
         }
     if (a.x < MIN_WEED && a.x > MAX_WEED) return ERROR;
     if (a.y < MIN_WEED && a.y > MAX_HEIGHT) return ERROR;
-    print_str("fewd");
-    g->map->size.x = tmp;
-    g->map->size.y = ++a.y;
+    g->map.size.x = tmp;
+    g->map.size.y = ++a.y;
     close(of);
     return SUCCESS;
 }
@@ -71,20 +60,20 @@ t_game *            get_data(t_game * g, int of)
 
     l = 0;
     a.x = 0;
-    if (!init_map(g, g->map->size)) return ERROR;
+    if (!init_map(g, g->map.size)) return ERROR;
     while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
         for (a.y = 0, k = 0; k < r; ++k) {
             if (bf[k] == 'b' || bf[k] == 'm') {
                 set_spawns(g, a, bf[k]);
-                g->map->board[a.y][a.x++] = ' ';
+                g->map.board[a.y][a.x++] = ' ';
             } else if (bf[k] == 's') {
                 l = init_snake(a, l);
-                g->map->board[a.y][a.x++] = ' ';
+                g->map.board[a.y][a.x++] = ' ';
             } else if (bf[k] == '\n') {
-                g->map->board[a.y][a.x + 1] = '\0';
-                if (!(g->map->board[++a.y] = create_map_cell(g->map->size.x + 1))) return ERROR;
+                g->map.board[a.y][a.x + 1] = '\0';
+                if (!(g->map.board[++a.y] = create_map_cell(g->map.size.x + 1))) return ERROR;
                 a.x = 0;
-            } else g->map->board[a.y][a.x++] = bf[k];
+            } else g->map.board[a.y][a.x++] = bf[k];
         }
     return g;
 }
@@ -92,11 +81,11 @@ t_game *            get_data(t_game * g, int of)
 void set_spawns(t_game * g, t_axe a, char c)
 {
     if (c == 'b') {
-        g->map->spawns.bonus.x = a.x;
-        g->map->spawns.bonus.y = a.y;
+        g->map.spawns.bonus.x = a.x;
+        g->map.spawns.bonus.y = a.y;
     } else {
-        g->map->spawns.malus.x = a.x;
-        g->map->spawns.malus.y = a.y;
+        g->map.spawns.malus.x = a.x;
+        g->map.spawns.malus.y = a.y;
     }
 }
 
