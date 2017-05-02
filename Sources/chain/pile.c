@@ -73,7 +73,7 @@ t_pile_data             pile_unstack(t_pile_list * l)
  */
 void pile_free(t_pile_list * l)
 {
-    while (!(l->size == 0)) free(pile_list_extract(l));
+    while (l->size != 0) free(pile_list_extract(l));
     free(l);
 }
 
@@ -90,7 +90,7 @@ t_pile_element *        pile_list_extract(t_pile_list * l)
     t_pile_element *    e;
 
     e = 0;
-    if (!(l->size == 0)) {
+    if (l->size != 0) {
         e = l->first;
         l->first = e->next;
         e->next = 0;

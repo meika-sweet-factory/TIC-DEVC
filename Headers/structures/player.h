@@ -3,6 +3,8 @@
 
 #include "geometry.h"
 
+typedef enum s_direction { TOP, BOT, RIGHT, LEFT } e_direction;
+
 /* Pile */
 
 typedef struct  s_pile_data
@@ -36,6 +38,7 @@ typedef struct      s_player
 {
     t_stat          stat;
     t_pile_list *   body;
+    e_direction     direction;
     int             score;
 }                   t_player;
 
