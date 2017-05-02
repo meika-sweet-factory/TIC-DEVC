@@ -15,6 +15,7 @@
 #include "../Headers/memory.h"
 #include "../Headers/chain/pile.h"
 #include "../Headers/helpers/conversion.h"
+#include "../Headers/helpers/print.h"
 
 t_pile_list *   init_snake  (t_axe a, t_pile_list * l);
 _Bool           file_size   (t_game * g, const char * f);
@@ -53,6 +54,7 @@ inline _Bool        file_size(t_game * g, const char * f)
         }
     if (a.x < MIN_WEED && a.x > MAX_WEED) return ERROR;
     if (a.y < MIN_WEED && a.y > MAX_HEIGHT) return ERROR;
+    print_str("fewd");
     g->map->size.x = tmp;
     g->map->size.y = ++a.y;
     close(of);
