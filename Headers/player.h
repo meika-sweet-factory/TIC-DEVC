@@ -6,4 +6,7 @@
 
 /* Usage functions */
 
+_Bool   move        (t_player * p, t_axe d);
+_Bool   add_meat    (t_player * p, t_axe d);
+
 #endif //_SNAKE_PLAYER_H_
