@@ -29,6 +29,7 @@ SRCF := chain/pile.c 			\
 		memory/game.c			\
 		memory/map.c			\
 		memory/player.c			\
+		memory/sdl.c			\
 		interface.c				\
 		file.c 					\
 		map.c 					\

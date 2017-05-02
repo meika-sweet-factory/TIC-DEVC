@@ -2,7 +2,7 @@
 #include "../../Headers/memory.h"
 #define SDL_PARAM SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER
 
-inline _Bool        init_sdl(SDL_Window * window, SDL_Renderer * render)
+inline _Bool        init_sdl(t_game * g, SDL_Window * window, SDL_Renderer * render)
 {
     if (SDL_Init(SDL_PARAM) < 0) return ERROR;
     if (!(window = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
@@ -14,8 +14,6 @@ inline _Bool        init_sdl(SDL_Window * window, SDL_Renderer * render)
     SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
     SDL_RenderClear(render);
     SDL_RenderPresent(render);
-    rect.w = 10;
-    rect.h = 10;
     return SUCCESS;
 }
 

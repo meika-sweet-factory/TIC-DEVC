@@ -14,7 +14,9 @@ _Bool               sdl_engine(t_game * g)
 
     window = 0;
     render = 0;
-    init_sdl(window, render);
+    init_sdl(g, window, render);
+    rect.w = 10;
+    rect.h = 10;
     draw_walls(g, rect, render);
     SDL_Delay(3000);
     free_sdl(window, render);
