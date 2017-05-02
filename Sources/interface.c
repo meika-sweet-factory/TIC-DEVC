@@ -1,9 +1,12 @@
 #include <SDL2/SDL.h>
 #include <time.h>
+#include <stdbool.h>
 #include "../Headers/helpers/print.h"
 #include "../Headers/memory.h"
 #include "../Headers/interface.h"
+#include "../Headers/player.h"
 
+void this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render);
 void draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render);
 
 _Bool               sdl_engine(t_game * g)
@@ -14,11 +17,12 @@ _Bool               sdl_engine(t_game * g)
 
     window = 0;
     render = 0;
-    init_sdl(g, window, render);
+    render = init_sdl(g, window, render);
     rect.w = 10;
     rect.h = 10;
     draw_walls(g, rect, render);
-    SDL_Delay(3000);
+//  Ici la boucle;
+    this_game(g, rect, render);
     free_sdl(window, render);
     return SUCCESS;
 }
@@ -45,10 +49,39 @@ void        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
                 cv = 0;
                 cb = 0;
             }
-            SDL_SetRenderDrawColor(render,cr,cv,cb,255);
+            SDL_SetRenderDrawColor(render,cr,cv,cb,100);
             SDL_RenderFillRect(render, &rect);
         }
     }
     SDL_RenderPresent(render);
 }
 
+void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
+{
+    (void)rect;
+    (void)render;
+    bool        run;
+    SDL_Event   e;
+
+    run = true;
+    while (run)
+    {
+        while(SDL_PollEvent(&e))
+        {
+            if (e.type == SDL_QUIT)
+                run = false;
+            else if (e.type == SDL_KEYDOWN){
+//              keys which will change direction
+                if (e.key.keysym.sym == SDLK_UP) g->player.direction = 0;
+                else if (e.key.keysym.sym == SDLK_DOWN) g->player.direction = 1;
+                else if (e.key.keysym.sym == SDLK_RIGHT) g->player.direction = 2;
+                else if (e.key.keysym.sym == SDLK_LEFT) g->player.direction = 3;
+            }
+        }
+//      Function wichch will update the snake
+        go_forward(g);
+//      Fucntion wich will draw the snake
+//      SDL_UpdateWindowSurface(window);
+//      SDL_RenderPresent(render);
+    }
+}
