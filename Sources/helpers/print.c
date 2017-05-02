@@ -8,9 +8,9 @@ inline void print_char(char c)
     write(1, &c, 1);
 }
 
-void              print_str(const char * s)
+void            print_str(const char *s)
 {
-    const char *  bfs;
+    const char  *bfs;
 
     bfs = s;
     while (*bfs != '\0') {
@@ -28,7 +28,9 @@ void                print_unint(unsigned int n)
         return;
     }
     b = 1;
-    while (b <= (n / 10)) b *= 10;
+    while (b <= (n / 10)) {
+        b *= 10;
+    }
     while (b >= 1) {
         print_char((char) (n / b + '0'));
         n %= b;

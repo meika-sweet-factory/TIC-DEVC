@@ -30,9 +30,9 @@ SRCF := chain/pile.c 			\
 		memory/map.c			\
 		memory/player.c			\
 		memory/sdl.c			\
+		initiator/file.c		\
+		initiator/generate.c	\
 		interface.c				\
-		file.c 					\
-		map.c 					\
 		game.c 					\
 		player.c 				\
 		main.c
