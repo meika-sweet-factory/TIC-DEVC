@@ -8,7 +8,7 @@
 /* Usage functions */
 
 _Bool   move        (t_game * g, t_axe d);
-_Bool   add_meat    (t_player * p, t_axe d);
+_Bool   add_meat    (t_game * g, t_axe d);
 void    go_forward  (t_game * g);
 
 

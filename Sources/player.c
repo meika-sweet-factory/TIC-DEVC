@@ -43,6 +43,6 @@ _Bool           add_meat(t_game * g, t_axe d)
     t_pile_data meat;
 
     meat.coordonate = d;
-    pile_stack(g->player->body, meat);
+    pile_stack(g->player.body, meat);
     return SUCCESS;
 }
