@@ -1,7 +1,8 @@
 #include <SDL2/SDL.h>
 #include <time.h>
-#include "../Headers/interface.h"
 #include "../Headers/helpers/print.h"
+#include "../Headers/memory.h"
+#include "../Headers/interface.h"
 
 void draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render);
 
@@ -11,6 +12,8 @@ _Bool               sdl_engine(t_game * g)
     SDL_Window *    window;
     SDL_Renderer *  render;
 
+    window = 0;
+    render = 0;
     init_sdl(window, render);
     draw_walls(g, rect, render);
     SDL_Delay(3000);

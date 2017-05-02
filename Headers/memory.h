@@ -1,6 +1,7 @@
 #ifndef _SNAKE_MEMORY_H_
 #define _SNAKE_MEMORY_H_
 
+#include <SDL2/SDL.h>
 #include "common.h" 
 #include "structures/game.h" 
 

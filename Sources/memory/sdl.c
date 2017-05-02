@@ -4,11 +4,6 @@
 
 inline _Bool        init_sdl(SDL_Window * window, SDL_Renderer * render)
 {
-    SDL_Window *    window;
-    SDL_Renderer *  render;
-
-    window = 0;
-    render = 0;
     if (SDL_Init(SDL_PARAM) < 0) return ERROR;
     if (!(window = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
                                     SDL_WINDOWPOS_UNDEFINED,
