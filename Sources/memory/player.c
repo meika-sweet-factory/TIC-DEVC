@@ -1,5 +1,6 @@
 #include "../../Headers/player.h"
 #include "../../Headers/memory.h"
+#include "../../Headers/helpers/print.h"
 
 inline _Bool    init_player(t_game *g, t_axe a)
 {

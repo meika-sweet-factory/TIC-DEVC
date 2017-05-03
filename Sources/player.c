@@ -10,7 +10,6 @@ _Bool                   move(t_player * p, t_axe d)
     int                 i;
 
     i = 0;
-    print_int(p->body->first->next->data.coordonate.x);
     if (p->body->first->next->data.coordonate.x == d.x &&
         p->body->first->next->data.coordonate.y == d.y) return ERROR;
     a = p->body->first->data.coordonate;
@@ -20,7 +19,6 @@ _Bool                   move(t_player * p, t_axe d)
         b = e->data.coordonate;
         e->data.coordonate = a;
         a = b;
-        print_int(i);
         i++;
     }
     return SUCCESS;
@@ -42,7 +40,6 @@ inline void     add_player_queue(t_player *p, t_axe a)
 {
     t_pile_data e;
 
-    print_int(a.x);
     e.coordonate = a;
     pile_stack(p->body, e);
 }

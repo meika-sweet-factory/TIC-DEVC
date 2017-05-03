@@ -23,7 +23,6 @@ _Bool               sdl_engine(t_game * g)
     rect.w = 10;
     rect.h = 10;
     render = draw_walls(g, rect, render);
-
 //  Ici la boucle;
     this_game(g, rect, render);
     free_sdl(window, render);
@@ -66,6 +65,7 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     SDL_Event   e;
 
     run = true;
+    g->player->stat.speed = 1000;
     while (run)
     {
         while(SDL_PollEvent(&e))
@@ -86,7 +86,7 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
         SDL_RenderClear(render);
         render = draw_walls(g, rect, render);
         render = draw_snake(g->player, render, rect);
-        SDL_Delay(1000);
+        SDL_Delay(g->player->stat.speed);
     }
 }
 
@@ -100,17 +100,12 @@ SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
     for (e = p->body->first; e != 0; e = e->next) {
         rect.x = e->data.coordonate.x;
         rect.y = e->data.coordonate.y;
-        print_int(rect.y);
-        print_char(':');
-        print_int(rect.x);
-        print_char('\n');
         cr = 255;
         cv = 255;
         cb = 255;
         SDL_SetRenderDrawColor(render,cr,cv,cb,255);
         SDL_RenderFillRect(render, &rect);
     }
-    print_char('\n');
     SDL_RenderPresent(render);
     return render;
 }

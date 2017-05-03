@@ -5,6 +5,8 @@
 #include "../../Headers/player.h"
 #include "../../Headers/memory.h"
 
+#include "../../Headers/helpers/print.h"
+
 void    generate_spawns (t_map *m);
 void    generate_snake  (t_player *p, t_axe a);
 
@@ -23,7 +25,8 @@ _Bool       generate_map(t_game *g, t_axe s)
         g->map->board[a.y][a.x] = '\0';
         a.x = 0;
     }
-    generate_spawns(g->map);
+    s.x /= 2;
+    s.y /= 2;
     if (!init_player(g, s)) return ERROR;
     generate_snake(g->player, s);
     return SUCCESS;
@@ -47,11 +50,7 @@ inline void generate_spawns(t_map *m)
 
 inline void         generate_snake(t_player *p, t_axe a)
 {
-    a.x = a.x / 2 * 10;
-    a.y = a.y / 2 * 10;
-    add_player_queue(p, a);
-    --a.x;
-    add_player_queue(p, a);
-    --a.x;
+    a.x = (a.x / 2) * 10;
+    a.y = (a.y / 2) * 10;
     add_player_queue(p, a);
 }
