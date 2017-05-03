@@ -120,7 +120,7 @@ int main(int argc, char** argv)
     SDL_Renderer *ren = 0;
 
     /* Initialisation de la SDL. Si ça se passe mal, on quitte */
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) < 0)
     {
         fprintf(stderr,"Erreur initialisation\n");
         return -1;

@@ -1,7 +1,7 @@
-WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
-		-Wwrite-strings -Wmissing-prototypes -Wmissing-declarations \
-		-Wredundant-decls -Wnested-externs -Winline -Wno-long-long \
-		-Wuninitialized -Wconversion -Wstrict-prototypes
+WARNINGS := -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align	\
+			-Wwrite-strings -Wmissing-prototypes -Wmissing-declarations		\
+			-Wredundant-decls -Wnested-externs -Winline -Wno-long-long		\
+			-Wuninitialized -Wstrict-prototypes
 
 CFLAGS ?= -std=gnu99 -g $(WARNINGS) -fpic
 
@@ -21,17 +21,20 @@ ifeq ($(DEBUG_BUILD), 1)
     CFLAGS +=-DDEBUG_BUILD
 endif
 
-SRCF := chain/file.c 			\
-		chain/pile.c 		\
-		helpers/type.c 		\
-		helpers/print.c 	\
-		helpers/string.c 	\
-		helpers/random.c	\
-		file.c 			\
-		map.c 			\
-		memory.c 		\
-		game.c 			\
-		player.c 		\
+SRCF := chain/pile.c 			\
+		helpers/type.c 			\
+		helpers/print.c 		\
+		helpers/conversion.c 	\
+		helpers/random.c		\
+		memory/game.c			\
+		memory/map.c			\
+		memory/player.c			\
+		memory/sdl.c			\
+		initiator/file.c		\
+		initiator/generate.c	\
+		interface.c				\
+		game.c 					\
+		player.c 				\
 		main.c
 
 SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))
@@ -40,7 +43,10 @@ OBJS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=o))
 CFLAGS += -MMD -MP
 DEPS := $(patsubst %, $(OBJDIR)/%, $(SRCF:c=d))
 
-all: $(NAME)
+all: clearprompt $(NAME)
+
+clearprompt:
+	clear
 
 objectdir:
 	$(SILENCER)mkdir -p $(OBJDIR)
@@ -49,12 +55,12 @@ outputdir:
 	$(SILENCER)mkdir -p $(OUTDIR)
 
 $(NAME): $(OBJS) | outputdir
-	$(SILENCER)$(CC) $(CFLAGS) -o $(OUTDIR)/$(NAME) $^
+	$(SILENCER)$(CC) $(CFLAGS) -o $(OUTDIR)/$(NAME) $^ -lSDL2_image `sdl2-config --cflags --libs`
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | objectdir
 	$(SILENCER)$(CC) $(CFLAGS) -c -o $@ $<
 
-clean:
+clean: clearprompt
 	$(SILENCER)find . -name "*.o" -type f -delete
 	$(SILENCER)find . -name "*.d" -type f -delete
 

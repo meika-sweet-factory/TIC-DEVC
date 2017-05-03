@@ -2,6 +2,8 @@
 #define _SNAKE_STUCTURE_GAME_H_
 
 #include "geometry.h"
+#include "player.h"
+#include "map.h"
 
 enum bonus
 {
@@ -17,8 +19,9 @@ enum mallus
 
 typedef struct  s_game
 {
-    char **     map;
-    t_axe       size;
+    int         i;
+    t_map      *map;
+    t_player   *player;
 }               t_game;
 
 #endif //_SNAKE_STUCTURE_GAME_H_

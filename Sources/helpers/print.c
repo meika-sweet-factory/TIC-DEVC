@@ -8,15 +8,12 @@ inline void print_char(char c)
     write(1, &c, 1);
 }
 
-void              print_str(const char * s)
+void            print_str(const char *s)
 {
-    const char *  bfs;
+    const char  *bfs;
 
     bfs = s;
-    while (*bfs != '\0') {
-        print_char(*bfs);
-        ++bfs;
-    }
+    while (*bfs != '\0') print_char(*bfs), ++bfs;
 }
 
 void                print_unint(unsigned int n)
@@ -39,9 +36,6 @@ void                print_unint(unsigned int n)
 void print_int(int n)
 {
     if (n == -2147483647) print_str((char *) ("-2147483647"));
-    if (n < 0) {
-        print_char('-');
-        n *= -1;
-    }
+    if (n < 0) print_char('-'), n *= -1;
     print_unint((unsigned int) n);
 }
