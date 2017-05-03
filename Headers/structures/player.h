@@ -1,6 +1,7 @@
 #ifndef _SNAKE_STUCTURE_PLAYER_H_
 #define _SNAKE_STUCTURE_PLAYER_H_
 
+#include <stdint.h>
 #include "geometry.h"
 
 typedef enum s_direction { TOP, BOT, RIGHT, LEFT } e_direction;
@@ -31,7 +32,7 @@ typedef struct      s_pile_list
 typedef struct  s_stat
 {
     int         size;
-    int         speed;
+    uint32_t         speed;
 }               t_stat;
 
 typedef struct      s_player

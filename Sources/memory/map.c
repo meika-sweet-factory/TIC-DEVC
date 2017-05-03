@@ -4,7 +4,7 @@
 inline _Bool    init_map(t_game *g, t_axe s)
 {
     if (s.x < MIN_WEED || s.x > MAX_WEED) return ERROR;
-    if (s.y < MIN_WEED || s.y > MAX_HEIGHT) return ERROR;
+    if (s.y < MIN_HEIGHT || s.y > MAX_HEIGHT) return ERROR;
     if (!(g->map = (t_map *) malloc(sizeof(t_map)))) return ERROR;
     g->map->size = s;
     g->map->board = (char **) malloc((unsigned long) s.y * sizeof(char *));

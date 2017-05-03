@@ -8,7 +8,7 @@ inline SDL_Renderer * init_sdl(t_game *g, SDL_Window *window, SDL_Renderer *rend
     if (SDL_Init(INIT_CONFIG) < 0) return ERROR;
     if (!(window = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
                                     SDL_WINDOWPOS_UNDEFINED,
-                                    g->map->size.x * 10, g->map->size.y * 10,
+                                    (int) g->map->size.x * 10, (int) g->map->size.y * 10,
                                     SDL_WINDOW_SHOWN))) return ERROR;
     if (!(render = SDL_CreateRenderer(window, -1, RENDER_CONFIG))) return ERROR;
     g->player->direction = RIGHT;

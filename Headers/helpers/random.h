@@ -5,7 +5,7 @@
 #include "../../Headers/structures/game.h"
 
 t_axe           generate_rand_pos   (t_map *m, int type);
-unsigned short  rand_pos            (unsigned short max);
-unsigned short  initial_rand_pos    (unsigned short max);
+int  rand_pos            (int max);
+int  initial_rand_pos    (int max);
 
 #endif //_RANDOM_H_

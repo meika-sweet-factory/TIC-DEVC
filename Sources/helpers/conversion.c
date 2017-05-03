@@ -1,6 +1,6 @@
 #include "../../Headers/helpers/conversion.h"
 
-unsigned short  str_to_unshort(const char *s)
+int  str_to_int(const char *s)
 {
     int         i;
     int         v;
@@ -10,14 +10,14 @@ unsigned short  str_to_unshort(const char *s)
         v = v * 10 + s[i] - 48;
         if (v > 65534) return 0;
     }
-    return (unsigned short) v;
+    return v;
 }
 
 t_axe       str_to_axe(const char * restrict x, const char * restrict y)
 {
     t_axe   a;
 
-    a.x = str_to_unshort(x);
-    a.y = str_to_unshort(y);
+    a.x = str_to_int(x);
+    a.y = str_to_int(y);
     return a;
 }

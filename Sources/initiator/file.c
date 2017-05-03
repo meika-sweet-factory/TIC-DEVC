@@ -27,8 +27,8 @@ _Bool   load_map(t_game * restrict g, const char * restrict f)
 
 inline _Bool        load_base(t_game *g, int of)
 {
-    unsigned short  k;
-    unsigned short  tmp;
+    int  k;
+    int  tmp;
     char            bf[4096];
     t_axe           a;
 
@@ -51,8 +51,8 @@ inline _Bool        load_base(t_game *g, int of)
 
 _Bool               load_data(t_game *g, int of)
 {
-    unsigned short  k;
-    unsigned short  r;
+    int  k;
+    ssize_t  r;
     char            bf[4096];
     t_axe           a;
 

@@ -18,29 +18,29 @@ t_axe       generate_rand_pos(t_map *m, int type)
 
 
 
-unsigned short  initial_rand_pos(unsigned short max)
+int        initial_rand_pos(int max)
 {
-    int         b;
+    int    b;
 
-    srand((unsigned short) (time(NULL) + (rand() % 100)));
-    b = rand() % max + 1;
+    srand((unsigned int) (time(NULL) + (rand() % 100)));
+    b = (rand() % max) + 1;
     while (
         b == max || b == max - 1 || b == 0 || 
         b == max / 2 || b == (max + 1) / 2)
     {
-        b = (rand() % (max)) + 1;
+        b = (rand() % max) + 1;
     }
-    return (unsigned short) b;
+    return b;
 }
 
-unsigned short      rand_pos(unsigned short max)
+int      rand_pos(int max)
 {
     int  b;
 
-    srand((unsigned short) (time(NULL) + (rand() % 100)));
-    b = rand() % max + 1;
+    srand((unsigned int) (time(NULL) + (rand() % 100)));
+    b = (rand() % max) + 1;
     while (b == max || b == max - 1 || b == 0) {
-        b = (rand() % (max)) + 1;
+        b = (rand() % max) + 1;
     }
-    return (unsigned short) b;
+    return b;
 }

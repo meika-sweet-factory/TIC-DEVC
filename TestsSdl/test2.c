@@ -70,7 +70,7 @@ void  dessin(SDL_Renderer * ren)
     SDL_Rect rect;
     int cr,cv,cb;
     int res;
-    unsigned int value;
+    int value;
     int i,j;
 
     rect.w=1;

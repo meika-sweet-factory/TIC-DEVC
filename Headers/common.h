@@ -8,10 +8,10 @@
 
 /* Data */
 
-static const unsigned MAX_WEED = 1080;
-static const unsigned MIN_WEED = 5;
-static const unsigned MAX_HEIGHT = 1920;
-static const unsigned MIN_HEIGHT = 5;
+static const int MAX_WEED = 1080;
+static const int MIN_WEED = 5;
+static const int MAX_HEIGHT = 1920;
+static const int MIN_HEIGHT = 5;
 
 /* Window */
 

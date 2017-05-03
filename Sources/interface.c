@@ -33,9 +33,9 @@ SDL_Renderer *        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * rende
 {
     t_axe   m;
     t_axe   map;
-    int     cr;
-    int     cv;
-    int     cb;
+    uint8_t     cr;
+    uint8_t     cv;
+    uint8_t     cb;
 
     SDL_SetRenderDrawBlendMode(render, SDL_BLENDMODE_BLEND);
     for (m.y = 0, map.y = 0; m.y < g->map->size.y * 10; m.y += 10, ++map.y) {
@@ -93,9 +93,9 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
 {
     t_pile_element  *e;
-    int     cr;
-    int     cv;
-    int     cb;
+    uint8_t     cr;
+    uint8_t     cv;
+    uint8_t     cb;
 
     for (e = p->body->first; e != 0; e = e->next) {
         rect.x = e->data.coordonate.x;
