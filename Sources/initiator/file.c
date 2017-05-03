@@ -3,30 +3,27 @@
 #include <unistd.h>
 #include "../../Headers/helpers/conversion.h"
 #include "../../Headers/initiator/file.h"
-#include "../../Headers/chain/pile.h"
+#include "../../Headers/player.h"
 #include "../../Headers/memory.h"
 
-#include "../../Headers/helpers/print.h"
-
-t_pile_list *   load_player (t_axe a, t_pile_list *l);
-_Bool           file_size   (t_game *g, int of);
-t_game *        file_data   (t_game *g, int of);
-void            set_spawns  (t_game *g, t_axe a, char c);
+_Bool           load_base   (t_game *g, int of);
+_Bool           load_data   (t_game *g, int of);
+void            load_spawns (t_game *g, t_axe a, char c);
 
 _Bool   load_map(t_game * restrict g, const char * restrict f)
 {
     int of;
 
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
-    if (!(file_size(g, of))) return ERROR;
+    if (!(load_base(g, of))) return ERROR;
     close(of);
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
-    g = file_data(g, of);
+    if (!(load_data(g, of))) return ERROR;
     close(of);
     return SUCCESS;
 }
 
-inline _Bool        file_size(t_game *g, int of)
+inline _Bool        load_base(t_game *g, int of)
 {
     unsigned short  k;
     unsigned short  tmp;
@@ -39,51 +36,44 @@ inline _Bool        file_size(t_game *g, int of)
         for (a.y = 0, k = 0; bf[k] != '\0'; ++a.x, ++k) {
             if (bf[k] == '\n' || bf[k] == '\0') {
                 ++a.y;
-                if (a.x - 1 > tmp) {
-                    tmp = a.x;
-                }
+                if (a.x - 1 > tmp) tmp = a.x;
                 a.x = 0;
             }
         }
     }
-    if (a.x < MIN_WEED && a.x > MAX_WEED) return ERROR;
-    if (a.y < MIN_HEIGHT && a.y > MAX_HEIGHT) return ERROR;
-    print_str("fwe");
-    g->map->size.x = tmp;
-    print_str("13eefwds");
-    g->map->size.y = ++a.y;
+    a.x = tmp;
+    a.y += 1;
+    if (!(init_map(g, a))) return ERROR;
     return SUCCESS;
 }
 
-t_game *            file_data(t_game *g, int of)
+_Bool               load_data(t_game *g, int of)
 {
     unsigned short  k;
     unsigned short  r;
     char            bf[4096];
     t_axe           a;
-    t_pile_list     * l;
 
-    l = 0;
     a.x = 0;
-    if (!init_map(g, g->map->size)) return ERROR;
-    while ((r = (unsigned short) read(of, &bf, 4096)) > 0)
+    while ((r = read(of, &bf, sizeof(bf))) > 0) {
         for (a.y = 0, k = 0; k < r; ++k) {
             if (bf[k] == 'b' || bf[k] == 'm') {
-                set_spawns(g, a, bf[k]);
+                load_spawns(g, a, bf[k]);
                 g->map->board[a.y][a.x++] = ' ';
             } else if (bf[k] == 's') {
-                l = load_player(a, l);
+                init_player(g, a);
                 g->map->board[a.y][a.x++] = ' ';
-            } else if (bf[k] == '\n') {
+            } else if (bf[k] == '\n' || bf[k] == '\0') {
                 g->map->board[a.y][a.x + 1] = '\0';
                 if (!(g->map->board[++a.y] = create_map_cell(g->map->size.x + 1))) return ERROR;
                 a.x = 0;
             } else g->map->board[a.y][a.x++] = bf[k];
         }
-    return g;
+    }
+    return SUCCESS;
 }
 
-void set_spawns(t_game * g, t_axe a, char c)
+void load_spawns(t_game * g, t_axe a, char c)
 {
     if (c == 'b') {
         g->map->spawns.bonus.x = a.x;
@@ -93,16 +83,4 @@ void set_spawns(t_game * g, t_axe a, char c)
         g->map->spawns.malus.x = a.x;
         g->map->spawns.malus.y = a.y;
     }
-}
-
-t_pile_list *       load_player(t_axe a, t_pile_list *l)
-{
-    t_pile_data     snake;
-
-    snake.coordonate = a;
-    if (l == 0) {
-        l = pile_create();
-    }
-    pile_stack(l, snake);
-    return l;
 }

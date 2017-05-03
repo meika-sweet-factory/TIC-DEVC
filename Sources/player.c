@@ -1,6 +1,6 @@
 #include "../Headers/player.h"
 
-_Bool                   move(t_player * p, t_axe d)
+_Bool                   move(t_player *p, t_axe d)
 {
     t_axe               a;
     t_axe               b;
@@ -27,7 +27,7 @@ _Bool                   move(t_player * p, t_axe d)
     return SUCCESS;
 }
 
-void        go_forward(t_player * p)
+inline void move_forward(t_player *p)
 {
     t_axe   d;
 
@@ -38,11 +38,10 @@ void        go_forward(t_player * p)
     move(p, d);
 }
 
-_Bool           add_meat(t_player * p, t_axe d)
+inline void     add_player_queue(t_player *p, t_axe a)
 {
-    t_pile_data meat;
+    t_pile_data e;
 
-    meat.coordonate = d;
-    pile_stack(p->body, meat);
-    return SUCCESS;
+    e.coordonate = a;
+    pile_stack(p->body, e);
 }

@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include "../../Headers/helpers/random.h"
 
-t_axe       generate_rand_pos(t_game *g, int type)
+t_axe       generate_rand_pos(t_map *m, int type)
 {
     t_axe   item;
 
     if (type == 0) {
-        item.x = initial_rand_pos(g->map->size.x);
-        item.y = initial_rand_pos(g->map->size.y);
+        item.x = initial_rand_pos(m->size.x);
+        item.y = initial_rand_pos(m->size.y);
     }
     else {
-        item.x = rand_pos(g->map->size.x);
-        item.y = rand_pos(g->map->size.y);
+        item.x = rand_pos(m->size.x);
+        item.y = rand_pos(m->size.y);
     }
     return item;
 }
