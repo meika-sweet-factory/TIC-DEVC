@@ -6,7 +6,7 @@
 #include "../Headers/player.h"
 #include "../Headers/draw.h"
 
-void this_game(t_game *g, SDL_Rect rect, SDL_Renderer * render);
+void event_loop(t_game *g, SDL_Rect rect, SDL_Renderer * render);
 
 _Bool               sdl_engine(t_game * g)
 {
@@ -26,7 +26,7 @@ _Bool               sdl_engine(t_game * g)
     return SUCCESS;
 }
 
-void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
+void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 {
     bool        run;
     SDL_Event   e;
@@ -43,11 +43,10 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
                 else if (e.key.keysym.sym == SDLK_LEFT) g->player->direction = 3;
             }
         }
-        move_forward(g->player);
+        move_forward(g->player, g);
         SDL_RenderClear(render);
         render = draw_walls(g, rect, render);
         render = draw_snake(g->player, render, rect);
         SDL_Delay(g->player->stat.speed);
     }
 }
-

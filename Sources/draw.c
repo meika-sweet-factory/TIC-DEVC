@@ -58,3 +58,28 @@ SDL_Renderer *  draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     SDL_RenderPresent(render);
     return render;
 }
+
+SDL_Renderer *      draw_spawn(t_map * m, SDL_Renderer * render, SDL_Rect rect, char spawn)
+{
+    uint8_t         cr;
+    uint8_t         cv;
+    uint8_t         cb;
+
+    if (spawn == 'b') {
+        rect.x = m->spawns.bonus.x;
+        rect.y = m->spawns.bonus.y;
+        cr = 0;
+        cv = 255;
+        cb = 0;
+    } else {
+        rect.x = m->spawns.malus.x;
+        rect.y = m->spawns.malus.y;
+        cr = 255;
+        cv = 0;
+        cb = 0;
+    }
+    SDL_SetRenderDrawColor(render,cr,cv,cb,255);
+    SDL_RenderFillRect(render, &rect);
+    SDL_RenderPresent(render);
+    return render;
+}

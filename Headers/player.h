@@ -7,8 +7,8 @@
 
 /* Usage functions */
 
-_Bool   move                (t_player * p, t_axe d);
+_Bool   move                (t_player * p, t_axe d, t_game * g);
 void    add_player_queue    (t_player * p, t_axe a);
-void    move_forward        (t_player * p);
+void    move_forward        (t_player * p, t_game * g);
 
 #endif //_SNAKE_PLAYER_H_
