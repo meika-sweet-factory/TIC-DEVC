@@ -14,8 +14,8 @@ _Bool           init_player         (t_game *g, t_axe s);
 t_game *        create_game         (void);
 char *          create_map_cell     (int x);
 void            free_game           (t_game *g);
-void            free_map            (t_game *g);
-void            free_player         (t_game *g);
+void            free_map            (t_map *m);
+void            free_player         (t_player *p);
 void            free_sdl            (SDL_Window *window, SDL_Renderer *render);
 
 #endif //_SNAKE_MEMORY_H_

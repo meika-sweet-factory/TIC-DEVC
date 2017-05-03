@@ -12,8 +12,8 @@ inline _Bool    init_player(t_game *g, t_axe a)
     return SUCCESS;
 }
 
-inline void free_player(t_game *g)
+inline void free_player(t_player *p)
 {
-    pile_free(g->player->body);
-    free(g->player);
+    pile_free(p->body);
+    free(p);
 }

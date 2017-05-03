@@ -13,10 +13,7 @@ void            print_str(const char *s)
     const char  *bfs;
 
     bfs = s;
-    while (*bfs != '\0') {
-        print_char(*bfs);
-        ++bfs;
-    }
+    while (*bfs != '\0') print_char(*bfs), ++bfs;
 }
 
 void                print_unint(unsigned int n)
@@ -28,9 +25,7 @@ void                print_unint(unsigned int n)
         return;
     }
     b = 1;
-    while (b <= (n / 10)) {
-        b *= 10;
-    }
+    while (b <= (n / 10)) b *= 10;
     while (b >= 1) {
         print_char((char) (n / b + '0'));
         n %= b;
@@ -41,9 +36,6 @@ void                print_unint(unsigned int n)
 void print_int(int n)
 {
     if (n == -2147483647) print_str((char *) ("-2147483647"));
-    if (n < 0) {
-        print_char('-');
-        n *= -1;
-    }
+    if (n < 0) print_char('-'), n *= -1;
     print_unint((unsigned int) n);
 }

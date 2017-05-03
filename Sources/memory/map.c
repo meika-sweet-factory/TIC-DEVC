@@ -17,13 +17,11 @@ inline char * create_map_cell(int x)
     return (char *) malloc((unsigned long) (x + 1) * sizeof(char));
 }
 
-inline void free_map(t_game *g)
+inline void free_map(t_map *m)
 {
     int i;
 
-    for (i = 0; i != g->map->size.y; ++i) {
-        free(g->map->board[i]);
-    }
-    free(g->map->board);
-    free(g->map);
+    for (i = 0; i != m->size.y; ++i) free(m->board[i]);
+    free(m->board);
+    free(m);
 }

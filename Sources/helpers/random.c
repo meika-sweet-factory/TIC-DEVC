@@ -9,8 +9,7 @@ t_axe       generate_rand_pos(t_map *m, int type)
     if (type == 0) {
         item.x = initial_rand_pos(m->size.x);
         item.y = initial_rand_pos(m->size.y);
-    }
-    else {
+    } else {
         item.x = rand_pos(m->size.x);
         item.y = rand_pos(m->size.y);
     }
