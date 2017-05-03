@@ -42,7 +42,7 @@ SDL_Renderer *  draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
         for (m.x = 0, map.x = 0; m.x < g->map->size.x * 10; m.x += 10, ++map.x) {
             rect.x = m.x;
             rect.y = m.y;
-            if (g->map->board[map.y][map.x] == '1') {
+            if (g->map->board[map.y][map.x] == WALL) {
                 cr = 255;
                 cv = 255;
                 cb = 255;

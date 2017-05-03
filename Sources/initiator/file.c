@@ -69,7 +69,8 @@ inline _Bool    load_data(t_game * g, int of)
                 g->map->board[a.y][a.x + 1] = '\0';
                 if (!(g->map->board[++a.y] = create_map_cell(g->map->size.x + 1))) return ERROR;
                 a.x = 0;
-            } else g->map->board[a.y][a.x++] = bf[k];
+            } else if (bf[k] == '1')g->map->board[a.y][a.x++] = WALL;
+            else g->map->board[a.y][a.x++] = TERRAIN;
         }
     }
     return SUCCESS;
