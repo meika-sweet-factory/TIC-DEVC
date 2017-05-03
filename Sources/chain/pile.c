@@ -41,6 +41,7 @@ void                    pile_stack(t_pile_list * l, t_pile_data p)
     e->precedent = 0;
     if (l->size == 0) l->first = e;
     else {
+        e->next = l->first->next;
         l->first->next = e;
         e->precedent = l->first;
     }
