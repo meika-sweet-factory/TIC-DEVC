@@ -3,24 +3,24 @@
 #define INIT_CONFIG SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER
 #define RENDER_CONFIG SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC
 
-inline SDL_Renderer * init_sdl(t_game *g, SDL_Window *window, SDL_Renderer *render)
+inline SDL_Renderer * init_sdl(t_game * g, SDL_Window * w, SDL_Renderer * r)
 {
     if (SDL_Init(INIT_CONFIG) < 0) return ERROR;
-    if (!(window = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
+    if (!(w = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
                                     SDL_WINDOWPOS_UNDEFINED,
-                                    (int) g->map->size.x * 10, (int) g->map->size.y * 10,
+                                    g->map->size.x * 10, g->map->size.y * 10,
                                     SDL_WINDOW_SHOWN))) return ERROR;
-    if (!(render = SDL_CreateRenderer(window, -1, RENDER_CONFIG))) return ERROR;
+    if (!(r = SDL_CreateRenderer(w, -1, RENDER_CONFIG))) return ERROR;
     g->player->direction = RIGHT;
-    SDL_SetRenderDrawColor(render, 0, 0, 0, 255);
-    SDL_RenderClear(render);
-    SDL_RenderPresent(render);
-    return render;
+    SDL_SetRenderDrawColor(r, 0, 0, 0, 255);
+    SDL_RenderClear(r);
+    SDL_RenderPresent(r);
+    return r;
 }
 
-inline void free_sdl(SDL_Window *window, SDL_Renderer *render)
+inline void free_sdl(SDL_Window * w, SDL_Renderer * r)
 {
-    SDL_DestroyRenderer(render);
-    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(r);
+    SDL_DestroyWindow(w);
     SDL_Quit();
 }

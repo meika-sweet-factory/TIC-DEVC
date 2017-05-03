@@ -8,10 +8,11 @@
 /* Usable functions */
 
 inline _Bool    new_game(
-    const char * restrict x, const char * restrict y,
-    _Bool (*process)(t_game *g))
+    const char * restrict x,
+    const char * restrict y,
+    _Bool (* process)(t_game * g))
 {
-    t_game      *g;
+    t_game *    g;
 
     if (!(g = create_game())) return EXIT_FAILURE;
     if (!generate_map(g, str_to_axe(x, y))) return EXIT_FAILURE;
@@ -22,9 +23,9 @@ inline _Bool    new_game(
 
 inline _Bool    load_game(
     const char * restrict f,
-    _Bool (*process)(t_game *g))
+    _Bool (* process)(t_game * g))
 {
-    t_game      *g;
+    t_game *    g;
 
     if (!(g = create_game())) return EXIT_FAILURE;
     if (!load_map(g, f)) return EXIT_FAILURE;

@@ -6,8 +6,8 @@
 
 /* Usage functions */
 
-_Bool   new_game    (const char * restrict x, const char * restrict y, _Bool (*process)(t_game *g));
-_Bool   load_game   (const char *f, _Bool (*process)(t_game *g));
+_Bool   new_game    (const char * restrict x, const char * restrict y, _Bool (* process)(t_game * g));
+_Bool   load_game   (const char * f, _Bool (* process)(t_game *g));
 _Bool   play_game   (t_game *g);
 
 #endif //_SNAKE_GAME_H_

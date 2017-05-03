@@ -6,16 +6,16 @@
 #include "../Headers/interface.h"
 #include "../Headers/player.h"
 
-void            this_game(t_game *g, SDL_Rect rect, SDL_Renderer * render);
-SDL_Renderer *  draw_walls(t_game *g, SDL_Rect rect, SDL_Renderer *render);
-SDL_Renderer *  draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect);
+void            event_loop  (t_game * g, SDL_Rect rect, SDL_Renderer * render);
+SDL_Renderer *  draw_walls  (t_game * g, SDL_Rect rect, SDL_Renderer * render);
+SDL_Renderer *  draw_snake  (t_player * p, SDL_Renderer * render, SDL_Rect rect);
 
 
 _Bool               sdl_engine(t_game * g)
 {
     SDL_Rect        rect;
-    SDL_Window      *window;
-    SDL_Renderer    *render;
+    SDL_Window *    window;
+    SDL_Renderer *  render;
 
     window = 0;
     render = 0;
@@ -24,15 +24,15 @@ _Bool               sdl_engine(t_game * g)
     rect.h = 10;
     render = draw_walls(g, rect, render);
 //  Ici la boucle;
-    this_game(g, rect, render);
+    event_loop(g, rect, render);
     free_sdl(window, render);
     return SUCCESS;
 }
 
-SDL_Renderer *        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
+SDL_Renderer *  draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 {
-    t_axe   m;
-    t_axe   map;
+    t_axe       m;
+    t_axe       map;
     uint8_t     cr;
     uint8_t     cv;
     uint8_t     cb;
@@ -59,20 +59,17 @@ SDL_Renderer *        draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * rende
     return render;
 }
 
-void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
+void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 {
     bool        run;
     SDL_Event   e;
 
     run = true;
     g->player->stat.speed = 1000;
-    while (run)
-    {
-        while(SDL_PollEvent(&e))
-        {
-            if (e.type == SDL_QUIT)
-                run = false;
-            else if (e.type == SDL_KEYDOWN){
+    while (run) {
+        while(SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) run = false;
+            else if (e.type == SDL_KEYDOWN) {
                 if (e.key.keysym.sym == SDLK_UP) g->player->direction = 0;
                 else if (e.key.keysym.sym == SDLK_DOWN) g->player->direction = 1;
                 else if (e.key.keysym.sym == SDLK_RIGHT) g->player->direction = 2;
@@ -90,12 +87,12 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     }
 }
 
-SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
+SDL_Renderer *          draw_snake(t_player * p, SDL_Renderer * render, SDL_Rect rect)
 {
-    t_pile_element  *e;
-    uint8_t     cr;
-    uint8_t     cv;
-    uint8_t     cb;
+    t_pile_element *    e;
+    uint8_t             cr;
+    uint8_t             cv;
+    uint8_t             cb;
 
     for (e = p->body->first; e != 0; e = e->next) {
         rect.x = e->data.coordonate.x;

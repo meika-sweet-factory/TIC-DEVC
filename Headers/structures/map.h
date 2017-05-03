@@ -11,7 +11,7 @@ typedef struct  s_items
 
 typedef struct  s_map
 {
-    char        **board;
+    char **     board;
     t_items     spawns;
     t_axe       size;
 }               t_map;

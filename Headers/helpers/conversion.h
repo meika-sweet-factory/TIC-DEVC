@@ -8,7 +8,7 @@
 
 /* Usage functions */
 
-int  str_to_int  (const char *s);
-t_axe           str_to_axe      (const char * restrict x, const char * restrict y);
+int     str_to_int  (const char * s);
+t_axe   str_to_axe  (const char * restrict x, const char * restrict y);
 
 #endif //_SNAKE_CONVERSION_H_

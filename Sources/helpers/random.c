@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../../Headers/helpers/random.h"
 
-t_axe       generate_rand_pos(t_map *m, int type)
+t_axe       generate_rand_pos(t_map * m, int type)
 {
     t_axe   item;
 
@@ -39,8 +39,6 @@ int      rand_pos(int max)
 
     srand((unsigned int) (time(NULL) + (rand() % 100)));
     b = (rand() % max) + 1;
-    while (b == max || b == max - 1 || b == 0) {
-        b = (rand() % max) + 1;
-    }
+    while (b == max || b == max - 1 || b == 0) b = (rand() % max) + 1;
     return b;
 }

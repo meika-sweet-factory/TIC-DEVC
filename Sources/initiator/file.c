@@ -8,9 +8,9 @@
 
 #include "../../Headers/helpers/print.h"
 
-_Bool           load_base   (t_game *g, int of);
-_Bool           load_data   (t_game *g, int of);
-void            load_spawns (t_game *g, t_axe a, char c);
+_Bool           load_base   (t_game * g, int of);
+_Bool           load_data   (t_game * g, int of);
+void            load_spawns (t_game * g, t_axe a, char c);
 
 _Bool   load_map(t_game * restrict g, const char * restrict f)
 {
@@ -25,12 +25,12 @@ _Bool   load_map(t_game * restrict g, const char * restrict f)
     return SUCCESS;
 }
 
-inline _Bool        load_base(t_game *g, int of)
+inline _Bool    load_base(t_game *g, int of)
 {
-    int  k;
-    int  tmp;
-    char            bf[4096];
-    t_axe           a;
+    int         k;
+    int         tmp;
+    char        bf[4096];
+    t_axe       a;
 
     a.x = 0;
     tmp = 0;
@@ -49,12 +49,12 @@ inline _Bool        load_base(t_game *g, int of)
     return SUCCESS;
 }
 
-_Bool               load_data(t_game *g, int of)
+_Bool       load_data(t_game * g, int of)
 {
-    int  k;
-    ssize_t  r;
-    char            bf[4096];
-    t_axe           a;
+    int     k;
+    ssize_t r;
+    char    bf[4096];
+    t_axe   a;
 
     a.x = 0;
     while ((r = read(of, &bf, sizeof(bf))) > 0) {
@@ -80,8 +80,7 @@ void load_spawns(t_game * g, t_axe a, char c)
     if (c == 'b') {
         g->map->spawns.bonus.x = a.x;
         g->map->spawns.bonus.y = a.y;
-    }
-    else {
+    } else {
         g->map->spawns.malus.x = a.x;
         g->map->spawns.malus.y = a.y;
     }

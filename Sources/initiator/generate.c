@@ -5,12 +5,10 @@
 #include "../../Headers/player.h"
 #include "../../Headers/memory.h"
 
-#include "../../Headers/helpers/print.h"
+void    generate_spawns (t_map * m);
+void    generate_snake  (t_player * p, t_axe a);
 
-void    generate_spawns (t_map *m);
-void    generate_snake  (t_player *p, t_axe a);
-
-_Bool       generate_map(t_game *g, t_axe s)
+_Bool       generate_map(t_game * g, t_axe s)
 {
     t_axe   a;
 
@@ -32,20 +30,18 @@ _Bool       generate_map(t_game *g, t_axe s)
     return SUCCESS;
 }
 
-inline void generate_spawns(t_map *m)
+inline void generate_spawns(t_map * m)
 {
-    t_axe   bonus;
-    t_axe   malus;
+    t_axe   bs;
+    t_axe   ms;
 
-    bonus = generate_rand_pos(m, 0);
-    m->spawns.bonus.x = bonus.x;
-    m->spawns.bonus.y = bonus.y;
-    malus = generate_rand_pos(m, 0);
-    while (malus.y == bonus.y && malus.x == bonus.x) {
-        malus = generate_rand_pos(m, 0);
-    }
-    m->spawns.malus.x = malus.x;
-    m->spawns.malus.y = malus.y;
+    bs = generate_rand_pos(m, 0);
+    m->spawns.bonus.x = bs.x;
+    m->spawns.bonus.y = bs.y;
+    ms = generate_rand_pos(m, 0);
+    while (ms.y == bs.y && ms.x == bs.x) ms = generate_rand_pos(m, 0);
+    m->spawns.malus.x = ms.x;
+    m->spawns.malus.y = ms.y;
 }
 
 inline void         generate_snake(t_player *p, t_axe a)

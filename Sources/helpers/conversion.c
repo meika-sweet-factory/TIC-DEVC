@@ -1,6 +1,6 @@
 #include "../../Headers/helpers/conversion.h"
 
-int  str_to_int(const char *s)
+int  str_to_int(const char * s)
 {
     int         i;
     int         v;

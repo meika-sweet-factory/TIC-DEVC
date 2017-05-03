@@ -20,8 +20,8 @@ enum mallus
 typedef struct  s_game
 {
     int         i;
-    t_map      *map;
-    t_player   *player;
+    t_map *     map;
+    t_player *  player;
 }               t_game;
 
 #endif //_SNAKE_STUCTURE_GAME_H_
