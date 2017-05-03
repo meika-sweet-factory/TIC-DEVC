@@ -10,6 +10,10 @@ inline _Bool    init_player(t_game * g, t_axe a)
     else {
         if (!(g->player = (t_player *) malloc(sizeof(t_player)))) return ERROR;
         if (!(g->player->body = pile_create())) return ERROR;
+        g->player->direction = RIGHT;
+        g->player->score = 0;
+        g->player->stat.size = 0;
+        g->player->stat.speed = 0;
         add_player_queue(g->player, a);
     }
     return SUCCESS;

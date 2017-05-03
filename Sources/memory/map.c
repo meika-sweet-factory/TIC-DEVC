@@ -9,6 +9,10 @@ inline _Bool    init_map(t_game * g, t_axe s)
     g->map->size = s;
     g->map->board = (char **) malloc((unsigned long) s.y * sizeof(char *));
     g->map->board[0] = create_map_cell(s.x);
+    g->map->spawns.bonus.x = 0;
+    g->map->spawns.bonus.y = 0;
+    g->map->spawns.malus.x = 0;
+    g->map->spawns.malus.y = 0;
     return SUCCESS;
 }
 

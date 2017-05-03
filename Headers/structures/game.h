@@ -19,7 +19,6 @@ enum mallus
 
 typedef struct  s_game
 {
-    int         i;
     t_map *     map;
     t_player *  player;
 }               t_game;

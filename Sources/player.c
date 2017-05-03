@@ -29,7 +29,8 @@ inline void move_forward(t_player *p)
     t_axe   d;
 
     d = p->body->first->data.coordonate;
-    if (p->direction == LEFT) d.x -= 10;
+    if (p->direction == NONE) return VOID;
+    else if (p->direction == LEFT) d.x -= 10;
     else if (p->direction == RIGHT) d.x += 10;
     else if (p->direction == TOP) d.y -= 10;
     else if (p->direction == BOT) d.y += 10;

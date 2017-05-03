@@ -11,7 +11,6 @@ inline SDL_Renderer * init_sdl(t_game * g, SDL_Window * w, SDL_Renderer * r)
                                     g->map->size.x * 10, g->map->size.y * 10,
                                     SDL_WINDOW_SHOWN))) return ERROR;
     if (!(r = SDL_CreateRenderer(w, -1, RENDER_CONFIG))) return ERROR;
-    g->player->direction = RIGHT;
     SDL_SetRenderDrawColor(r, 0, 0, 0, 255);
     SDL_RenderClear(r);
     SDL_RenderPresent(r);

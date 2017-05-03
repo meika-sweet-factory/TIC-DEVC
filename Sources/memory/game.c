@@ -1,9 +1,13 @@
 #include <stdlib.h>
 #include "../../Headers/memory.h"
 
-inline t_game * create_game(void)
+inline          t_game * create_game(void)
 {
-    return (t_game *) malloc(sizeof(t_game));
+    t_game *    g;
+    g = (t_game *) malloc(sizeof(t_game));
+    g->player = 0;
+    g->map = 0;
+    return g;
 }
 
 inline void free_game(t_game * g)

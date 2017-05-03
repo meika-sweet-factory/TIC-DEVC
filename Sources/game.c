@@ -34,7 +34,7 @@ inline _Bool    load_game(
     return EXIT_SUCCESS;
 }
 
-_Bool play_game(t_game *g)
+_Bool play_normal_game(t_game *g)
 {
     sdl_engine(g);
     return SUCCESS;
