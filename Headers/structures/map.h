@@ -3,6 +3,8 @@
 
 #include "geometry.h"
 
+typedef enum s_board { TERRAIN, WALL } t_board;
+
 typedef struct  s_items
 {
     t_axe       bonus;
@@ -11,7 +13,7 @@ typedef struct  s_items
 
 typedef struct  s_map
 {
-    char **     board;
+    t_board **  board;
     t_items     spawns;
     t_axe       size;
 }               t_map;

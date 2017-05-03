@@ -33,9 +33,9 @@ void    print_unint(int n)
     }
 }
 
-void print_int(int n)
+inline void print_int(int n)
 {
-    if (n == -2147483647) print_str((char *) ("-2147483647"));
+    if (n == -2147483647) print_str("-2147483647");
     if (n < 0) print_char('-'), n *= -1;
     print_unint((int) n);
 }

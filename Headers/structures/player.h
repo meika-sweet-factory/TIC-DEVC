@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include "geometry.h"
 
-typedef enum s_direction { NONE, TOP, BOT, RIGHT, LEFT } e_direction;
+typedef enum s_direction { TOP, BOT, RIGHT, LEFT } e_direction;
 
 /* Pile */
 

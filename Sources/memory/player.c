@@ -2,7 +2,7 @@
 #include "../../Headers/memory.h"
 #include "../../Headers/helpers/print.h"
 
-inline _Bool    init_player(t_game * g, t_axe a)
+inline _Bool init_player(t_game * g, t_axe a)
 {
     a.x *= 10;
     a.y *= 10;

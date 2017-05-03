@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "../../Headers/memory.h"
 
-inline          t_game * create_game(void)
+inline t_game * create_game(void)
 {
     t_game *    g;
     g = (t_game *) malloc(sizeof(t_game));

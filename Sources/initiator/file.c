@@ -8,9 +8,9 @@
 
 #include "../../Headers/helpers/print.h"
 
-_Bool           load_base   (t_game * g, int of);
-_Bool           load_data   (t_game * g, int of);
-void            load_spawns (t_game * g, t_axe a, char c);
+_Bool   load_base   (t_game * g, int of);
+_Bool   load_data   (t_game * g, int of);
+void    load_spawns (t_game * g, t_axe a, char c);
 
 _Bool   load_map(t_game * restrict g, const char * restrict f)
 {
@@ -49,22 +49,22 @@ inline _Bool    load_base(t_game *g, int of)
     return SUCCESS;
 }
 
-_Bool       load_data(t_game * g, int of)
+inline _Bool    load_data(t_game * g, int of)
 {
-    int     k;
-    ssize_t r;
-    char    bf[4096];
-    t_axe   a;
+    int         k;
+    ssize_t     r;
+    char        bf[4096];
+    t_axe       a;
 
     a.x = 0;
     while ((r = read(of, &bf, sizeof(bf))) > 0) {
         for (a.y = 0, k = 0; k < r; ++k) {
             if (bf[k] == 'b' || bf[k] == 'm') {
                 load_spawns(g, a, bf[k]);
-                g->map->board[a.y][a.x++] = ' ';
+                g->map->board[a.y][a.x++] = TERRAIN;
             } else if (bf[k] == 's') {
                 init_player(g, a);
-                g->map->board[a.y][a.x++] = ' ';
+                g->map->board[a.y][a.x++] = TERRAIN;
             } else if (bf[k] == '\n' || bf[k] == '\0') {
                 g->map->board[a.y][a.x + 1] = '\0';
                 if (!(g->map->board[++a.y] = create_map_cell(g->map->size.x + 1))) return ERROR;
@@ -75,7 +75,7 @@ _Bool       load_data(t_game * g, int of)
     return SUCCESS;
 }
 
-void load_spawns(t_game * g, t_axe a, char c)
+inline void load_spawns(t_game * g, t_axe a, char c)
 {
     if (c == 'b') {
         g->map->spawns.bonus.x = a.x;

@@ -10,7 +10,6 @@ void            event_loop  (t_game * g, SDL_Rect rect, SDL_Renderer * render);
 SDL_Renderer *  draw_walls  (t_game * g, SDL_Rect rect, SDL_Renderer * render);
 SDL_Renderer *  draw_snake  (t_player * p, SDL_Renderer * render, SDL_Rect rect);
 
-
 _Bool               sdl_engine(t_game * g)
 {
     SDL_Rect        rect;

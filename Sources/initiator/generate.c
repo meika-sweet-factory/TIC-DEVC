@@ -16,9 +16,9 @@ _Bool       generate_map(t_game * g, t_axe s)
     for (a.y = 0; a.y < s.y; ++a.y) {
         if (!(g->map->board[a.y] = create_map_cell(s.x))) return ERROR;
         for (a.x = 0; a.x < s.x; ++a.x) {
-            if ((a.x == 0)||(a.x == s.x - 1)) g->map->board[a.y][a.x] = '1';
-            else if (((a.y == 0) || (a.y == s.y -1)) && a.x != s.x -1) g->map->board[a.y][a.x] = '1';
-            else if (a.x != s.x) g->map->board[a.y][a.x] = ' ';
+            if ((a.x == 0 || a.x == s.x - 1) || ((a.y == 0 || a.y == s.y - 1) && a.x != s.x - 1)) {
+                g->map->board[a.y][a.x] = WALL;
+            } else if (a.x != s.x) g->map->board[a.y][a.x] = TERRAIN;
         }
         g->map->board[a.y][a.x] = '\0';
         a.x = 0;
