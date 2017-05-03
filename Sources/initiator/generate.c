@@ -26,6 +26,7 @@ _Bool       generate_map(t_game * g, t_axe s)
     s.x /= 2;
     s.y /= 2;
     if (!init_player(g, s)) return ERROR;
+    generate_spawns(g->map);
     generate_snake(g->player, s);
     return SUCCESS;
 }
@@ -36,12 +37,12 @@ inline void generate_spawns(t_map * m)
     t_axe   ms;
 
     bs = generate_rand_pos(m, 0);
-    m->spawns.bonus.x = bs.x;
-    m->spawns.bonus.y = bs.y;
+    m->spawns.bonus.x = bs.x * 10;
+    m->spawns.bonus.y = bs.y * 10;
     ms = generate_rand_pos(m, 0);
     while (ms.y == bs.y && ms.x == bs.x) ms = generate_rand_pos(m, 0);
-    m->spawns.malus.x = ms.x;
-    m->spawns.malus.y = ms.y;
+    m->spawns.malus.x = ms.x * 10;
+    m->spawns.malus.y = ms.y * 10;
 }
 
 inline void         generate_snake(t_player *p, t_axe a)

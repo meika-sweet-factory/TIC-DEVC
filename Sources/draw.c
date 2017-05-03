@@ -9,6 +9,8 @@
 */
 #include "../Headers/draw.h"
 
+#include "../Headers/helpers/print.h"
+
 SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
 {
     t_pile_element  *e;
@@ -25,7 +27,6 @@ SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
         SDL_SetRenderDrawColor(render,cr,cv,cb,255);
         SDL_RenderFillRect(render, &rect);
     }
-    SDL_RenderPresent(render);
     return render;
 }
 
@@ -55,7 +56,6 @@ SDL_Renderer *  draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
             SDL_RenderFillRect(render, &rect);
         }
     }
-    SDL_RenderPresent(render);
     return render;
 }
 
@@ -80,6 +80,5 @@ SDL_Renderer *      draw_spawn(t_map * m, SDL_Renderer * render, SDL_Rect rect, 
     }
     SDL_SetRenderDrawColor(render,cr,cv,cb,255);
     SDL_RenderFillRect(render, &rect);
-    SDL_RenderPresent(render);
     return render;
 }

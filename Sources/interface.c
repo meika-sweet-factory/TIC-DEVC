@@ -32,7 +32,7 @@ void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     SDL_Event   e;
 
     run = true;
-    g->player->stat.speed = 50;
+    g->player->stat.speed = 100;
     while (run) {
         while(SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) run = false;
@@ -45,8 +45,11 @@ void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
         }
         if (!move_forward(g->player, g)) run = false;
         SDL_RenderClear(render);
+        render = draw_spawn(g->map, render, rect, 'b');
+        render = draw_spawn(g->map, render, rect, 's');
         render = draw_walls(g, rect, render);
         render = draw_snake(g->player, render, rect);
+        SDL_RenderPresent(render);
         SDL_Delay(g->player->stat.speed);
     }
 }
