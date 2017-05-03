@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "../Headers/helpers/conversion.h"
-#include "../Headers/helpers/print.h"
-#include "../Headers/initiator/file.h"
-#include "../Headers/chain/pile.h"
-#include "../Headers/memory.h"
+#include "../../Headers/helpers/conversion.h"
+#include "../../Headers/initiator/file.h"
+#include "../../Headers/chain/pile.h"
+#include "../../Headers/memory.h"
+
+#include "../../Headers/helpers/print.h"
 
 t_pile_list *   load_player (t_axe a, t_pile_list *l);
 _Bool           file_size   (t_game *g, int of);
@@ -46,8 +47,10 @@ inline _Bool        file_size(t_game *g, int of)
         }
     }
     if (a.x < MIN_WEED && a.x > MAX_WEED) return ERROR;
-    if (a.y < MIN_WEED && a.y > MAX_HEIGHT) return ERROR;
+    if (a.y < MIN_HEIGHT && a.y > MAX_HEIGHT) return ERROR;
+    print_str("fwe");
     g->map->size.x = tmp;
+    print_str("13eefwds");
     g->map->size.y = ++a.y;
     return SUCCESS;
 }

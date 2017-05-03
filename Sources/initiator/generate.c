@@ -1,10 +1,10 @@
 #include <stdlib.h>
-#include "../Headers/helpers/random.h"
-#include "../Headers/helpers/print.h"
-#include "../Headers/initiator/generate.h"
-#include "../Headers/memory.h"
-#include "../Headers/player.h"
-#include "../Headers/memory.h"
+#include "../../Headers/helpers/random.h"
+#include "../../Headers/helpers/print.h"
+#include "../../Headers/initiator/generate.h"
+#include "../../Headers/memory.h"
+#include "../../Headers/player.h"
+#include "../../Headers/memory.h"
 
 _Bool       generate_map(t_game *g, t_axe s)
 {

@@ -81,7 +81,7 @@ void            this_game(t_game * g, SDL_Rect rect, SDL_Renderer * render)
             }
         }
 //      Function wichch will update the snake
-        go_forward(g);
+        go_forward(g->player);
 //      Need a function to set delay associated with bonus (fast)
 //        render = draw_snake(g->player, render, rect);
         SDL_Delay(500);

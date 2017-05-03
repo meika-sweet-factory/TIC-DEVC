@@ -1,8 +1,8 @@
 #ifndef _SNAKE_FILE_H_
 #define _SNAKE_FILE_H_
 
-#include "common.h"
-#include "structures/game.h"
+#include "../common.h"
+#include "../structures/game.h"
 
 /* Usage functions */
 

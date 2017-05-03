@@ -8,7 +8,6 @@
 /* Usable functions */
 
 inline _Bool    new_game(
-    t_game * restrict g,
     const char * restrict x, const char * restrict y,
     _Bool (*process)(t_game *g))
 {
@@ -22,7 +21,6 @@ inline _Bool    new_game(
 }
 
 inline _Bool    load_game(
-    t_game * restrict g,
     const char * restrict f,
     _Bool (*process)(t_game *g))
 {
