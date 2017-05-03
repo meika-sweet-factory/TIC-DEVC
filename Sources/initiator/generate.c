@@ -24,8 +24,6 @@ _Bool       generate_map(t_game *g, t_axe s)
         a.x = 0;
     }
     generate_spawns(g->map);
-    s.x *= 10;
-    s.y *= 10;
     if (!init_player(g, s)) return ERROR;
     generate_snake(g->player, s);
     return SUCCESS;
@@ -49,8 +47,8 @@ inline void generate_spawns(t_map *m)
 
 inline void         generate_snake(t_player *p, t_axe a)
 {
-    a.x /= 2;
-    a.y /= 2;
+    a.x = a.x / 2 * 10;
+    a.y = a.y / 2 * 10;
     add_player_queue(p, a);
     --a.x;
     add_player_queue(p, a);
