@@ -1,3 +1,12 @@
+/*
+** draw.c for  in /home/killianb/Documents/code_c/libsdl/snake/Sources
+** 
+** Made by BAILLIF Killian
+** Login   <bailli_k@etna-alternance.net>
+** 
+** Started on  Wed May  3 14:21:24 2017 BAILLIF Killian
+** Last update Wed May  3 14:21:27 2017 BAILLIF Killian
+*/
 #include "../Headers/draw.h"
 
 SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
