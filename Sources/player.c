@@ -2,7 +2,7 @@
 
 #include "../Headers/helpers/print.h"
 
-_Bool                   move(t_player * p, t_axe d)
+_Bool                   move(t_player * p, t_axe d, t_game * g)
 {
     t_axe               a;
     t_axe               b;
@@ -12,6 +12,7 @@ _Bool                   move(t_player * p, t_axe d)
     i = 0;
     if (p->body->first->next->data.coordonate.x == d.x &&
         p->body->first->next->data.coordonate.y == d.y) return ERROR;
+    if (g->map->board[d.y/10][d.x/10] == '1') return ERROR;
     a = p->body->first->data.coordonate;
     p->body->first->data.coordonate.x = d.x;
     p->body->first->data.coordonate.y = d.y;
@@ -24,7 +25,7 @@ _Bool                   move(t_player * p, t_axe d)
     return SUCCESS;
 }
 
-inline void move_forward(t_player *p)
+inline void move_forward(t_player *p, t_game * g)
 {
     t_axe   d;
 
@@ -34,7 +35,7 @@ inline void move_forward(t_player *p)
     else if (p->direction == RIGHT) d.x += 10;
     else if (p->direction == TOP) d.y -= 10;
     else if (p->direction == BOT) d.y += 10;
-    move(p, d);
+    move(p, d, g);
 }
 
 inline void     add_player_queue(t_player *p, t_axe a)
