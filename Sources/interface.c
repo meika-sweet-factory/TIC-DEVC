@@ -23,6 +23,7 @@ _Bool               sdl_engine(t_game * g)
     rect.w = 10;
     rect.h = 10;
     render = draw_walls(g, rect, render);
+
 //  Ici la boucle;
     this_game(g, rect, render);
     free_sdl(window, render);

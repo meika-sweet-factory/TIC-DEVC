@@ -6,6 +6,8 @@
 #include "../../Headers/player.h"
 #include "../../Headers/memory.h"
 
+#include "../../Headers/helpers/print.h"
+
 _Bool           load_base   (t_game *g, int of);
 _Bool           load_data   (t_game *g, int of);
 void            load_spawns (t_game *g, t_axe a, char c);

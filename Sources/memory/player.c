@@ -3,12 +3,15 @@
 
 inline _Bool    init_player(t_game *g, t_axe a)
 {
+    a.x *= 10;
+    a.y *= 10;
     if (g->player) {
         add_player_queue(g->player, a);
-        return SUCCESS;
+    } else {
+        if (!(g->player = (t_player *) malloc(sizeof(t_player)))) return ERROR;
+        if (!(g->player->body = pile_create())) return ERROR;
+        add_player_queue(g->player, a);
     }
-    if (!(g->player = (t_player *) malloc(sizeof(t_player)))) return ERROR;
-    if (!(g->player->body = pile_create())) return ERROR;
     return SUCCESS;
 }
 
