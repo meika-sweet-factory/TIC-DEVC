@@ -32,7 +32,7 @@ void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     SDL_Event   e;
 
     run = true;
-    g->player->stat.speed = 100;
+    g->player->stat.speed = 500;
     while (run) {
         while(SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) run = false;
