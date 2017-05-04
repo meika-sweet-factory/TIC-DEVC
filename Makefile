@@ -56,7 +56,7 @@ outputdir:
 	$(SILENCER)mkdir -p $(OUTDIR)
 
 $(NAME): $(OBJS) | outputdir
-	$(SILENCER)$(CC) $(CFLAGS) -o $(OUTDIR)/$(NAME) $^ -lSDL2_image `sdl2-config --cflags --libs`
+	$(SILENCER)$(CC) $(CFLAGS) -o $(OUTDIR)/$(NAME) $^ -lSDL2_image -lSDL2_ttf `sdl2-config --cflags --libs`
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | objectdir
 	$(SILENCER)$(CC) $(CFLAGS) -c -o $@ $<
