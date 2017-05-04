@@ -55,7 +55,11 @@ _Bool play_normal_game(t_game *g)
             if (e.type == SDL_QUIT) i = -2;
             if (e.type == SDL_KEYDOWN){
                 if (e.key.keysym.sym == SDLK_y) {
-                    SDL_RenderClear(render);
+                   free_sdl(window, render);
+                    render = init_sdl(g, window, render);
+                    g->player = 0;
+                    if (g->file != 0) load_map(g, g->file);
+                    else generate_map(g, g->map->size);
                     sdl_engine(g, render);
                 };
                 if (e.key.keysym.sym == SDLK_n) {

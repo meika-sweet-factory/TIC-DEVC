@@ -12,5 +12,7 @@ t_axe   str_to_axe  (const char * restrict x, const char * restrict y);
 int     str_to_int  (const char * s);
 void    str_copy    (char * sd, const char * sc);
 void    str_cat     (char * sd, const char * sc);
+char * my_itoa(int num, char * str);
+
 
 #endif //_SNAKE_CONVERSION_H_

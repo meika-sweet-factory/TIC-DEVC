@@ -17,6 +17,7 @@ _Bool   load_map(t_game * restrict g, const char * restrict f)
     int of;
 
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
+    g->file = f;
     if (!(load_base(g, of))) return ERROR;
     close(of);
     if ((of = open(f, O_RDONLY)) == -1) return ERROR;
@@ -79,10 +80,10 @@ inline _Bool    load_data(t_game * g, int of)
 inline void load_spawns(t_game * g, t_axe a, char c)
 {
     if (c == 'b') {
-        g->map->spawns.bonus.x = a.x;
-        g->map->spawns.bonus.y = a.y;
+        g->map->spawns.bonus.x = a.x * 10;
+        g->map->spawns.bonus.y = a.y * 10;
     } else {
-        g->map->spawns.malus.x = a.x;
-        g->map->spawns.malus.y = a.y;
+        g->map->spawns.malus.x = a.x * 10;
+        g->map->spawns.malus.y = a.y * 10;
     }
 }

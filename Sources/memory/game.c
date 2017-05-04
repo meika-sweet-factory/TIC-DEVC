@@ -7,6 +7,7 @@ inline t_game * create_game(void)
     g = (t_game *) malloc(sizeof(t_game));
     g->player = 0;
     g->map = 0;
+    g->file = 0;
     return g;
 }
 

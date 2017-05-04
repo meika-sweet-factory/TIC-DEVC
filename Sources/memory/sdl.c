@@ -10,7 +10,7 @@ inline SDL_Renderer * init_sdl(t_game * g, SDL_Window * w, SDL_Renderer * r)
     if (TTF_Init() < 0) return ERROR;
     if (!(w = SDL_CreateWindow("Snake 2.0", SDL_WINDOWPOS_UNDEFINED,
                                     SDL_WINDOWPOS_UNDEFINED,
-                                    g->map->size.x * 10, g->map->size.y * 10,
+                                    g->map->size.x * 10 + 100, g->map->size.y * 10,
                                     SDL_WINDOW_SHOWN))) return ERROR;
     if (!(r = SDL_CreateRenderer(w, -1, RENDER_CONFIG))) return ERROR;
     SDL_SetRenderDrawColor(r, 0, 0, 0, 255);
