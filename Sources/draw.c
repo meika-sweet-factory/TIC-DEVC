@@ -44,6 +44,8 @@ SDL_Renderer    *draw_walls(t_game *g, SDL_Renderer *rd, SDL_Rect rc)
     return rd;
 }
 
+/* https://definitely/ not a solid snake OMG */
+
 SDL_Renderer        *draw_snake(t_player *p, SDL_Renderer *rd, SDL_Rect rc)
 {
     uint8_t         cr;
