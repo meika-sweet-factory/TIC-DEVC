@@ -6,7 +6,7 @@
 #include "../Headers/player.h"
 #include "../Headers/draw.h"
 
-void event_loop(t_game *g, SDL_Rect rect, SDL_Renderer * render);
+void event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render);
 
 _Bool               sdl_engine(t_game * g)
 {

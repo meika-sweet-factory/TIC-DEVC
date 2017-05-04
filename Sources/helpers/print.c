@@ -22,7 +22,7 @@ void    print_unint(int n)
 
     if (n < 10) {
         print_char((char) (n + 48));
-        return VOID;
+        return;
     }
     b = 1;
     while (b <= (n / 10)) b *= 10;
