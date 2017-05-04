@@ -22,7 +22,6 @@ _Bool               sdl_engine(t_game * g, SDL_Renderer * render)
     rect.w = 10;
     rect.h = 10;
     render = draw_walls(g, rect, render);
-//  Ici la boucle;
     event_loop(g, rect, render);
     return SUCCESS;
 }
@@ -55,7 +54,6 @@ void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     }
     SDL_Delay(1000);
 }
-
 
 inline _Bool     game_over(t_map * m, SDL_Renderer * render)
 {
