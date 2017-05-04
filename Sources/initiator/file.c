@@ -6,11 +6,13 @@
 #include "../../Headers/player.h"
 #include "../../Headers/memory.h"
 
-#include "../../Headers/helpers/print.h"
+/* Internal functions prototype */
 
-_Bool   load_base   (t_game * g, int of);
-_Bool   load_data   (t_game * g, int of);
-void    load_spawns (t_game * g, t_axe a, char c);
+_Bool   load_base   (t_game *g, int of);
+_Bool   load_data   (t_game *g, int of);
+void    load_spawns (t_map *m, t_axe a, char c);
+
+/* Usable functions */
 
 _Bool   load_map(t_game * restrict g, const char * restrict f)
 {
@@ -25,6 +27,8 @@ _Bool   load_map(t_game * restrict g, const char * restrict f)
     close(of);
     return SUCCESS;
 }
+
+/* Internal functions */
 
 inline _Bool    load_base(t_game *g, int of)
 {
@@ -50,7 +54,7 @@ inline _Bool    load_base(t_game *g, int of)
     return SUCCESS;
 }
 
-inline _Bool    load_data(t_game * g, int of)
+inline _Bool    load_data(t_game *g, int of)
 {
     int         k;
     ssize_t     r;
@@ -61,7 +65,7 @@ inline _Bool    load_data(t_game * g, int of)
     while ((r = read(of, &bf, sizeof(bf))) > 0) {
         for (a.y = 0, k = 0; k < r; ++k) {
             if (bf[k] == 'b' || bf[k] == 'm') {
-                load_spawns(g, a, bf[k]);
+                load_spawns(g->map, a, bf[k]);
                 g->map->board[a.y][a.x++] = TERRAIN;
             } else if (bf[k] == 's') {
                 init_player(g, a);
@@ -77,13 +81,13 @@ inline _Bool    load_data(t_game * g, int of)
     return SUCCESS;
 }
 
-inline void load_spawns(t_game * g, t_axe a, char c)
+inline void load_spawns(t_map *m, t_axe a, char c)
 {
     if (c == 'b') {
-        g->map->spawns.bonus.x = a.x * 10;
-        g->map->spawns.bonus.y = a.y * 10;
+        m->spawns.bonus.x = a.x * 10;
+        m->spawns.bonus.y = a.y * 10;
     } else {
-        g->map->spawns.malus.x = a.x * 10;
-        g->map->spawns.malus.y = a.y * 10;
+        m->spawns.malus.x = a.x * 10;
+        m->spawns.malus.y = a.y * 10;
     }
 }

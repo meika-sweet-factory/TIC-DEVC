@@ -1,41 +1,44 @@
-#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <string.h>
 #include "../Headers/helpers/conversion.h"
-#include "../Headers/memory.h"
-#include "../Headers/interface.h"
-#include "../Headers/player.h"
 #include "../Headers/draw.h"
+#include "../Headers/interface.h"
+#include "../Headers/memory.h"
+#include "../Headers/player.h"
 
-#include "../Headers/helpers/print.h"
+/* Internal functions prototype */
 
-void event_loop(t_game *g, SDL_Rect rect, SDL_Renderer * render);
-_Bool     game_over(t_map * m, SDL_Renderer * render);
-char *my_strcat(char *dest, char *src);
-SDL_Renderer * game_interface(t_game * g, SDL_Renderer * render, SDL_Rect rect, int timerini);
+void            event_loop      (t_game *g, SDL_Rect rect, SDL_Renderer * render);
+_Bool           game_over       (t_map *m, SDL_Renderer *render);
+SDL_Renderer    *game_interface (t_game *g, SDL_Renderer *render, SDL_Rect rect, int timerini);
 
-_Bool               sdl_engine(t_game * g, SDL_Renderer * render)
+/* Usable functions */
+
+_Bool           sdl_engine(t_game *g, SDL_Renderer *rd)
 {
-    SDL_Rect        rect;
+    SDL_Rect    rect;
 
     rect.w = 10;
     rect.h = 10;
-    render = draw_walls(g, rect, render);
-    event_loop(g, rect, render);
+    rd = draw_walls(g, rd, rect);
+    event_loop(g, rect, rd);
     return SUCCESS;
 }
 
-void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
-{
-    _Bool        run;
-    SDL_Event   e;
-    int         timerini;
+/* Internal functions */
 
-    timerini = (int)time(NULL);
+void            event_loop(t_game *g, SDL_Rect rect, SDL_Renderer *rd)
+{
+    int         timerini;
+    _Bool       run;
+    SDL_Event   e;
+
+    timerini = (int) time(NULL);
     run = TRUE;
-    g->player->stat.speed = 100;
+    g->player->stat.speed = SPEED;
     while (run) {
         while(SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) run = FALSE;
@@ -46,45 +49,43 @@ void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
                 else if (e.key.keysym.sym == SDLK_LEFT) g->player->direction = 3;
             }
         }
-        SDL_RenderClear(render);
-        if (!move_forward(g->player, g)) run = game_over(g->map, render);
-        render = game_interface(g, render, rect, timerini);
-        SDL_RenderPresent(render);
+        SDL_RenderClear(rd);
+        if (!move_forward(g->map, g->player)) run = game_over(g->map, rd);
+        rd = game_interface(g, rd, rect, timerini);
+        SDL_RenderPresent(rd);
         SDL_Delay(g->player->stat.speed);
     }
     SDL_Delay(1000);
 }
 
-inline _Bool     game_over(t_map * m, SDL_Renderer * render)
+inline _Bool    game_over(t_map *m, SDL_Renderer *rd)
 {
+    SDL_Rect    rc;
 
-    SDL_Rect fontrect;
-
-    fontrect.x = fontrect.y = 10;
-    draw_string("Game Over", fontrect, render, m);
-    fontrect.y = 17 + m->size.x;
-    fontrect.x = 10;
-    draw_string("Replay y or n", fontrect, render, m);
+    rc.x = rc.y = 10;
+    draw_string(m, rd, rc, "Game Over");
+    rc.y = 17 + m->size.x;
+    rc.x = 10;
+    draw_string(m, rd, rc,"Replay y or n");
     return FALSE;
 }
 
 
-SDL_Renderer * game_interface(t_game * g, SDL_Renderer * render, SDL_Rect rect, int timerini)
+SDL_Renderer    *game_interface(t_game *g, SDL_Renderer *rd, SDL_Rect rc, int ti)
 {
-    int timer2 = (int)time(NULL) - timerini;
-    render = draw_spawn(g->map, render, rect, 'b');
-    render = draw_spawn(g->map, render, rect, 's');
-    render = draw_walls(g, rect, render);
-    render = draw_snake(g->player, render, rect);
-    rect.x =  g->map->size.x * 10 + 2;
-    rect.y = 40;
-    render = draw_score(render, "Score", rect);
-    rect.x += 70;
-    render = draw_intscore(render, rect, g->player->score);
-    rect.x =  g->map->size.x * 10 + 2;
-    rect.y = 10;
-    render = draw_score(render, "Time", rect);
-    rect.x += 58;
-    render = draw_intscore(render, rect, timer2);
-    return render;
+    rd = draw_spawn(g->map, rd, rc, 'b');
+    rd = draw_spawn(g->map, rd, rc, 's');
+    rd = draw_walls(g, rd, rc);
+    rd = draw_snake(g->player, rd, rc);
+    rc.x =  g->map->size.x * 10 + 2;
+    rc.y = 40;
+    rd = draw_score(rd, rc, "Score");
+    rc.x += 70;
+    rd = draw_intscore(rd, rc, g->player->score);
+    rc.x =  g->map->size.x * 10 + 2;
+    rc.y = 10;
+    rd = draw_score(rd, rc, "Time");
+    rc.x += 58;
+    rd = draw_intscore(rd, rc, (int) time(NULL) - ti);
+    return rd;
 }

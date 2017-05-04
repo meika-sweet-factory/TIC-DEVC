@@ -3,7 +3,7 @@
 
 /* Internal functions */
 
-t_pile_element * pile_list_extract(t_pile_list * l);
+t_pile_element  *pile_list_extract(t_pile_list *l);
 
 /* Usage functions */
 
@@ -13,9 +13,9 @@ t_pile_element * pile_list_extract(t_pile_list * l);
  * @param   void
  * @return  t_pile_list
  */
-t_pile_list *       pile_create()
+t_pile_list     *pile_create()
 {
-    t_pile_list *   l;
+    t_pile_list *l;
 
     l = (t_pile_list *) malloc(sizeof(t_pile_list));
     l->first = 0;
@@ -31,9 +31,9 @@ t_pile_list *       pile_create()
  *          t_pile_data - p
  * @return: void
  */
-void                    pile_stack(t_pile_list * l, t_pile_data p)
+void                pile_stack(t_pile_list *l, t_pile_data p)
 {
-    t_pile_element *    e;
+    t_pile_element  *e;
 
     e = malloc(sizeof(t_pile_element));
     e->data = p;
@@ -55,10 +55,10 @@ void                    pile_stack(t_pile_list * l, t_pile_data p)
  * @param   t_pile_list - l
  * @return  t_pile_data
  */
-t_pile_data             pile_unstack(t_pile_list * l)
+t_pile_data         pile_unstack(t_pile_list *l)
 {
-    t_pile_element *    e;
-    t_pile_data         d;
+    t_pile_element  *e;
+    t_pile_data     d;
 
     e = pile_list_extract(l);
     d = e->data;
@@ -72,7 +72,7 @@ t_pile_data             pile_unstack(t_pile_list * l)
  * @param   t_pile_list - l
  * @return  void
  */
-void pile_free(t_pile_list * l)
+void pile_free(t_pile_list *l)
 {
     while (l->size != 0) free(pile_list_extract(l));
     free(l);
@@ -86,9 +86,9 @@ void pile_free(t_pile_list * l)
  * @param   t_pile_list - l
  * @return  t_pile_element
  */
-t_pile_element *        pile_list_extract(t_pile_list * l)
+t_pile_element      *pile_list_extract(t_pile_list *l)
 {
-    t_pile_element *    e;
+    t_pile_element  *e;
 
     e = 0;
     if (l->size != 0) {

@@ -5,10 +5,14 @@
 #include "../../Headers/player.h"
 #include "../../Headers/memory.h"
 
-void        generate_snake  (t_player * p, t_axe a);
-void        generate_spawns (t_map * m);
+/* Internal functions prototype */
 
-_Bool       generate_map(t_game * g, t_axe s)
+void        generate_snake  (t_player *p, t_axe a);
+void        generate_spawns (t_map *m);
+
+/* Usable functions */
+
+_Bool       generate_map(t_game *g, t_axe s)
 {
     t_axe   a;
 
@@ -31,7 +35,9 @@ _Bool       generate_map(t_game * g, t_axe s)
     return SUCCESS;
 }
 
-inline void generate_spawns(t_map * m)
+/* Internal functions */
+
+inline void generate_spawns(t_map *m)
 {
     t_axe   bs;
     t_axe   ms;
@@ -45,7 +51,7 @@ inline void generate_spawns(t_map * m)
     m->spawns.malus.y = ms.y * 10;
 }
 
-inline void         generate_snake(t_player *p, t_axe a)
+inline void generate_snake(t_player *p, t_axe a)
 {
     a.x = (a.x / 2) * 10;
     a.y = (a.y / 2) * 10;

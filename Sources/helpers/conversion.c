@@ -1,8 +1,7 @@
 #include "../../Headers/helpers/conversion.h"
+#include "../../Headers/helpers/string.h"
 
-#include "../../Headers/helpers/print.h"
-
-void reverse(char * str, int length);
+/* Usable functions */
 
 t_axe       str_to_axe(const char * restrict x, const char * restrict y)
 {
@@ -13,7 +12,7 @@ t_axe       str_to_axe(const char * restrict x, const char * restrict y)
     return a;
 }
 
-int     str_to_int(const char * s)
+int     str_to_int(const char *s)
 {
     int i;
     int v;
@@ -26,44 +25,28 @@ int     str_to_int(const char * s)
     return v;
 }
 
-inline void str_copy(char * sd, const char * sc)
+inline void str_copy(char * restrict sd, const char * restrict sc)
 {
     while ((*sd++ = *sc++) != '\0');
 }
 
-inline void str_cat(char * sd, const char * sc)
+inline void str_cat(char * restrict sd, const char * restrict sc)
 {
     while (*sd) sd++;
     str_copy(sd, sc);
 }
 
-void reverse(char * str, int length)
+char    *int_to_str(int num, char *str)
 {
-    int start;
-    int end;
-    char tmp;
+    int i;
 
-    start = 0;
-    end = length -1;
-    while (start < end) {
-        tmp = *(str+end);
-        *(str+end) = *(str+start);
-        *(str+start) = tmp;
-        start++;
-        end--;
-    }
-}
-
-char * my_itoa(int num, char * str) {
-    int i = 0;
-    if (num == 0)
-    {
+    i = 0;
+    if (num == 0) {
         str[i++] = '0';
         str[i] = '\0';
         return str;
     }
-    while (num != 0)
-    {
+    while (num != 0) {
         int rem = num % 10;
         str[i++] = (rem > 9) ? (char) ((rem - 10) + 'a') : (char) (rem + '0');
         num /= 10;

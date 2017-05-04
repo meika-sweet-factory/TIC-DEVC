@@ -21,5 +21,7 @@ static const unsigned WINDOW_WIDTH = 800;
 static const unsigned WINDOW_HEIGHT = 600;
 static const unsigned BOX_WIDTH = 256;
 static const unsigned BOX_HEIGHT = 256;
+static const unsigned SPEED = 250;
+static const unsigned SPEED_UP = 10;
 
 #endif //_SNAKE_COMMON_H_

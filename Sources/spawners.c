@@ -1,13 +1,15 @@
 #include <stdlib.h>
 #include <time.h>
-#include "../Headers/spawners.h"
-#include "../Headers/player.h"
 #include "../Headers/helpers/random.h"
+#include "../Headers/player.h"
+#include "../Headers/spawners.h"
 
-_Bool get_spawn(t_player * p, t_map * m)
+/* Usable functions */
+
+_Bool       get_spawn(t_map *m, t_player *p)
 {
-    t_axe bs;
-    t_axe ms;
+    t_axe   bs;
+    t_axe   ms;
 
     if (p->body->first->data.coordonate.x == m->spawns.bonus.x &&
         p->body->first->data.coordonate.y == m->spawns.bonus.y) {
@@ -31,25 +33,20 @@ void    rand_bonus(t_player * p)
     int b;
 
     srand((unsigned int) (time(NULL) + (rand() % 100)));
-    b = (rand() % 2);
+    b = rand() % 2;
     ++p->score;
-    if (b == 0)
-    {
-        add_player_queue(p, p->body->first->data.coordonate);
-    } else {
-        p->stat.speed -= 10;
-    }
+    if (b == 0) add_player_queue(p, p->body->first->data.coordonate);
+    else p->stat.speed -= SPEED_UP;
 }
 
-_Bool rand_malus(t_player * p)
+_Bool   rand_malus(t_player *p)
 {
     int b;
 
     srand((unsigned int) (time(NULL) + (rand() % 100)));
     b = (rand() % 2);
-    if (b == 0) {
-        return ERROR;
-    } else {
+    if (b == 0) return ERROR;
+    else {
         if (p->body->size > 2) remove_player_queue(p);
         else return ERROR;
     }

@@ -7,46 +7,27 @@
 ** Started on  Wed May  3 14:21:24 2017 BAILLIF Killian
 ** Last update Wed May  3 14:21:27 2017 BAILLIF Killian
 */
+
 #include <SDL2/SDL_ttf.h>
 #include <unistd.h>
-#include "../Headers/draw.h"
 #include "../Headers/helpers/conversion.h"
+#include "../Headers/draw.h"
 
-#include "../Headers/helpers/print.h"
+/* Usable functions */
 
-
-SDL_Renderer *      draw_snake(t_player *p, SDL_Renderer *render, SDL_Rect rect)
+SDL_Renderer    *draw_walls(t_game *g, SDL_Renderer *rd, SDL_Rect rc)
 {
-    t_pile_element  *e;
-    uint8_t         cr;
-    uint8_t         cv;
-    uint8_t         cb;
-
-    for (e = p->body->first; e != 0; e = e->next) {
-        rect.x = e->data.coordonate.x;
-        rect.y = e->data.coordonate.y;
-        cr = 255;
-        cv = 255;
-        cb = 255;
-        SDL_SetRenderDrawColor(render,cr,cv,cb,255);
-        SDL_RenderFillRect(render, &rect);
-    }
-    return render;
-}
-
-SDL_Renderer *  draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
-{
-    t_axe       m;
-    t_axe       map;
     uint8_t     cr;
     uint8_t     cv;
     uint8_t     cb;
+    t_axe       m;
+    t_axe       map;
 
-    SDL_SetRenderDrawBlendMode(render, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawBlendMode(rd, SDL_BLENDMODE_BLEND);
     for (m.y = 0, map.y = 0; m.y < g->map->size.y * 10; m.y += 10, ++map.y) {
         for (m.x = 0, map.x = 0; m.x < g->map->size.x * 10; m.x += 10, ++map.x) {
-            rect.x = m.x;
-            rect.y = m.y;
+            rc.x = m.x;
+            rc.y = m.y;
             if (g->map->board[map.y][map.x] == WALL) {
                 cr = 255;
                 cv = 255;
@@ -56,44 +37,63 @@ SDL_Renderer *  draw_walls(t_game * g, SDL_Rect rect, SDL_Renderer * render)
                 cv = 0;
                 cb = 0;
             }
-            SDL_SetRenderDrawColor(render,cr,cv,cb,100);
-            SDL_RenderFillRect(render, &rect);
+            SDL_SetRenderDrawColor(rd,cr,cv,cb,100);
+            SDL_RenderFillRect(rd, &rc);
         }
     }
-    return render;
+    return rd;
 }
 
-SDL_Renderer *      draw_spawn(t_map * m, SDL_Renderer * render, SDL_Rect rect, char spawn)
+SDL_Renderer        *draw_snake(t_player *p, SDL_Renderer *rd, SDL_Rect rc)
 {
     uint8_t         cr;
     uint8_t         cv;
     uint8_t         cb;
+    t_pile_element  *e;
+
+    for (e = p->body->first; e != 0; e = e->next) {
+        rc.x = e->data.coordonate.x;
+        rc.y = e->data.coordonate.y;
+        cr = 255;
+        cv = 255;
+        cb = 255;
+        SDL_SetRenderDrawColor(rd,cr,cv,cb,255);
+        SDL_RenderFillRect(rd, &rc);
+    }
+    return rd;
+}
+
+SDL_Renderer    *draw_spawn(t_map *m, SDL_Renderer *rd, SDL_Rect rc, char spawn)
+{
+    uint8_t     cr;
+    uint8_t     cv;
+    uint8_t     cb;
 
     if (spawn == 'b') {
-        rect.x = m->spawns.bonus.x;
-        rect.y = m->spawns.bonus.y;
+        rc.x = m->spawns.bonus.x;
+        rc.y = m->spawns.bonus.y;
         cr = 0;
         cv = 255;
         cb = 0;
     } else {
-        rect.x = m->spawns.malus.x;
-        rect.y = m->spawns.malus.y;
+        rc.x = m->spawns.malus.x;
+        rc.y = m->spawns.malus.y;
         cr = 255;
         cv = 0;
         cb = 0;
     }
-    SDL_SetRenderDrawColor(render,cr,cv,cb,255);
-    SDL_RenderFillRect(render, &rect);
-    return render;
+    SDL_SetRenderDrawColor(rd,cr,cv,cb,255);
+    SDL_RenderFillRect(rd, &rc);
+    return rd;
 }
 
-SDL_Renderer * draw_score(SDL_Renderer * render, const char * title, SDL_Rect rect)
+SDL_Renderer        *draw_score(SDL_Renderer *rd, SDL_Rect rc, const char *title)
 {
-    TTF_Font * font;
-    SDL_Color color;
-    SDL_Surface * font_surface;
-    SDL_Texture * text;
-    char  str[4096];
+    char            str[4096];
+    TTF_Font        *font;
+    SDL_Color       color;
+    SDL_Surface     *font_surface;
+    SDL_Texture     *text;
 
     getcwd(str, sizeof(str));
     str_cat(str, "/Resources/Pixeland.ttf");
@@ -103,24 +103,24 @@ SDL_Renderer * draw_score(SDL_Renderer * render, const char * title, SDL_Rect re
     color.b = 0;
     color.a = 255;
     font_surface = TTF_RenderText_Solid(font, title, color);
-    text = SDL_CreateTextureFromSurface(render, font_surface);
+    text = SDL_CreateTextureFromSurface(rd, font_surface);
     SDL_FreeSurface(font_surface);
-    SDL_QueryTexture(text, NULL, NULL, &rect.w, &rect.h);
-    SDL_RenderCopy(render, text, NULL, &rect);
-    return render;
+    SDL_QueryTexture(text, NULL, NULL, &rc.w, &rc.h);
+    SDL_RenderCopy(rd, text, NULL, &rc);
+    return rd;
 }
 
-SDL_Renderer * draw_intscore(SDL_Renderer * render, SDL_Rect rect, int score)
+SDL_Renderer        *draw_intscore(SDL_Renderer *rd, SDL_Rect rc, int score)
 {
-    TTF_Font *font;
-    SDL_Color color;
-    SDL_Surface *font_surface;
-    SDL_Texture *text;
-    char str[4096];
-    char *str2;
+    char            str[4096];
+    char            *str2;
+    TTF_Font        *font;
+    SDL_Color       color;
+    SDL_Surface     *font_surface;
+    SDL_Texture     *text;
 
     str2 = malloc(sizeof(char *));
-    str2 = my_itoa(score, str2);
+    str2 = int_to_str(score, str2);
     getcwd(str, sizeof(str));
     str_cat(str, "/Resources/Pixeland.ttf");
     font = TTF_OpenFont(str, 35);
@@ -129,20 +129,20 @@ SDL_Renderer * draw_intscore(SDL_Renderer * render, SDL_Rect rect, int score)
     color.b = 0;
     color.a = 255;
     font_surface = TTF_RenderText_Solid(font, str2, color);
-    text = SDL_CreateTextureFromSurface(render, font_surface);
+    text = SDL_CreateTextureFromSurface(rd, font_surface);
     SDL_FreeSurface(font_surface);
-    SDL_QueryTexture(text, NULL, NULL, &rect.w, &rect.h);
-    SDL_RenderCopy(render, text, NULL, &rect);
-    return render;
+    SDL_QueryTexture(text, NULL, NULL, &rc.w, &rc.h);
+    SDL_RenderCopy(rd, text, NULL, &rc);
+    return rd;
 }
 
-void draw_string(const char * message, SDL_Rect fontrect, SDL_Renderer * render, t_map * m)
+void            draw_string(t_map *m, SDL_Renderer *rd, SDL_Rect rc, const char *msg)
 {
-    TTF_Font * font;
-    SDL_Color color;
-    SDL_Surface * font_surface;
-    SDL_Texture * text;
-    char  str[4096];
+    char        str[4096];
+    TTF_Font    *font;
+    SDL_Color   color;
+    SDL_Surface *font_surface;
+    SDL_Texture *text;
 
     getcwd(str, sizeof(str));
     str_cat(str, "/Resources/Default.ttf");
@@ -151,10 +151,9 @@ void draw_string(const char * message, SDL_Rect fontrect, SDL_Renderer * render,
     color.g = 0;
     color.b = 0;
     color.a = 255;
-    font_surface = TTF_RenderText_Solid(font, message, color);
-    text = SDL_CreateTextureFromSurface(render, font_surface);
+    font_surface = TTF_RenderText_Solid(font, msg, color);
+    text = SDL_CreateTextureFromSurface(rd, font_surface);
     SDL_FreeSurface(font_surface);
-    SDL_QueryTexture(text, NULL, NULL, &fontrect.w, &fontrect.h);
-    SDL_RenderCopy(render, text, NULL, &fontrect);
+    SDL_QueryTexture(text, NULL, NULL, &rc.w, &rc.h);
+    SDL_RenderCopy(rd, text, NULL, &rc);
 }
-

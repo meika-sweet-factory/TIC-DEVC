@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "../../Headers/memory.h"
 
+/* Usable functions */
+
 inline _Bool init_map(t_game * g, t_axe s)
 {
     if (s.x < MIN_WEED || s.x > MAX_WEED) return ERROR;

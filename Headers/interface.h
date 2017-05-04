@@ -6,6 +6,6 @@
 
 /* Usage functions */
 
-_Bool   sdl_engine(t_game * g, SDL_Renderer * render);
+_Bool   sdl_engine(t_game *g, SDL_Renderer *render);
 
 #endif //_SNAKE_INTERFACE_H_

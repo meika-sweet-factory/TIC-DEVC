@@ -1,8 +1,10 @@
-#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "../../Headers/memory.h"
 #define INIT_CONFIG SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER
 #define RENDER_CONFIG SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC
+
+/* Usable functions */
 
 inline SDL_Renderer * init_sdl(t_game * g, SDL_Window * w, SDL_Renderer * r)
 {

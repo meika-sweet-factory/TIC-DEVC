@@ -4,7 +4,7 @@
 #include "../../Headers/structures/geometry.h"
 #include "../../Headers/structures/game.h"
 
-t_axe   generate_rand_pos   (t_map * m, int type);
+t_axe   generate_rand_pos   (t_map *m, int type);
 int     rand_pos            (int max);
 int     initial_rand_pos    (int max);
 
