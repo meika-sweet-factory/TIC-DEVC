@@ -7,4 +7,5 @@
 
 _Bool   generate_map    (t_game * g, t_axe a);
 
+
 #endif //_SNAKE_MAP_H_

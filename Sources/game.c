@@ -1,10 +1,10 @@
+#include <SDL2/SDL.h>
 #include "../Headers/helpers/conversion.h"
 #include "../Headers/initiator/file.h"
 #include "../Headers/initiator/generate.h"
 #include "../Headers/interface.h"
 #include "../Headers/memory.h"
 #include "../Headers/game.h"
-
 /* Usable functions */
 
 inline _Bool    new_game(
@@ -36,6 +36,35 @@ inline _Bool    load_game(
 
 _Bool play_normal_game(t_game *g)
 {
-    sdl_engine(g);
+    SDL_Event   e;
+    int         i;
+    SDL_Window *    window;
+    SDL_Renderer *  render;
+
+    window = 0;
+    render = 0;
+    render = init_sdl(g, window, render);
+    for (i = 0; i >= 0; ++i) {
+        if (i == 0) {
+            sdl_engine(g, render);
+        }
+        while(SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) i = -2;
+            if (e.type == SDL_KEYDOWN){
+                if (e.key.keysym.sym == SDLK_y) {
+                   free_sdl(window, render);
+                    render = init_sdl(g, window, render);
+                    g->player = 0;
+                    if (g->file != 0) load_map(g, g->file);
+                    else generate_map(g, g->map->size);
+                    sdl_engine(g, render);
+                };
+                if (e.key.keysym.sym == SDLK_n) {
+                    i = -2;
+                }
+            }
+        }
+    }
+    free_sdl(window, render);
     return SUCCESS;
 }

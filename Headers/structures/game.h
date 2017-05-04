@@ -21,6 +21,7 @@ typedef struct  s_game
 {
     t_map *     map;
     t_player *  player;
+    const char *      file;
 }               t_game;
 
 #endif //_SNAKE_STUCTURE_GAME_H_
