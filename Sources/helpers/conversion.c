@@ -21,3 +21,14 @@ int     str_to_int(const char * s)
     }
     return v;
 }
+
+inline void str_copy(char * sd, const char * sc)
+{
+    while ((*sd++ = *sc++) != '\0');
+}
+
+inline void str_cat(char * sd, const char * sc)
+{
+    while (*sd) sd++;
+    str_copy(sd, sc);
+}

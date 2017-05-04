@@ -1,7 +1,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL.h>
 #include <time.h>
-#include <stdbool.h>
+#include <unistd.h>
+#include <string.h>
+#include "../Headers/helpers/conversion.h"
 #include "../Headers/memory.h"
 #include "../Headers/interface.h"
 #include "../Headers/player.h"
@@ -10,36 +12,31 @@
 #include "../Headers/helpers/print.h"
 
 void event_loop(t_game *g, SDL_Rect rect, SDL_Renderer * render);
-bool     game_over(t_map * m, SDL_Renderer * render);
+_Bool     game_over(t_map * m, SDL_Renderer * render);
+char *my_strcat(char *dest, char *src);
 
-_Bool               sdl_engine(t_game * g)
+_Bool               sdl_engine(t_game * g, SDL_Renderer * render)
 {
     SDL_Rect        rect;
-    SDL_Window *    window;
-    SDL_Renderer *  render;
 
-    window = 0;
-    render = 0;
-    render = init_sdl(g, window, render);
     rect.w = 10;
     rect.h = 10;
     render = draw_walls(g, rect, render);
 //  Ici la boucle;
     event_loop(g, rect, render);
-    free_sdl(window, render);
     return SUCCESS;
 }
 
 void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
 {
-    bool        run;
+    _Bool        run;
     SDL_Event   e;
 
-    run = true;
+    run = TRUE;
     g->player->stat.speed = 500;
     while (run) {
         while(SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) run = false;
+            if (e.type == SDL_QUIT) run = FALSE;
             else if (e.type == SDL_KEYDOWN) {
                 if (e.key.keysym.sym == SDLK_UP) g->player->direction = 0;
                 else if (e.key.keysym.sym == SDLK_DOWN) g->player->direction = 1;
@@ -59,25 +56,28 @@ void            event_loop(t_game * g, SDL_Rect rect, SDL_Renderer * render)
     SDL_Delay(1000);
 }
 
-inline bool     game_over(t_map * m, SDL_Renderer * render)
+
+inline _Bool     game_over(t_map * m, SDL_Renderer * render)
 {
     TTF_Font * font;
     SDL_Color color;
     SDL_Surface * font_surface;
     SDL_Texture * text;
     SDL_Rect fontrect;
+    char  str[4096];
 
-    font = TTF_OpenFont("/home/killianb/Documents/code_c/libsdl/snake/Ressources/Default.ttf", m->size.x + 5);
+    getcwd(str, sizeof(str));
+    str_cat(str, "/Resources/Default.ttf");
+    font = TTF_OpenFont(str, m->size.x + 5);
     color.r = 255;
     color.g = 0;
     color.b = 0;
     color.a = 255;
     font_surface = TTF_RenderText_Solid(font, "GAME OVER", color);
-    print_str("fwe");
     text = SDL_CreateTextureFromSurface(render, font_surface);
     SDL_FreeSurface(font_surface);
     fontrect.x = fontrect.y = 10;
     SDL_QueryTexture(text, NULL, NULL, &fontrect.w, &fontrect.h);
     SDL_RenderCopy(render, text, NULL, &fontrect);
-    return false;
+    return FALSE;
 }

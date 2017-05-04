@@ -98,6 +98,8 @@ void    rand_bonus(t_player * p)
 
     srand((unsigned int) (time(NULL) + (rand() % 100)));
     b = (rand() % 2);
+    ++p->score;
+    print_int(p->score);
     if (b == 0)
     {
         add_player_queue(p, p->body->first->data.coordonate);

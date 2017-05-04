@@ -5,6 +5,8 @@
 #define EXIT_SUCCESS 0
 #define ERROR 0
 #define SUCCESS 1
+#define FALSE 0
+#define TRUE 1
 
 /* Data */
 
