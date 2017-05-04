@@ -6,6 +6,10 @@
 #include "../Headers/game.h"
 #include "../Headers/memory.h"
 
+/* Internal functions prototype */
+
+SDL_Renderer    *remake_game(t_game *g, SDL_Window *w, SDL_Renderer *r);
+
 /* Usable functions */
 
 inline _Bool    new_game(
@@ -39,31 +43,45 @@ _Bool               play_normal_game(t_game *g)
 {
     int             i;
     SDL_Event       e;
-    SDL_Window      *window;
-    SDL_Renderer    *render;
+    SDL_Window      *w;
+    SDL_Renderer    *r;
 
-    window = 0;
-    render = 0;
-    render = init_sdl(g, window, render);
+    w = 0;
+    r = 0;
+    r = init_sdl(g, w, r);
     for (i = 0; i >= 0; ++i) {
-        if (i == 0) sdl_engine(g, render);
+        if (i == 0) sdl_engine(g, r);
         while(SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) i = -2;
             if (e.type == SDL_KEYDOWN){
                 if (e.key.keysym.sym == SDLK_y) {
-                   free_sdl(window, render);
-                    render = init_sdl(g, window, render);
-                    g->player = 0;
-                    if (g->file != 0) load_map(g, g->file);
-                    else generate_map(g, g->map->size);
-                    sdl_engine(g, render);
-                };
+                    r = remake_game(g, w, r);
+                    sdl_engine(g, r);
+                }
                 if (e.key.keysym.sym == SDLK_n) {
                     i = -2;
                 }
             }
         }
     }
-    free_sdl(window, render);
+    free_sdl(w, r);
     return SUCCESS;
+}
+
+/* Internal functions */
+
+inline SDL_Renderer *remake_game(t_game *g, SDL_Window *w, SDL_Renderer *r)
+{
+    t_axe           size;
+
+    free_sdl(w, r);
+    r = init_sdl(g, w, r);
+    size = g->map->size;
+    free_player(g->player);
+    g->player = 0;
+    free_map(g->map);
+    g->map = 0;
+    if (g->file != 0) load_map(g, g->file);
+    else generate_map(g, size);
+    return r;
 }

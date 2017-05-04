@@ -3,7 +3,7 @@
 
 /* Usable functions */
 
-inline _Bool init_map(t_game * g, t_axe s)
+inline _Bool init_map(t_game *g, t_axe s)
 {
     if (s.x < MIN_WEED || s.x > MAX_WEED) return ERROR;
     if (s.y < MIN_HEIGHT || s.y > MAX_HEIGHT) return ERROR;
@@ -23,7 +23,7 @@ inline t_board * create_map_cell(int x)
     return (t_board *) malloc((unsigned long) (x + 1) * sizeof(t_board));
 }
 
-inline void free_map(t_map * m)
+inline void free_map(t_map *m)
 {
     int     i;
 

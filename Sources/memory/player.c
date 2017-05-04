@@ -4,7 +4,7 @@
 
 /* Usable functions */
 
-inline _Bool init_player(t_game * g, t_axe a)
+inline _Bool    init_player(t_game *g, t_axe a)
 {
     a.x *= 10;
     a.y *= 10;
@@ -21,7 +21,7 @@ inline _Bool init_player(t_game * g, t_axe a)
     return SUCCESS;
 }
 
-inline void free_player(t_player * p)
+inline void     free_player(t_player *p)
 {
     pile_free(p->body);
     free(p);

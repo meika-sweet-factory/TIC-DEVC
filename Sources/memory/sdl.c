@@ -6,7 +6,7 @@
 
 /* Usable functions */
 
-inline SDL_Renderer * init_sdl(t_game * g, SDL_Window * w, SDL_Renderer * r)
+inline SDL_Renderer *init_sdl(t_game *g, SDL_Window *w, SDL_Renderer *r)
 {
     if (SDL_Init(INIT_CONFIG) < 0) return ERROR;
     if (TTF_Init() < 0) return ERROR;
@@ -21,7 +21,7 @@ inline SDL_Renderer * init_sdl(t_game * g, SDL_Window * w, SDL_Renderer * r)
     return r;
 }
 
-inline void free_sdl(SDL_Window * w, SDL_Renderer * r)
+inline void free_sdl(SDL_Window *w, SDL_Renderer *r)
 {
     SDL_DestroyRenderer(r);
     SDL_DestroyWindow(w);
