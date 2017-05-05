@@ -1,5 +1,5 @@
-#ifndef _SNAKE_STRING_H_
-#define _SNAKE_STRING_H_
+#ifndef _STRING_H_
+#define _STRING_H_
 
 /* Helpers */
 
@@ -10,4 +10,4 @@
 
 void    reverse(char *str, int length);
 
-#endif //_SNAKE_STRING_H_
+#endif //_STRING_H_

@@ -1,5 +1,5 @@
-#ifndef _SNAKE_INTERFACE_H_
-#define _SNAKE_INTERFACE_H_
+#ifndef _INTERFACE_H_
+#define _INTERFACE_H_
 
 #include "common.h"
 #include "../Headers/structures/game.h"
@@ -8,4 +8,4 @@
 
 _Bool   sdl_engine(t_game *g, SDL_Renderer *render);
 
-#endif //_SNAKE_INTERFACE_H_
+#endif //_INTERFACE_H_

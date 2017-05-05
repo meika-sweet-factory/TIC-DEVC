@@ -1,6 +1,8 @@
 #ifndef _DRAW_H_
 #define _DRAW_H_
 
+/* Library SDL */
+
 #include <SDL2/SDL.h>
 #include "../Headers/structures/game.h"
 

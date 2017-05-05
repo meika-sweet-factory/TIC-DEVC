@@ -15,7 +15,7 @@ void            event_loop      (t_game *g, SDL_Rect rect, SDL_Renderer * render
 _Bool           game_over       (t_map *m, SDL_Renderer *render);
 SDL_Renderer    *game_interface (t_game *g, SDL_Renderer *render, SDL_Rect rect, int timerini);
 
-/* Usable functions */
+/* Usable function */
 
 _Bool           sdl_engine(t_game *g, SDL_Renderer *rd)
 {

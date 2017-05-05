@@ -1,5 +1,5 @@
-#ifndef _SNAKE_CONVERSION_H_
-#define _SNAKE_CONVERSION_H_
+#ifndef _CONVERSION_H_
+#define _CONVERSION_H_
 
 /* Helpers */
 
@@ -14,4 +14,4 @@ void    str_copy    (char * restrict sd, const char * restrict sc);
 void    str_cat     (char * restrict sd, const char * restrict sc);
 char    *int_to_str (int num, char *str);
 
-#endif //_SNAKE_CONVERSION_H_
+#endif //_CONVERSION_H_

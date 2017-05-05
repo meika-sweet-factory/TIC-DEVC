@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "../../Headers/chain/pile.h"
 
-/* Internal functions */
+/* Internal function */
 
 t_pile_element  *pile_list_extract(t_pile_list *l);
 

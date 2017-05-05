@@ -1,5 +1,5 @@
-#ifndef _SNAKE_COMMON_H_
-#define _SNAKE_COMMON_H_
+#ifndef _COMMON_H_
+#define _COMMON_H_
 
 #define EXIT_FAILURE 1
 #define EXIT_SUCCESS 0
@@ -24,4 +24,4 @@ static const unsigned BOX_HEIGHT = 256;
 static const unsigned SPEED = 250;
 static const unsigned SPEED_UP = 10;
 
-#endif //_SNAKE_COMMON_H_
+#endif //_COMMON_H_

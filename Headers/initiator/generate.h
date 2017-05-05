@@ -1,5 +1,5 @@
-#ifndef _SNAKE_MAP_H_
-#define _SNAKE_MAP_H_
+#ifndef _MAP_H_
+#define _MAP_H_
 
 #include "../common.h"
 #include "../structures/game.h"
@@ -8,4 +8,4 @@
 _Bool generate_map(t_game * g, t_axe a);
 
 
-#endif //_SNAKE_MAP_H_
+#endif //_MAP_H_

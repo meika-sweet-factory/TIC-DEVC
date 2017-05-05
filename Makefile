@@ -21,10 +21,10 @@ ifeq ($(DEBUG_BUILD), 1)
     CFLAGS +=-DDEBUG_BUILD
 endif
 
-SRCF := chain/pile.c 			\
+SRCF := chain/pile.c 				\
 		helpers/type.c 			\
 		helpers/print.c 		\
-		helpers/conversion.c 	\
+		helpers/conversion.c 		\
 		helpers/string.c		\
 		helpers/random.c		\
 		memory/game.c			\
@@ -32,12 +32,12 @@ SRCF := chain/pile.c 			\
 		memory/player.c			\
 		memory/sdl.c			\
 		initiator/file.c		\
-		initiator/generate.c	\
-		spawners.c              \
-		draw.c				    \
-		interface.c			    \
-		game.c 				    \
-		player.c 			    \
+		initiator/generate.c		\
+		spawners.c              	\
+		draw.c				\
+		interface.c			\
+		game.c 				\
+		player.c 			\
 		main.c
 
 SRCS := $(patsubst %, $(SRCDIR)/%, $(SRCF))

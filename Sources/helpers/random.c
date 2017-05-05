@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../../Headers/helpers/random.h"
 
-/* Usable functions */
+/* Usable function */
 
 t_axe       generate_rand_pos(t_map *m, int type)
 {

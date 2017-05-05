@@ -1,7 +1,7 @@
 #include "../../Headers/helpers/conversion.h"
 #include "../../Headers/helpers/string.h"
 
-/* Usable functions */
+/* Usable function */
 
 t_axe       str_to_axe(const char * restrict x, const char * restrict y)
 {

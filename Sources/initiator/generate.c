@@ -10,7 +10,7 @@
 void        generate_snake  (t_player *p, t_axe a);
 void        generate_spawns (t_map *m);
 
-/* Usable functions */
+/* Usable function */
 
 _Bool       generate_map(t_game *g, t_axe s)
 {

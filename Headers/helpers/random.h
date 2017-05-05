@@ -1,6 +1,8 @@
 #ifndef _RANDOM_H_
 #define _RANDOM_H_
 
+/* Structures needed */
+
 #include "../../Headers/structures/geometry.h"
 #include "../../Headers/structures/game.h"
 

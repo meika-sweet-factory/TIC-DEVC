@@ -1,8 +1,8 @@
-#ifndef _SNAKE_MEMORY_H_
-#define _SNAKE_MEMORY_H_
+#ifndef _MEMORY_H_
+#define _MEMORY_H_
 
 #include <SDL2/SDL.h>
-#include "common.h" 
+#include "common.h"
 #include "structures/game.h"
 #include "structures/player.h"
 
@@ -18,4 +18,4 @@ void            free_map            (t_map *m);
 void            free_player         (t_player *p);
 void            free_sdl            (SDL_Window *w, SDL_Renderer *r);
 
-#endif //_SNAKE_MEMORY_H_
+#endif //_MEMORY_H_

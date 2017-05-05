@@ -1,6 +1,6 @@
 #include "../../Headers/helpers/string.h"
 
-/* Usable functions */
+/* Usable function */
 
 void        reverse(char * str, int length)
 {

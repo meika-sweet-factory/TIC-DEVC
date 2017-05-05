@@ -1,7 +1,7 @@
 #include <regex.h>
 #include "../../Headers/helpers/type.h"
 
-/* Usable functions */
+/* Usable function */
 
 _Bool       is_digit(const char *s)
 {

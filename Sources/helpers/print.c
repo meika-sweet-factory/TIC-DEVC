@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "../../Headers/helpers/print.h"
 
-/* Usable functions */
+/* Usable function */
 
 inline void print_char(char c)
 {

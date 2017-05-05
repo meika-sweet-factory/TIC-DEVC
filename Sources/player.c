@@ -8,7 +8,7 @@
 
 _Bool   check_elements(t_map *m,t_player *p, t_axe d);
 
-/* Usable functions */
+/* Usable function */
 
 _Bool               move(t_map *m, t_player *p, t_axe d)
 {

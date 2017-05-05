@@ -12,7 +12,7 @@ _Bool   load_base   (t_game *g, int of);
 _Bool   load_data   (t_game *g, int of);
 void    load_spawns (t_map *m, t_axe a, char c);
 
-/* Usable functions */
+/* Usable function */
 
 _Bool   load_map(t_game * restrict g, const char * restrict f)
 {

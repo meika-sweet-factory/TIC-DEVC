@@ -4,7 +4,7 @@
 #include "../Headers/player.h"
 #include "../Headers/spawners.h"
 
-/* Usable functions */
+/* Usable function */
 
 _Bool       get_spawn(t_map *m, t_player *p)
 {
